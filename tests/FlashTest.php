@@ -119,4 +119,22 @@ class FlashTest extends PHPUnit_Framework_TestCase {
     $this->setExpectedException('Exception');
     $flash->message('Test message', 'bad');
   }
+
+  /** @test */
+  public function testThatSessionIsShared()
+  {
+    flash('Checking shared');
+
+    $content = flash()->display();
+    $this->assertContains('Checking shared', $content);
+  }
+
+  /** @test */
+  public function testItFlushesChanges()
+  {
+    flash('First one','success')->message('Other one','info')->display();
+    flash('Third one','error')->display();
+
+    $this->assertFalse(flash()->hasMessages());
+  }
 }

@@ -25,6 +25,16 @@ trait SessionTrait {
   }
 
   /**
+   * Updates $_SESSION object.
+   *
+   * @param $container
+   */
+  protected function updateContainer($container)
+  {
+    $_SESSION[$this->sessionKey] = $container;
+  }
+
+  /**
    * Clears partially/fully $_SESSION object.
    *
    * @param string|null $type

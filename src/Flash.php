@@ -57,6 +57,8 @@ class Flash {
 
     $this->container[$type][] = $message;
 
+    $this->updateContainer($this->container);
+
     return $this;
   }
 
@@ -69,27 +71,18 @@ class Flash {
    */
   public function display($type = null)
   {
-    $messages = '';
-    $data     = '';
+
+    $data = '';
 
     if (in_array($type, $this->types))
     {
-      foreach ($this->container[$type] as $msg)
-      {
-        $messages .= $this->prefix . $msg . $this->postfix;
-      }
-      $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
+      $data .= $this->buildMessages($this->container[$type], $type);
     }
     elseif (is_null($type))
     {
-      foreach ($this->container as $type => $msgArray)
+      foreach ($this->container as $messageType => $messages)
       {
-        $messages = '';
-        foreach ($msgArray as $msg)
-        {
-          $messages .= $this->prefix . $msg . $this->postfix;
-        }
-        $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
+        $data .= $this->buildMessages($messages, $messageType);
       }
     }
     $this->clear($type);
@@ -153,5 +146,24 @@ class Flash {
    * @throws Exception
    */
   public function __toString() { return $this->display(); }
+
+  /**
+   * Builds messages for a single type.
+   *
+   * @param array $flashes
+   * @param       $type
+   *
+   * @return string
+   */
+  protected function buildMessages(array $flashes, $type)
+  {
+    $messages = '';
+    foreach ($flashes as $msg)
+    {
+      $messages .= $this->prefix . $msg . $this->postfix;
+    }
+
+    return sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
+  }
 
 }
