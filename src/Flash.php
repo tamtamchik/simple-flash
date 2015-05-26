@@ -126,7 +126,7 @@ class Flash {
   /**
    * Clears messages from session store.
    *
-   * @param null $type
+   * @param mixed $type
    *
    * @return bool
    */
