@@ -12,7 +12,7 @@ Just pull in the package through [Composer](http://getcomposer.org).
 composer require tamtamchik/simple-flash
 ```
 
-Inside your project make sure to start a session and load Composer autoload to make everything work.  
+Inside your project make sure to start a session and load [Composer](http://getcomposer.org) autoload to make everything work.  
 Example:
 
 ````php
