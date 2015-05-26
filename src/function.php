@@ -4,10 +4,12 @@ if ( ! function_exists('flash'))
 {
   /**
    * Wrapper for flash object to be used as global function.
+   *
    * @param null $message
    * @param null $type
    *
-   * @return bool|\Tamtamchik\Flash\Flash
+   * @return \Tamtamchik\Flash\Flash
+   * @throws Exception
    */
   function flash($message = null, $type = null)
   {

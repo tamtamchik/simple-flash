@@ -1,82 +1,88 @@
 <?php namespace Tamtamchik\Flash;
 
+use Exception;
+
 /**
  * Class Flash
  * @package Tamtamchik
  */
 class Flash {
 
-  private $msgId;
+  const SESSION_NOT_FOUND = 'Flash not initialized!';
+  const NOT_VALID_TYPE    = 'is not a valid message type!';
+
   private $sessionKey = 'flash_messages';
   private $prefix     = "<p>";
   private $postfix    = "</p>";
   private $wrapper    = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
-  private $msgTypes   = [
+
+  private $types = [
     'success',
     'info',
     'warning',
-    'danger',
+    'error',
   ];
 
   /**
-   * @param array $options
+   * Flash constructor.
+   * Creates the session array if it does not already exist.
    */
-  public function __construct(Array $options = null)
+  public function __construct()
   {
     if ( ! session_id())
       session_start();
 
-    // Generate a unique ID for this user and session
-    $this->msgId = md5(uniqid());
-
-    // Create the session array if it doesn't already exist
     if ( ! array_key_exists($this->sessionKey, $_SESSION))
       $_SESSION[$this->sessionKey] = array();
   }
 
-  public function message($message, $type)
+  /**
+   * Base method for adding messages to flash.
+   *
+   * @param        $message - message text
+   * @param string $type    - message type: success, info, warning, danger
+   *
+   * @return \Tamtamchik\Flash\Flash $this
+   * @throws Exception
+   */
+  public function message($message, $type = 'info')
   {
     if ( ! isset($_SESSION[$this->sessionKey]))
-      //throw new Exception("Flash not initialized!");
-      return false;
+      throw new Exception(self::SESSION_NOT_FOUND);
 
-    if ( ! isset($type) || ! isset($message[0]))
-      //throw new Exception("Not all required params specified!");
-      return false;
+    if ( ! isset($message))
+      return $this;
 
     $type = strip_tags($type);
 
     // Make sure it's a valid message type
-    if ( ! in_array($type, $this->msgTypes))
-      //throw new Exception("'{$type}' is not a valid message type!");
-      return false;
+    if ( ! in_array($type, $this->types))
+      throw new Exception("'{$type}' " . self::NOT_VALID_TYPE);
 
-    // If the session array doesn't exist, create it
     if ( ! array_key_exists($type, $_SESSION[$this->sessionKey]))
       $_SESSION[$this->sessionKey][$type] = array();
 
     $_SESSION[$this->sessionKey][$type][] = $message;
 
-    return true;
+    return $this;
   }
 
-  public function display($type = null, $print = false)
+  public function display($type = null)
   {
     $messages = '';
     $data     = '';
 
     if ( ! isset($_SESSION[$this->sessionKey]))
-      //throw new Exception("Flash not initialized!");
-      return false;
+      throw new Exception(self::SESSION_NOT_FOUND);
 
     // Print a certain type of message?
-    if (in_array($type, $this->msgTypes))
+    if (in_array($type, $this->types))
     {
       foreach ($_SESSION[$this->sessionKey][$type] as $msg)
       {
         $messages .= $this->prefix . $msg . $this->postfix;
       }
-      $data .= sprintf($this->wrapper, $type, $messages);
+      $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
 
       // Clear the viewed messages
       $this->clear($type);
@@ -90,7 +96,7 @@ class Flash {
         {
           $messages .= $this->prefix . $msg . $this->postfix;
         }
-        $data .= sprintf($this->wrapper, $type, $messages);
+        $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
       }
       $this->clear();
     }
@@ -99,28 +105,19 @@ class Flash {
       return false;
     }
 
-    if ($print)
-    {
-      echo $data;
-
-      return true;
-    }
-    else
-    {
-      return $data;
-    }
+    return $data;
   }
 
   public function hasMessages($type = null)
   {
     if ( ! is_null($type))
     {
-      if ( ! empty($_SESSION[$this->sessionKey]))
+      if ( ! empty($_SESSION[$this->sessionKey][$type]))
         return true;
     }
     else
     {
-      foreach ($this->msgTypes as $type)
+      foreach ($this->types as $type)
       {
         if ( ! empty($_SESSION[$this->sessionKey][$type]))
           return true;

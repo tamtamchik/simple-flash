@@ -1,0 +1,102 @@
+<?php
+session_start();
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+class FlashTest extends PHPUnit_Framework_TestCase {
+
+  /** @test */
+  public function testCreation()
+  {
+    $flash = new \Tamtamchik\Flash\Flash();
+
+    $this->assertFalse($flash->hasMessages());
+    $this->assertEquals('Tamtamchik\Flash\Flash', get_class($flash));
+  }
+
+  /** @test */
+  public function testFunction()
+  {
+    $flash = flash();
+
+    $this->assertFalse($flash->hasMessages());
+    $this->assertEquals('Tamtamchik\Flash\Flash', get_class($flash));
+  }
+
+  /** @test */
+  public function testMessageWorkflow()
+  {
+    $flash = flash('Test info message');
+
+    $this->assertTrue($flash->hasMessages());
+    $this->assertContains('Test info message', $flash->display());
+    $this->assertFalse($flash->hasMessages());
+  }
+
+  /** @test */
+  public function testFunctionMessageType()
+  {
+    $flash = flash('Test info message', 'success');
+
+    $this->assertContains('success', $flash->display());
+  }
+
+  /** @test */
+  public function testChaining()
+  {
+    $flash = flash()->message('Test info message 1')->message('Test info message 2');
+
+    $content = $flash->display();
+    $this->assertContains('Test info message 1', $content);
+    $this->assertContains('Test info message 2', $content);
+  }
+
+  /** @test */
+  public function testInfoDefaultMessage()
+  {
+    $flash = flash('Test info message');
+
+    $this->assertContains('info', $flash->display());
+  }
+
+  /** @test */
+  public function testMessageTypes()
+  {
+    $flash = flash()
+      ->message('Dummy 1', 'success')
+      ->message('Dummy 2', 'info')
+      ->message('Dummy 2', 'warning')
+      ->message('Dummy 2', 'error');
+
+    $content = $flash->display();
+    $this->assertContains('success', $content);
+    $this->assertContains('info', $content);
+    $this->assertContains('success', $content);
+    $this->assertContains('danger', $content);
+  }
+
+  /** @test */
+  public function testPartialDisplay()
+  {
+    $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
+
+    $this->assertTrue($flash->hasMessages('success'));
+
+    $content = $flash->display('success');
+
+    $this->assertContains('Dummy 1', $content);
+    $this->assertNotContains('Dummy 2', $content);
+  }
+
+  /** @test */
+  public function testWrongDisplays()
+  {
+    $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
+
+    $this->assertFalse($flash->hasMessages('wrong'));
+
+    $content = $flash->display('wrong');
+
+    $this->assertFalse($content);
+  }
+}
