@@ -12,6 +12,17 @@ Just pull in the package through [Composer](http://getcomposer.org).
 composer require tamtamchik/simple-flash
 ```
 
+Inside your project make sure to start a session and load Composer autoload to make everything work.  
+Example:
+
+````php
+// Start a Session
+if( !session_id() ) @session_start();
+
+// Initialize Composer Autoload
+require_once 'vendor/autoload.php';
+````
+
 ### Usage
 
 TBD

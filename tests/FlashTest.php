@@ -10,6 +10,7 @@ class FlashTest extends PHPUnit_Framework_TestCase {
   {
     $flash = new \Tamtamchik\Flash\Flash();
 
+
     $this->assertFalse($flash->hasMessages());
     $this->assertEquals('Tamtamchik\Flash\Flash', get_class($flash));
   }
@@ -97,6 +98,25 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 
     $content = $flash->display('wrong');
 
-    $this->assertFalse($content);
+    $this->assertEmpty($content);
+  }
+
+  /** @test */
+  public function testAccessAsString()
+  {
+    $flash = new \Tamtamchik\Flash\Flash;
+    $flash->clear();
+
+    $flash->message('Test message');
+    $this->assertContains('Test message', "{$flash}");
+  }
+
+  /** @test */
+  public function testWrongMessageType()
+  {
+    $flash = flash();
+
+    $this->setExpectedException('Exception');
+    $flash->message('Test message', 'bad');
   }
 }

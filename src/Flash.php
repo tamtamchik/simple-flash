@@ -1,6 +1,7 @@
 <?php namespace Tamtamchik\Flash;
 
 use Exception;
+use Tamtamchik\Flash\Support\SessionTrait;
 
 /**
  * Class Flash
@@ -8,32 +9,26 @@ use Exception;
  */
 class Flash {
 
-  const SESSION_NOT_FOUND = 'Flash not initialized!';
-  const NOT_VALID_TYPE    = 'is not a valid message type!';
+  use SessionTrait;
 
-  private $sessionKey = 'flash_messages';
-  private $prefix     = "<p>";
-  private $postfix    = "</p>";
-  private $wrapper    = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
+  private $container;
+  private $prefix  = "<p>";
+  private $postfix = "</p>";
+  private $wrapper = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
 
   private $types = [
-    'success',
-    'info',
-    'warning',
     'error',
+    'warning',
+    'info',
+    'success',
   ];
 
   /**
-   * Flash constructor.
-   * Creates the session array if it does not already exist.
+   * Creates flash container from session.
    */
   public function __construct()
   {
-    if ( ! session_id())
-      session_start();
-
-    if ( ! array_key_exists($this->sessionKey, $_SESSION))
-      $_SESSION[$this->sessionKey] = array();
+    $this->container = $this->createContainer();
   }
 
   /**
@@ -47,9 +42,7 @@ class Flash {
    */
   public function message($message, $type = 'info')
   {
-    if ( ! isset($_SESSION[$this->sessionKey]))
-      throw new Exception(self::SESSION_NOT_FOUND);
-
+    // Do nothing if message is empty
     if ( ! isset($message))
       return $this;
 
@@ -57,39 +50,39 @@ class Flash {
 
     // Make sure it's a valid message type
     if ( ! in_array($type, $this->types))
-      throw new Exception("'{$type}' " . self::NOT_VALID_TYPE);
+      throw new Exception("'{$type}' is not a valid message type!");
 
-    if ( ! array_key_exists($type, $_SESSION[$this->sessionKey]))
-      $_SESSION[$this->sessionKey][$type] = array();
+    if ( ! array_key_exists($type, $this->container))
+      $this->container[$type] = array();
 
-    $_SESSION[$this->sessionKey][$type][] = $message;
+    $this->container[$type][] = $message;
 
     return $this;
   }
 
+  /**
+   * Returns Bootstrap ready HTML for Flash messages.
+   *
+   * @param null $type
+   *
+   * @return string
+   */
   public function display($type = null)
   {
     $messages = '';
     $data     = '';
 
-    if ( ! isset($_SESSION[$this->sessionKey]))
-      throw new Exception(self::SESSION_NOT_FOUND);
-
-    // Print a certain type of message?
     if (in_array($type, $this->types))
     {
-      foreach ($_SESSION[$this->sessionKey][$type] as $msg)
+      foreach ($this->container[$type] as $msg)
       {
         $messages .= $this->prefix . $msg . $this->postfix;
       }
       $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
-
-      // Clear the viewed messages
-      $this->clear($type);
     }
     elseif (is_null($type))
     {
-      foreach ($_SESSION[$this->sessionKey] as $type => $msgArray)
+      foreach ($this->container as $type => $msgArray)
       {
         $messages = '';
         foreach ($msgArray as $msg)
@@ -98,28 +91,31 @@ class Flash {
         }
         $data .= sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
       }
-      $this->clear();
     }
-    else
-    {
-      return false;
-    }
+    $this->clear($type);
 
     return $data;
   }
 
+  /**
+   * Returns if there are any messages in container.
+   *
+   * @param null $type
+   *
+   * @return bool
+   */
   public function hasMessages($type = null)
   {
+
     if ( ! is_null($type))
     {
-      if ( ! empty($_SESSION[$this->sessionKey][$type]))
-        return true;
+      return ! empty($this->container[$type]);
     }
     else
     {
       foreach ($this->types as $type)
       {
-        if ( ! empty($_SESSION[$this->sessionKey][$type]))
+        if ( ! empty($this->container[$type]))
           return true;
       }
     }
@@ -127,16 +123,35 @@ class Flash {
     return false;
   }
 
+  /**
+   * Clears messages from session store.
+   *
+   * @param null $type
+   *
+   * @return bool
+   */
   public function clear($type = null)
   {
+    $this->clearContainer($type);
+
     if (is_null($type))
-      unset($_SESSION[$this->sessionKey]);
+    {
+      $this->container = $this->createContainer();
+    }
     else
-      unset($_SESSION[$this->sessionKey][$type]);
+    {
+      unset($this->container[$type]);
+    }
 
     return true;
   }
 
+  /**
+   * If requested as string will HTML will be returned.
+   *
+   * @return bool|string
+   * @throws Exception
+   */
   public function __toString() { return $this->display(); }
 
 }
