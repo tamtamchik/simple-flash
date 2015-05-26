@@ -149,7 +149,7 @@ class Flash {
   /**
    * If requested as string will HTML will be returned.
    *
-   * @return bool|string
+   * @return string
    * @throws Exception
    */
   public function __toString() { return $this->display(); }
