@@ -164,4 +164,39 @@ class Engine {
    */
   public function __toString() { return $this->display(); }
 
+  /**
+   * Shortcut for error message.
+   *
+   * @param $message
+   *
+   * @return Engine
+   */
+  public function error($message) { return $this->message($message, 'error'); }
+
+  /**
+   * Shortcut for warning message.
+   *
+   * @param $message
+   *
+   * @return Engine
+   */
+  public function warning($message) { return $this->message($message, 'warning'); }
+
+  /**
+   * Shortcut for info message.
+   *
+   * @param $message
+   *
+   * @return Engine
+   */
+  public function info($message) { return $this->message($message, 'info'); }
+
+  /**
+   * Shortcut for success message.
+   *
+   * @param $message
+   *
+   * @return Engine
+   */
+  public function success($message) { return $this->message($message, 'success'); }
 }

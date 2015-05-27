@@ -153,4 +153,16 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 
     $this->assertFalse(flash()->hasMessages());
   }
+
+  /** @test */
+  public function testShortcuts()
+  {
+    flash()->error('Info message')->warning('Info message')->info('Info message')->success('Info message');
+
+    $content = flash()->display();
+    $this->assertContains('danger', $content);
+    $this->assertContains('warning', $content);
+    $this->assertContains('info', $content);
+    $this->assertContains('success', $content);
+  }
 }

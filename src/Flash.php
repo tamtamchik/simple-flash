@@ -10,16 +10,34 @@
  * @method static string display($type = null) Returns Bootstrap ready HTML for Engine messages.
  * @method static bool hasMessages($type = null) Returns if there are any messages in container.
  * @method static Engine clear($type = null) Clears messages from session store.
+ *
+ * @method static Engine error($message) Shortcut for error message.
+ * @method static Engine warning($message) Shortcut for warning message.
+ * @method static Engine info($message) Shortcut for info message.
+ * @method static Engine success($message) Shortcut for success message.
  */
 class Flash {
 
+  /**
+   * Base instance of Flash engine.
+   *
+   * @var Engine
+   */
   private static $engine;
 
-  function __construct()
+  public function __construct()
   {
     self::$engine = new Engine();
   }
 
+  /**
+   * Invoke Engine methods.
+   *
+   * @param string $method
+   * @param array  $arguments
+   *
+   * @return mixed
+   */
   protected static function invoke($method, array $arguments)
   {
     $target = [
@@ -30,12 +48,28 @@ class Flash {
     return call_user_func_array($target, $arguments);
   }
 
-  function __call($method, array $arguments)
+  /**
+   * Magic methods for instances calls.
+   *
+   * @param string $method
+   * @param array  $arguments
+   *
+   * @return mixed
+   */
+  public function __call($method, array $arguments)
   {
     return $this->invoke($method, $arguments);
   }
 
-  static function __callStatic($method, array $arguments)
+  /**
+   * Magic methods for static calls.
+   *
+   * @param string $method
+   * @param array  $arguments
+   *
+   * @return mixed
+   */
+  public static function __callStatic($method, array $arguments)
   {
     if ( ! isset(self::$engine))
     {
@@ -45,5 +79,10 @@ class Flash {
     return self::invoke($method, $arguments);
   }
 
+  /**
+   * Mimic object __toString method.
+   *
+   * @return string
+   */
   public function __toString() { return strval(self::$engine); }
 }
