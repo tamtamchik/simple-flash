@@ -1,7 +1,7 @@
 {
   "name": "tamtamchik/simple-flash",
-  "description": "Very simple Flash messages for PHP projects",
-  "keywords": ["flash"],
+  "description": "Easy framework agnostic flash notifications",
+  "keywords": ["flash", "notifications", "messages", "agnostic"],
   "homepage": "http://github.com/tamtamchik/simple-flash",
   "minimum-stability": "stable",
   "license": "BSD-2.0",
