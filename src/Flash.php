@@ -1,166 +1,49 @@
 <?php namespace Tamtamchik\Flash;
 
-use Exception;
 
 /**
- * Class Flash
- * @package Tamtamchik
+ * Class Flash.
+ *
+ * @package Tamtamchik\Flash
+ *
+ * @method static Engine message($message, $type = 'info') Base method for adding messages to flash.
+ * @method static string display($type = null) Returns Bootstrap ready HTML for Engine messages.
+ * @method static bool hasMessages($type = null) Returns if there are any messages in container.
+ * @method static Engine clear($type = null) Clears messages from session store.
  */
 class Flash {
 
-  /**
-   * @var string - main session key for Flash messages.
-   */
-  private $key = 'flash_messages';
+  private static $engine;
 
-  private $prefix  = "<p>";
-  private $postfix = "</p>";
-  private $wrapper = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
-
-  private $types = [
-    'error',
-    'warning',
-    'info',
-    'success',
-  ];
-
-  /**
-   * Creates flash container from session.
-   */
-  public function __construct()
+  function __construct()
   {
-    if ( ! array_key_exists($this->key, $_SESSION))
-      $_SESSION[$this->key] = [];
+    self::$engine = new Engine();
   }
 
-  /**
-   * Base method for adding messages to flash.
-   *
-   * @param string $message - message text
-   * @param string $type    - message type: success, info, warning, danger
-   *
-   * @return \Tamtamchik\Flash\Flash $this
-   * @throws Exception
-   */
-  public function message($message, $type = 'info')
+  protected static function invoke($method, array $arguments)
   {
-    // Do nothing if message is empty
-    if ( ! isset($message) || ! in_array($type, $this->types))
-      return $this;
+    $target = [
+      self::$engine,
+      $method,
+    ];
 
-    $type = strip_tags($type);
-
-    if ( ! array_key_exists($type, $_SESSION[$this->key]))
-      $_SESSION[$this->key][$type] = [];
-
-    $_SESSION[$this->key][$type][] = $message;
-
-    return $this;
+    return call_user_func_array($target, $arguments);
   }
 
-  /**
-   * Returns Bootstrap ready HTML for Flash messages.
-   *
-   * @param string $type
-   *
-   * @return string
-   */
-  public function display($type = null)
+  function __call($method, array $arguments)
   {
-
-    $result = '';
-
-    if ( ! is_null($type) && ! in_array($type, $this->types))
-      return $result;
-
-    if (in_array($type, $this->types))
-    {
-      $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
-    }
-    elseif (is_null($type))
-    {
-      foreach ($_SESSION[$this->key] as $messageType => $messages)
-      {
-        $result .= $this->buildMessages($messages, $messageType);
-      }
-    }
-    $this->clear($type);
-
-    return $result;
+    return $this->invoke($method, $arguments);
   }
 
-  /**
-   * Returns if there are any messages in container.
-   *
-   * @param null $type
-   *
-   * @return bool
-   */
-  public function hasMessages($type = null)
+  static function __callStatic($method, array $arguments)
   {
-
-    if ( ! is_null($type))
+    if ( ! isset(self::$engine))
     {
-      return ! empty($_SESSION[$this->key][$type]);
-    }
-    else
-    {
-      foreach ($this->types as $type)
-      {
-        if ( ! empty($_SESSION[$this->key][$type]))
-          return true;
-      }
+      self::$engine = new Engine();
     }
 
-    return false;
+    return self::invoke($method, $arguments);
   }
 
-  /**
-   * Clears messages from session store.
-   *
-   * @param string $type
-   *
-   * @return bool
-   */
-  public function clear($type = null)
-  {
-
-    if (is_null($type))
-    {
-      $_SESSION[$this->key] = array();
-    }
-    else
-    {
-      unset($_SESSION[$this->key][$type]);
-    }
-
-    return true;
-  }
-
-  /**
-   * Builds messages for a single type.
-   *
-   * @param array  $flashes
-   * @param string $type
-   *
-   * @return string
-   */
-  protected function buildMessages(array $flashes, $type)
-  {
-    $messages = '';
-    foreach ($flashes as $msg)
-    {
-      $messages .= $this->prefix . $msg . $this->postfix;
-    }
-
-    return sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
-  }
-
-  /**
-   * If requested as string will HTML will be returned.
-   *
-   * @return string
-   */
-  public function __toString() { return $this->display(); }
-
+  public function __toString() { return strval(self::$engine); }
 }

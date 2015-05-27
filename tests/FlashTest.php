@@ -6,6 +6,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class FlashTest extends PHPUnit_Framework_TestCase {
 
   /** @test */
+  public function testStaticCall()
+  {
+    \Tamtamchik\Flash\Flash::message('Static message');
+
+    $this->assertNotEmpty(\Tamtamchik\Flash\Flash::display());
+  }
+
+  /** @test */
   public function testCreation()
   {
     $flash = new \Tamtamchik\Flash\Flash();
@@ -103,7 +111,7 @@ class FlashTest extends PHPUnit_Framework_TestCase {
   /** @test */
   public function testAccessAsString()
   {
-    $flash = new \Tamtamchik\Flash\Flash;
+    $flash = new \Tamtamchik\Flash\Engine;
     $flash->clear();
 
     $flash->message('Test message');
@@ -131,8 +139,17 @@ class FlashTest extends PHPUnit_Framework_TestCase {
   /** @test */
   public function testItFlushesChanges()
   {
-    flash('First one','success')->message('Other one','info')->display();
-    flash('Third one','error')->display();
+    flash('First one', 'success')->message('Other one', 'info')->display();
+    flash('Third one', 'error')->display();
+
+    $this->assertFalse(flash()->hasMessages());
+  }
+
+  /** @test */
+  public function testClearFunction()
+  {
+    flash('I\'ll never see this message', 'success');
+    flash()->clear();
 
     $this->assertFalse(flash()->hasMessages());
   }
