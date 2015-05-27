@@ -1,7 +1,6 @@
 <?php namespace Tamtamchik\Flash;
 
 use Exception;
-use Tamtamchik\Flash\Support\SessionTrait;
 
 /**
  * Class Flash
@@ -9,9 +8,11 @@ use Tamtamchik\Flash\Support\SessionTrait;
  */
 class Flash {
 
-  use SessionTrait;
+  /**
+   * @var string - main session key for Flash messages.
+   */
+  private $key = 'flash_messages';
 
-  private $container;
   private $prefix  = "<p>";
   private $postfix = "</p>";
   private $wrapper = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
@@ -28,13 +29,14 @@ class Flash {
    */
   public function __construct()
   {
-    $this->container = $this->createContainer();
+    if ( ! array_key_exists($this->key, $_SESSION))
+      $_SESSION[$this->key] = [];
   }
 
   /**
    * Base method for adding messages to flash.
    *
-   * @param        $message - message text
+   * @param string $message - message text
    * @param string $type    - message type: success, info, warning, danger
    *
    * @return \Tamtamchik\Flash\Flash $this
@@ -43,21 +45,15 @@ class Flash {
   public function message($message, $type = 'info')
   {
     // Do nothing if message is empty
-    if ( ! isset($message))
+    if ( ! isset($message) || ! in_array($type, $this->types))
       return $this;
 
     $type = strip_tags($type);
 
-    // Make sure it's a valid message type
-    if ( ! in_array($type, $this->types))
-      throw new Exception("'{$type}' is not a valid message type!");
+    if ( ! array_key_exists($type, $_SESSION[$this->key]))
+      $_SESSION[$this->key][$type] = [];
 
-    if ( ! array_key_exists($type, $this->container))
-      $this->container[$type] = array();
-
-    $this->container[$type][] = $message;
-
-    $this->updateContainer($this->container);
+    $_SESSION[$this->key][$type][] = $message;
 
     return $this;
   }
@@ -65,29 +61,32 @@ class Flash {
   /**
    * Returns Bootstrap ready HTML for Flash messages.
    *
-   * @param null $type
+   * @param string $type
    *
    * @return string
    */
   public function display($type = null)
   {
 
-    $data = '';
+    $result = '';
+
+    if ( ! is_null($type) && ! in_array($type, $this->types))
+      return $result;
 
     if (in_array($type, $this->types))
     {
-      $data .= $this->buildMessages($this->container[$type], $type);
+      $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
     }
     elseif (is_null($type))
     {
-      foreach ($this->container as $messageType => $messages)
+      foreach ($_SESSION[$this->key] as $messageType => $messages)
       {
-        $data .= $this->buildMessages($messages, $messageType);
+        $result .= $this->buildMessages($messages, $messageType);
       }
     }
     $this->clear($type);
 
-    return $data;
+    return $result;
   }
 
   /**
@@ -102,13 +101,13 @@ class Flash {
 
     if ( ! is_null($type))
     {
-      return ! empty($this->container[$type]);
+      return ! empty($_SESSION[$this->key][$type]);
     }
     else
     {
       foreach ($this->types as $type)
       {
-        if ( ! empty($this->container[$type]))
+        if ( ! empty($_SESSION[$this->key][$type]))
           return true;
       }
     }
@@ -119,39 +118,30 @@ class Flash {
   /**
    * Clears messages from session store.
    *
-   * @param mixed $type
+   * @param string $type
    *
    * @return bool
    */
   public function clear($type = null)
   {
-    $this->clearContainer($type);
 
     if (is_null($type))
     {
-      $this->container = $this->createContainer();
+      $_SESSION[$this->key] = array();
     }
     else
     {
-      unset($this->container[$type]);
+      unset($_SESSION[$this->key][$type]);
     }
 
     return true;
   }
 
   /**
-   * If requested as string will HTML will be returned.
-   *
-   * @return string
-   * @throws Exception
-   */
-  public function __toString() { return $this->display(); }
-
-  /**
    * Builds messages for a single type.
    *
-   * @param array $flashes
-   * @param       $type
+   * @param array  $flashes
+   * @param string $type
    *
    * @return string
    */
@@ -165,5 +155,12 @@ class Flash {
 
     return sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
   }
+
+  /**
+   * If requested as string will HTML will be returned.
+   *
+   * @return string
+   */
+  public function __toString() { return $this->display(); }
 
 }
