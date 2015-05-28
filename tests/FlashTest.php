@@ -9,18 +9,18 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testStaticCall()
     {
-        \Tamtamchik\Flash\Flash::message('Static message');
+        \Tamtamchik\SimpleFlash\Flash::message('Static message');
 
-        $this->assertNotEmpty(\Tamtamchik\Flash\Flash::display());
+        $this->assertNotEmpty(\Tamtamchik\SimpleFlash\Flash::display());
     }
 
     /** @test */
     public function testCreation()
     {
-        $flash = new \Tamtamchik\Flash\Flash();
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
 
         $this->assertFalse($flash->hasMessages());
-        $this->assertEquals('Tamtamchik\Flash\Flash', get_class($flash));
+        $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
     }
 
     /** @test */
@@ -29,7 +29,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $flash = flash();
 
         $this->assertFalse($flash->hasMessages());
-        $this->assertEquals('Tamtamchik\Flash\Flash', get_class($flash));
+        $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
     }
 
     /** @test */
@@ -112,7 +112,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testAccessAsString()
     {
-        $flash = new \Tamtamchik\Flash\Engine;
+        $flash = new \Tamtamchik\SimpleFlash\Engine;
         $flash->clear();
 
         $flash->message('Test message');
@@ -171,7 +171,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     public function testToString()
     {
         flash('Testing toString', 'success');
-        $flash1 = new \Tamtamchik\Flash\Flash;
+        $flash1 = new \Tamtamchik\SimpleFlash\Flash;
         $this->assertContains('toString', (string)$flash1);
 
         flash('Testing toString', 'success');

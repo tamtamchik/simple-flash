@@ -30,7 +30,7 @@ require_once 'vendor/autoload.php';
 There are 3 ways to use library:
 
 ```php
-use \Tamtamchik\Flash\Flash;
+use \Tamtamchik\SimpleFlash\Flash;
 
 // instance
 $flash = new Flash;
@@ -48,7 +48,7 @@ Messages added by calling `message($message, $type = 'info')` method. In case of
 
 ## Chainig & Shortcuts
 
-Because any of creation types return `\Tamtamchik\Flash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
+Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
 
 ```php
 flash()->error('Error message!')

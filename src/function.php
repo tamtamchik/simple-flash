@@ -8,12 +8,12 @@ if (! function_exists('flash')) {
      * @param string $message
      * @param string $type
      *
-     * @return \Tamtamchik\Flash\Flash
+     * @return \Tamtamchik\SimpleFlash\Flash
      * @throws Exception
      */
     function flash($message = null, $type = 'info')
     {
-        $flash = new \Tamtamchik\Flash\Flash();
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
 
         if (! is_null($message)) {
             return $flash->message($message, $type);

@@ -1,11 +1,11 @@
-<?php namespace Tamtamchik\Flash;
+<?php namespace Tamtamchik\SimpleFlash;
 
 use Exception;
 
 /**
  * Class Engine.
  *
- * @package Tamtamchik\Flash
+ * @package Tamtamchik\SimpleFlash
  */
 class Engine
 {
@@ -42,7 +42,7 @@ class Engine
      * @param string $message - message text
      * @param string $type    - message type: success, info, warning, danger
      *
-     * @return \Tamtamchik\Flash\Engine $this
+     * @return Engine $this
      * @throws Exception
      */
     public function message($message, $type = 'info')
@@ -118,7 +118,7 @@ class Engine
      *
      * @param string $type
      *
-     * @return \Tamtamchik\Flash\Engine $this
+     * @return Engine $this
      */
     public function clear($type = null)
     {

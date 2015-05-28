@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Tamtamchik\\Flash\\": "src"
+      "Tamtamchik\\SimpleFlash\\": "src"
     },
     "files": [
       "src/function.php"
