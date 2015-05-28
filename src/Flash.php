@@ -16,73 +16,70 @@
  * @method static Engine info($message) Shortcut for info message.
  * @method static Engine success($message) Shortcut for success message.
  */
-class Flash {
+class Flash
+{
 
-  /**
-   * Base instance of Flash engine.
-   *
-   * @var Engine
-   */
-  private static $engine;
+    /**
+     * Base instance of Flash engine.
+     *
+     * @var Engine
+     */
+    private static $engine;
 
-  public function __construct()
-  {
-    self::$engine = new Engine();
-  }
-
-  /**
-   * Invoke Engine methods.
-   *
-   * @param string $method
-   * @param array  $arguments
-   *
-   * @return mixed
-   */
-  protected static function invoke($method, array $arguments)
-  {
-    $target = [
-      self::$engine,
-      $method,
-    ];
-
-    return call_user_func_array($target, $arguments);
-  }
-
-  /**
-   * Magic methods for instances calls.
-   *
-   * @param string $method
-   * @param array  $arguments
-   *
-   * @return mixed
-   */
-  public function __call($method, array $arguments)
-  {
-    return $this->invoke($method, $arguments);
-  }
-
-  /**
-   * Magic methods for static calls.
-   *
-   * @param string $method
-   * @param array  $arguments
-   *
-   * @return mixed
-   */
-  public static function __callStatic($method, array $arguments)
-  {
-    if ( ! isset(self::$engine))
+    public function __construct()
     {
-      self::$engine = new Engine();
+        self::$engine = new Engine();
     }
 
-    return self::invoke($method, $arguments);
-  }
+    /**
+     * Invoke Engine methods.
+     *
+     * @param string $method
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    protected static function invoke($method, array $arguments)
+    {
+        $target = [
+            self::$engine,
+            $method,
+        ];
 
-  /**
-   * Mimic object __toString method.
-   *
-   * @return string
-   */
-  public function __toString() { return strval(self::$engine); }
+        return call_user_func_array($target, $arguments);
+    }
+
+    /**
+     * Magic methods for static calls.
+     *
+     * @param string $method
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    public static function __callStatic($method, array $arguments)
+    {
+        if ( ! isset(self::$engine)) {
+            self::$engine = new Engine();
+        }
+
+        return self::invoke($method, $arguments);
+    }
+
+    /**
+     * Magic methods for instances calls.
+     *
+     * @param string $method
+     * @param array  $arguments
+     *
+     * @return mixed
+     */
+    public function __call($method, array $arguments) { return $this->invoke($method, $arguments); }
+
+    /**
+     * Mimic object __toString method.
+     *
+     * @return string
+     */
+    public function __toString() { return strval(self::$engine); }
 }
