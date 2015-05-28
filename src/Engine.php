@@ -31,8 +31,9 @@ class Engine
      */
     public function __construct()
     {
-        if ( ! array_key_exists($this->key, $_SESSION))
+        if (! array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
+        }
     }
 
     /**
@@ -47,13 +48,15 @@ class Engine
     public function message($message, $type = 'info')
     {
         // Do nothing if message is empty
-        if ( ! isset($message) || ! in_array($type, $this->types))
+        if (! isset($message) || ! in_array($type, $this->types)) {
             return $this;
+        }
 
         $type = strip_tags($type);
 
-        if ( ! array_key_exists($type, $_SESSION[$this->key]))
+        if (! array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];
+        }
 
         $_SESSION[$this->key][$type][] = $message;
 
@@ -71,8 +74,9 @@ class Engine
     {
         $result = '';
 
-        if ( ! is_null($type) && ! in_array($type, $this->types))
+        if (! is_null($type) && ! in_array($type, $this->types)) {
             return $result;
+        }
 
         if (in_array($type, $this->types)) {
             $result .= $this->_buildMessages($_SESSION[$this->key][$type], $type);
@@ -96,12 +100,13 @@ class Engine
      */
     public function hasMessages($type = null)
     {
-        if ( ! is_null($type)) {
+        if (! is_null($type)) {
             return ! empty($_SESSION[$this->key][$type]);
         } else {
             foreach ($this->types as $type) {
-                if ( ! empty($_SESSION[$this->key][$type]))
+                if (! empty($_SESSION[$this->key][$type])) {
                     return true;
+                }
             }
         }
 
@@ -149,7 +154,10 @@ class Engine
      *
      * @return string
      */
-    public function __toString() { return $this->display(); }
+    public function __toString()
+    {
+        return $this->display();
+    }
 
     /**
      * Shortcut for error message.
@@ -158,7 +166,10 @@ class Engine
      *
      * @return Engine
      */
-    public function error($message) { return $this->message($message, 'error'); }
+    public function error($message)
+    {
+        return $this->message($message, 'error');
+    }
 
     /**
      * Shortcut for warning message.
@@ -167,7 +178,10 @@ class Engine
      *
      * @return Engine
      */
-    public function warning($message) { return $this->message($message, 'warning'); }
+    public function warning($message)
+    {
+        return $this->message($message, 'warning');
+    }
 
     /**
      * Shortcut for info message.
@@ -176,7 +190,10 @@ class Engine
      *
      * @return Engine
      */
-    public function info($message) { return $this->message($message, 'info'); }
+    public function info($message)
+    {
+        return $this->message($message, 'info');
+    }
 
     /**
      * Shortcut for success message.
@@ -185,5 +202,8 @@ class Engine
      *
      * @return Engine
      */
-    public function success($message) { return $this->message($message, 'success'); }
+    public function success($message)
+    {
+        return $this->message($message, 'success');
+    }
 }

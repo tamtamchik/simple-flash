@@ -1,6 +1,5 @@
 <?php namespace Tamtamchik\Flash;
 
-
 /**
  * Class Flash.
  *
@@ -59,7 +58,7 @@ class Flash
      */
     public static function __callStatic($method, array $arguments)
     {
-        if ( ! isset(self::$engine)) {
+        if (! isset(self::$engine)) {
             self::$engine = new Engine();
         }
 
@@ -74,12 +73,18 @@ class Flash
      *
      * @return mixed
      */
-    public function __call($method, array $arguments) { return $this->invoke($method, $arguments); }
+    public function __call($method, array $arguments)
+    {
+        return $this->invoke($method, $arguments);
+    }
 
     /**
      * Mimic object __toString method.
      *
      * @return string
      */
-    public function __toString() { return strval(self::$engine); }
+    public function __toString()
+    {
+        return strval(self::$engine);
+    }
 }
