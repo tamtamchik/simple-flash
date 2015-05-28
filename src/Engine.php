@@ -79,10 +79,10 @@ class Engine
         }
 
         if (in_array($type, $this->types)) {
-            $result .= $this->_buildMessages($_SESSION[$this->key][$type], $type);
+            $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
         } elseif (is_null($type)) {
             foreach ($_SESSION[$this->key] as $messageType => $messages) {
-                $result .= $this->_buildMessages($messages, $messageType);
+                $result .= $this->buildMessages($messages, $messageType);
             }
         }
 
@@ -139,7 +139,7 @@ class Engine
      *
      * @return string
      */
-    protected function _buildMessages(array $flashes, $type)
+    protected function buildMessages(array $flashes, $type)
     {
         $messages = '';
         foreach ($flashes as $msg) {
