@@ -68,3 +68,4 @@ Out of the box library support 4 different types of messages: `error`, `warning`
 <div class="alert alert-success" role="alert"><p>Success message!</p></div>
 ```
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16/big.png)](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16)
