@@ -1,6 +1,6 @@
 {
   "name": "tamtamchik/simple-flash",
-  "description": "Easy framework agnostic flash notifications",
+  "description": "Easy, framework agnostic flash notifications.",
   "keywords": ["flash", "notifications", "messages", "agnostic"],
   "homepage": "http://github.com/tamtamchik/simple-flash",
   "minimum-stability": "stable",
