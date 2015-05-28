@@ -4,7 +4,7 @@
   "keywords": ["flash", "notifications", "messages", "agnostic"],
   "homepage": "http://github.com/tamtamchik/simple-flash",
   "minimum-stability": "stable",
-  "license": "BSD-2.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "Yuri Tkachenko",
