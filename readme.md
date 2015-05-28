@@ -10,13 +10,13 @@ Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](http
 
 Just pull in the package through [Composer](http://getcomposer.org).
 
-```
+```bash
 composer require tamtamchik/simple-flash
 ```
 
 Inside your project make sure to start a session and load [Composer](http://getcomposer.org) autoload to make everything work.
 
-````
+````php
 <?php
 // Start a Session
 if( !session_id() ) @session_start();
@@ -29,7 +29,7 @@ require_once 'vendor/autoload.php';
 
 There are 3 ways to use library:
 
-```
+```php
 use \Tamtamchik\Flash\Flash;
 
 // instance
@@ -50,7 +50,7 @@ Messages added by calling `message($message, $type = 'info')` method. In case of
 
 Because any of creation types return `\Tamtamchik\Flash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
 
-```
+```php
 flash()->error('Error message!')
        ->warning('Warning message.')
        ->info('Info message.')
@@ -61,7 +61,7 @@ flash()->error('Error message!')
 
 Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hardcoded, and designed for [Bootstrap](http://getbootstrap.com).
 
-```
+```html
 <div class="alert alert-danger" role="alert"><p>Error message!</p></div>
 <div class="alert alert-warning" role="alert"><p>Warning message.</p></div>
 <div class="alert alert-info" role="alert"><p>Info message.</p></div>
