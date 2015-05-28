@@ -6,7 +6,7 @@ Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](http
 
 ![simple-flash](https://dl.dropboxusercontent.com/u/1285445/pub/simple-flash.png)
 
-### Installation
+## Installation
 
 Just pull in the package through [Composer](http://getcomposer.org).
 
@@ -25,7 +25,7 @@ if( !session_id() ) @session_start();
 require_once 'vendor/autoload.php';
 ````
 
-### Usage
+## Usage
 
 There are 3 ways to use library:
 
@@ -46,8 +46,18 @@ flash()->message('Some message body');
 
 Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function.
 
+## Chainig & Shortcuts
 
-### Output
+Because any of creation types return `\Tamtamchik\Flash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
+
+```
+flash()->error('Error message!')
+       ->warning('Warning message.')
+       ->info('Info message.')
+       ->success('Success message!');
+```
+
+## Output
 
 Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hardcoded, and designed for [Bootstrap](http://getbootstrap.com).
 
@@ -58,13 +68,3 @@ Out of the box library support 4 different types of messages: `error`, `warning`
 <div class="alert alert-success" role="alert"><p>Success message!</p></div>
 ```
 
-### Chainig & Shortcuts
-
-Because any of creation types return `\Tamtamchik\Flash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
-
-```
-flash()->error('Error message!')
-       ->warning('Warning message.')
-       ->info('Info message.')
-       ->success('Success message!');
-```
