@@ -1,4 +1,4 @@
-# Simple Flash 
+# Simple Flash [![SensioLabsInsight](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16/small.png)](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/?branch=master) [![Code Climate](https://codeclimate.com/github/tamtamchik/simple-flash/badges/gpa.svg)](https://codeclimate.com/github/tamtamchik/simple-flash) [![Build Status](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/tamtamchik/simple-flash/?branch=master) [![Latest Stable Version](https://poser.pugx.org/tamtamchik/simple-flash/v/stable)](https://packagist.org/packages/tamtamchik/simple-flash) [![Total Downloads](https://poser.pugx.org/tamtamchik/simple-flash/downloads)](https://packagist.org/packages/tamtamchik/simple-flash) [![License](https://poser.pugx.org/tamtamchik/simple-flash/license)](https://packagist.org/packages/tamtamchik/simple-flash)
 
@@ -67,7 +67,3 @@ Out of the box library support 4 different types of messages: `error`, `warning`
 <div class="alert alert-info" role="alert"><p>Info message.</p></div>
 <div class="alert alert-success" role="alert"><p>Success message!</p></div>
 ```
-
----
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16/big.png)](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16)
