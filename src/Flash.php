@@ -27,7 +27,9 @@ class Flash
 
     public function __construct()
     {
-        self::$engine = new Engine();
+        if (! isset(self::$engine)) {
+            self::$engine = new Engine();
+        }
     }
 
     /**
@@ -58,9 +60,7 @@ class Flash
      */
     public static function __callStatic($method, array $arguments)
     {
-        if (! isset(self::$engine)) {
-            self::$engine = new Engine();
-        }
+        new self();
 
         return self::invoke($method, $arguments);
     }
