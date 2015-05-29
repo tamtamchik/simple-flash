@@ -33,7 +33,7 @@ There are 3 ways to use library:
 use \Tamtamchik\SimpleFlash\Flash;
 
 // instance
-$flash = new Flash;
+$flash = new Flash();
 $flash->message('Some message body');
 
 // static

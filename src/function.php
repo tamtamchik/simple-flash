@@ -11,11 +11,11 @@ if (! function_exists('flash')) {
      * @return \Tamtamchik\SimpleFlash\Flash
      * @throws Exception
      */
-    function flash($message = null, $type = 'info')
+    function flash($message = '', $type = 'info')
     {
         $flash = new \Tamtamchik\SimpleFlash\Flash();
 
-        if (! is_null($message)) {
+        if (! empty($message)) {
             return $flash->message($message, $type);
         }
 
