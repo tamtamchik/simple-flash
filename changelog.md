@@ -3,7 +3,7 @@
 ### 0.4.1
 
 * Fixed singleton instance.
-* Fixed empty `mesasge` bug.
+* Fixed empty `message` bug.
 
 ### 0.4.0
 
