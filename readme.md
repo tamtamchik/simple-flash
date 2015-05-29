@@ -42,11 +42,10 @@ $flash->message('Tea.');
 Flash::message('Earl Gray.');
 
 // function
-flash('Some message body');
 flash()->message('Hot!');
 ```
 
-Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function.
+Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function like so: `flash('resistance is futile')`.
 
 ## Chainig & Shortcuts
 
