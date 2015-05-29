@@ -25,6 +25,8 @@ if( !session_id() ) @session_start();
 require_once 'vendor/autoload.php';
 ````
 
+> **Warning!** This library contains global `flash()` function, that popentially can break your function with this name. Now you are warned!
+
 ## Usage
 
 There are 3 ways to use library:
@@ -34,14 +36,14 @@ use \Tamtamchik\SimpleFlash\Flash;
 
 // instance
 $flash = new Flash();
-$flash->message('Some message body');
+$flash->message('Tea.');
 
 // static
-Flash::message('Some message body');
+Flash::message('Earl Gray.');
 
 // function
 flash('Some message body');
-flash()->message('Some message body');
+flash()->message('Hot!');
 ```
 
 Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function.
