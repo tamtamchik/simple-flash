@@ -45,14 +45,14 @@ class Engine
      * @return Engine $this
      * @throws Exception
      */
-    public function message($message, $type = 'info')
+    public function message($message = '', $type = 'info')
     {
-        // Do nothing if message is empty
-        if (! isset($message) || ! in_array($type, $this->types)) {
+        $type = strip_tags($type);
+
+        // Do nothing if message is empty, or type is wrong
+        if (empty($message) || ! in_array($type, $this->types)) {
             return $this;
         }
-
-        $type = strip_tags($type);
 
         if (! array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];

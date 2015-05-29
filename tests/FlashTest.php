@@ -178,4 +178,11 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $flash2 = flash();
         $this->assertContains('toString', (string)$flash2);
     }
+
+    /** @test */
+    public function testEmptyFunction()
+    {
+        flash('');
+        $this->assertFalse(flash()->hasMessages());
+    }
 }
