@@ -1,7 +1,5 @@
 <?php namespace Tamtamchik\SimpleFlash;
 
-use Exception;
-
 /**
  * Class Engine.
  *
@@ -15,9 +13,9 @@ class Engine
      */
     private $key = 'flash_messages';
 
-    private $prefix = "<p>";
-    private $postfix = "</p>";
-    private $wrapper = "<div class=\"alert alert-%s\" role=\"alert\">%s</div>";
+    private $prefix = '<p>';
+    private $postfix = '</p>';
+    private $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
 
     private $types = [
         'error',
@@ -43,21 +41,33 @@ class Engine
      * @param string $type    - message type: success, info, warning, danger
      *
      * @return Engine $this
-     * @throws Exception
      */
     public function message($message = '', $type = 'info')
+    {
+        if (is_array($message)) {
+            foreach ($message as $issue) {
+                $this->addMessage($issue, $type);
+            }
+
+            return $this;
+        }
+
+        return $this->addMessage($message, $type);
+    }
+
+    /**
+     * Add message to $_SESSION.
+     *
+     * @param string $message
+     * @param string $type
+     *
+     * @return Engine $this
+     */
+    protected function addMessage($message = '', $type = 'info')
     {
         $type = strip_tags($type);
 
         if (empty($message) || ! in_array($type, $this->types)) {
-            return $this;
-        }
-
-        if (is_array($message)) {
-            foreach ($message as $issue) {
-                $this->message($issue, $type);
-            }
-
             return $this;
         }
 
