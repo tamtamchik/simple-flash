@@ -185,4 +185,19 @@ class FlashTest extends PHPUnit_Framework_TestCase
         flash('');
         $this->assertFalse(flash()->hasMessages());
     }
+
+    /** @test */
+    public function testWorkWithArrays()
+    {
+        $errors = [
+            'Invalid name',
+            'Invalid email',
+        ];
+
+        flash($errors, 'error');
+
+        $content = flash()->display();
+        $this->assertContains('Invalid name', $content);
+        $this->assertContains('Invalid email', $content);
+    }
 }

@@ -49,8 +49,15 @@ class Engine
     {
         $type = strip_tags($type);
 
-        // Do nothing if message is empty, or type is wrong
         if (empty($message) || ! in_array($type, $this->types)) {
+            return $this;
+        }
+
+        if (is_array($message)) {
+            foreach ($message as $issue) {
+                $this->message($issue, $type);
+            }
+
             return $this;
         }
 

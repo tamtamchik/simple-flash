@@ -47,12 +47,12 @@ flash()->message('Hot!');
 
 Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function like so: `flash('resistance is futile')`.
 
-## Chainig & Shortcuts
+## Chainig, Shortcuts, Arrays
 
-Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types.
+Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types. Also you can pass arrays as `$message`.
 
 ```php
-flash()->error('Error message!')
+flash()->error(['Invalid email!', 'Invalid username!'])
        ->warning('Warning message.')
        ->info('Info message.')
        ->success('Success message!');
@@ -63,7 +63,10 @@ flash()->error('Error message!')
 Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hardcoded, and designed for [Bootstrap](http://getbootstrap.com).
 
 ```html
-<div class="alert alert-danger" role="alert"><p>Error message!</p></div>
+<div class="alert alert-danger" role="alert">
+  <p>Invalid email!</p>
+  <p>Invalid username!</p>
+</div>
 <div class="alert alert-warning" role="alert"><p>Warning message.</p></div>
 <div class="alert alert-info" role="alert"><p>Info message.</p></div>
 <div class="alert alert-success" role="alert"><p>Success message!</p></div>
