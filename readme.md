@@ -58,7 +58,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
        ->success('Success message!');
 ```
 
-## Output
+## Output & Rendering
 
 Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hardcoded, and designed for [Bootstrap](http://getbootstrap.com).
 
@@ -70,4 +70,18 @@ Out of the box library support 4 different types of messages: `error`, `warning`
 <div class="alert alert-warning" role="alert"><p>Warning message.</p></div>
 <div class="alert alert-info" role="alert"><p>Info message.</p></div>
 <div class="alert alert-success" role="alert"><p>Success message!</p></div>
+```
+
+Rendering is simple:
+
+```php
+// Rendering specific type
+$output = flash()->display('error');
+
+// Rendering all flash
+$output = flash()->display();
+
+// Also rendering possible when you just read flash object as string
+(string) flash();
+
 ```
