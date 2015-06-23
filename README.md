@@ -81,7 +81,7 @@ $output = flash()->display('error');
 // Rendering all flash
 $output = flash()->display();
 
-// Also rendering possible when you just read  instance of \Tamtamchik\SimpleFlash\Flash object as a string
+// Also rendering possible when you just read instance of \Tamtamchik\SimpleFlash\Flash object as a string
 (string) flash(); 
 
 // or ... it's totally just for display, never do this in real life...
@@ -93,7 +93,7 @@ $flash->warning('It is totally just for display, never do this in real life...')
 ?>
 <!-- ... some html -->
 <div class="flashes">
-	<?= $flash; ?>
+  <?= $flash; ?>
 </div>
 <!-- ... some other html -->
 ```
