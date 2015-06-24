@@ -25,7 +25,7 @@ if( !session_id() ) @session_start();
 require_once 'vendor/autoload.php';
 ````
 
-> **Warning!** This library contains global `flash()` function, that popentially can break your function with this name. Now you are warned!
+> **Warning!** This library contains global `flash()` function, that potentially can break your function with this name. Now you are warned!
 
 ## Usage
 
@@ -47,9 +47,9 @@ flash()->message('Hot!');
 
 Messages added by calling `message($message, $type = 'info')` method. In case of calling a function `flash()` you can pass `$message, $type` just to function like so: `flash('resistance is futile')`.
 
-## Chainig, Shortcuts, Arrays
+## Chaining, Shortcuts, Arrays
 
-Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chainig to add multiple messages. Shortcuts available for all types of base message types. Also you can pass arrays as `$message`.
+Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chaining to add multiple messages. Shortcuts available for all types of base message types, also you can pass arrays as `$message`.
 
 ```php
 flash()->error(['Invalid email!', 'Invalid username!'])
@@ -60,7 +60,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
 
 ## Output & Rendering
 
-Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hardcoded, and designed for [Bootstrap](http://getbootstrap.com).
+Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hard coded and designed for [Bootstrap](http://getbootstrap.com).
 
 ```html
 <div class="alert alert-danger" role="alert">
