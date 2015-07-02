@@ -140,7 +140,7 @@ class Engine
     public function clear($type = null)
     {
         if (is_null($type)) {
-            $_SESSION[$this->key] = array();
+            $_SESSION[$this->key] = [];
         } else {
             unset($_SESSION[$this->key][$type]);
         }
