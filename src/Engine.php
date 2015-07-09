@@ -28,7 +28,7 @@ class Engine
      */
     public function __construct()
     {
-        if (! array_key_exists($this->key, $_SESSION)) {
+        if (!array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
         }
     }
@@ -66,11 +66,11 @@ class Engine
     {
         $type = strip_tags($type);
 
-        if (empty($message) || ! in_array($type, $this->types)) {
+        if (empty($message) || !in_array($type, $this->types)) {
             return $this;
         }
 
-        if (! array_key_exists($type, $_SESSION[$this->key])) {
+        if (!array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];
         }
 
@@ -90,7 +90,7 @@ class Engine
     {
         $result = '';
 
-        if (! is_null($type) && ! in_array($type, $this->types)) {
+        if (!is_null($type) && !in_array($type, $this->types)) {
             return $result;
         }
 
@@ -116,11 +116,11 @@ class Engine
      */
     public function hasMessages($type = null)
     {
-        if (! is_null($type)) {
-            return ! empty($_SESSION[$this->key][$type]);
+        if (!is_null($type)) {
+            return !empty($_SESSION[$this->key][$type]);
         } else {
             foreach ($this->types as $type) {
-                if (! empty($_SESSION[$this->key][$type])) {
+                if (!empty($_SESSION[$this->key][$type])) {
                     return true;
                 }
             }
@@ -159,7 +159,7 @@ class Engine
     {
         $messages = '';
         foreach ($flashes as $msg) {
-            $messages .= $this->prefix . $msg . $this->postfix;
+            $messages .= $this->prefix.$msg.$this->postfix;
         }
 
         return sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);

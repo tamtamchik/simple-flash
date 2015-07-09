@@ -26,7 +26,7 @@ class Flash
 
     public function __construct()
     {
-        if (! isset(self::$engine)) {
+        if (!isset(self::$engine)) {
             self::$engine = new Engine();
         }
     }
