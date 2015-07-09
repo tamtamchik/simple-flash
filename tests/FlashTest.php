@@ -1,11 +1,11 @@
 <?php
+
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 class FlashTest extends PHPUnit_Framework_TestCase
 {
-
     /** @test */
     public function testStaticCall()
     {
@@ -112,7 +112,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testAccessAsString()
     {
-        $flash = new \Tamtamchik\SimpleFlash\Engine;
+        $flash = new \Tamtamchik\SimpleFlash\Engine();
         $flash->clear();
 
         $flash->message('Test message');
@@ -171,12 +171,12 @@ class FlashTest extends PHPUnit_Framework_TestCase
     public function testToString()
     {
         flash('Testing toString', 'success');
-        $flash1 = new \Tamtamchik\SimpleFlash\Flash;
-        $this->assertContains('toString', (string)$flash1);
+        $flash1 = new \Tamtamchik\SimpleFlash\Flash();
+        $this->assertContains('toString', (string) $flash1);
 
         flash('Testing toString', 'success');
         $flash2 = flash();
-        $this->assertContains('toString', (string)$flash2);
+        $this->assertContains('toString', (string) $flash2);
     }
 
     /** @test */

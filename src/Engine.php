@@ -1,13 +1,12 @@
-<?php namespace Tamtamchik\SimpleFlash;
+<?php
+
+namespace Tamtamchik\SimpleFlash;
 
 /**
  * Class Engine.
- *
- * @package Tamtamchik\SimpleFlash
  */
 class Engine
 {
-
     /**
      * @var string - main session key for Flash messages.
      */
