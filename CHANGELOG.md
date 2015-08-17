@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.0.0
+
+* Bumped version to 1.0.0
+* No extra changes
+
 ### 0.4.2
 
 * Now supports array as `$message` variable.
