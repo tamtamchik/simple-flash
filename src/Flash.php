@@ -14,6 +14,7 @@ namespace Tamtamchik\SimpleFlash;
  * @method static Engine warning($message) Shortcut for warning message.
  * @method static Engine info($message) Shortcut for info message.
  * @method static Engine success($message) Shortcut for success message.
+ * @method static Engine setTemplate(TemplateInterface $template) Change render template.
  */
 class Flash
 {
@@ -26,7 +27,7 @@ class Flash
 
     public function __construct()
     {
-        if (!isset(self::$engine)) {
+        if ( ! isset(self::$engine)) {
             self::$engine = new Engine();
         }
     }
@@ -34,8 +35,8 @@ class Flash
     /**
      * Invoke Engine methods.
      *
-     * @param string $method
-     * @param array  $arguments
+     * @param string $method    - method to invoke
+     * @param array  $arguments - arguments for method
      *
      * @return mixed
      */
@@ -52,8 +53,8 @@ class Flash
     /**
      * Magic methods for static calls.
      *
-     * @param string $method
-     * @param array  $arguments
+     * @param string $method    - method to invoke
+     * @param array  $arguments - arguments for method
      *
      * @return mixed
      */
@@ -67,8 +68,8 @@ class Flash
     /**
      * Magic methods for instances calls.
      *
-     * @param string $method
-     * @param array  $arguments
+     * @param string $method    - method to invoke
+     * @param array  $arguments - arguments for method
      *
      * @return mixed
      */
@@ -80,7 +81,7 @@ class Flash
     /**
      * Mimic object __toString method.
      *
-     * @return string
+     * @return string - HTML with flash messages
      */
     public function __toString()
     {

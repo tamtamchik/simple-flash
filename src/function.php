@@ -1,13 +1,12 @@
 <?php
 
-if (!function_exists('flash')) {
+if ( ! function_exists('flash')) {
 
     /**
      * Wrapper for flash object to be used as global function.
      *
-     *
-     * @param string $message
-     * @param string $type
+     * @param string $message - message text
+     * @param string $type    - message type: success, info, warning, danger
      *
      * @throws Exception
      *
@@ -17,7 +16,7 @@ if (!function_exists('flash')) {
     {
         $flash = new \Tamtamchik\SimpleFlash\Flash();
 
-        if (!empty($message)) {
+        if ( ! empty($message)) {
             return $flash->message($message, $type);
         }
 

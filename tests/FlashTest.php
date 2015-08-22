@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class FlashTest extends PHPUnit_Framework_TestCase
 {
@@ -199,5 +199,33 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $content = flash()->display();
         $this->assertContains('Invalid name', $content);
         $this->assertContains('Invalid email', $content);
+    }
+
+    /** @test */
+    public function testSimpleTemplate()
+    {
+        $template = new \Tamtamchik\SimpleFlash\Templates\DefaultTemplate();
+
+        $prefix  = $template->getPrefix();
+        $postfix = $template->getPostfix();
+        $wrapper = $template->getWrapper();
+        $template->setPrefix('');
+        $template->setPostfix('');
+        $template->setWrapper('<div class="flash flash-%s" role="alert">%s</div>');
+
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
+
+        $contentOriginal = $flash->info('Testing templates')->display();
+
+        $flash->setTemplate($template);
+
+        $content = $flash->info('Testing templates')->display();
+
+        $this->assertEquals('<p>', $prefix);
+        $this->assertNotEquals($contentOriginal, $content);
+        $this->assertContains('Testing templates', $content);
+        $this->assertNotContains($prefix, $content);
+        $this->assertNotContains($postfix, $content);
+        $this->assertNotContains($wrapper, $content);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Templates\DefaultTemplate;
+
 /**
  * Class Engine.
  */
@@ -12,10 +14,6 @@ class Engine
      */
     private $key = 'flash_messages';
 
-    private $prefix = '<p>';
-    private $postfix = '</p>';
-    private $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
-
     private $types = [
         'error',
         'warning',
@@ -23,12 +21,16 @@ class Engine
         'success',
     ];
 
+    private $template;
+
     /**
      * Creates flash container from session.
      */
     public function __construct()
     {
-        if (!array_key_exists($this->key, $_SESSION)) {
+        $this->template = new DefaultTemplate();
+
+        if ( ! array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
         }
     }
@@ -57,8 +59,8 @@ class Engine
     /**
      * Add message to $_SESSION.
      *
-     * @param string $message
-     * @param string $type
+     * @param string $message - message text
+     * @param string $type    - message type: success, info, warning, danger
      *
      * @return Engine $this
      */
@@ -66,11 +68,11 @@ class Engine
     {
         $type = strip_tags($type);
 
-        if (empty($message) || !in_array($type, $this->types)) {
+        if (empty($message) || ! in_array($type, $this->types)) {
             return $this;
         }
 
-        if (!array_key_exists($type, $_SESSION[$this->key])) {
+        if ( ! array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];
         }
 
@@ -82,15 +84,15 @@ class Engine
     /**
      * Returns Bootstrap ready HTML for Engine messages.
      *
-     * @param string $type
+     * @param string $type - message type: success, info, warning, danger
      *
-     * @return string
+     * @return string - HTML with flash messages
      */
     public function display($type = null)
     {
         $result = '';
 
-        if (!is_null($type) && !in_array($type, $this->types)) {
+        if ( ! is_null($type) && ! in_array($type, $this->types)) {
             return $result;
         }
 
@@ -110,17 +112,17 @@ class Engine
     /**
      * Returns if there are any messages in container.
      *
-     * @param string $type
+     * @param string $type - message type: success, info, warning, danger
      *
      * @return bool
      */
     public function hasMessages($type = null)
     {
-        if (!is_null($type)) {
-            return !empty($_SESSION[$this->key][$type]);
+        if ( ! is_null($type)) {
+            return ! empty($_SESSION[$this->key][$type]);
         } else {
             foreach ($this->types as $type) {
-                if (!empty($_SESSION[$this->key][$type])) {
+                if ( ! empty($_SESSION[$this->key][$type])) {
                     return true;
                 }
             }
@@ -132,7 +134,7 @@ class Engine
     /**
      * Clears messages from session store.
      *
-     * @param string $type
+     * @param string $type - message type: success, info, warning, danger
      *
      * @return Engine $this
      */
@@ -150,25 +152,25 @@ class Engine
     /**
      * Builds messages for a single type.
      *
-     * @param array  $flashes
-     * @param string $type
+     * @param array  $flashes - array of messages to show
+     * @param string $type    - message type: success, info, warning, danger
      *
-     * @return string
+     * @return string - HTML with flash messages
      */
     protected function buildMessages(array $flashes, $type)
     {
         $messages = '';
         foreach ($flashes as $msg) {
-            $messages .= $this->prefix.$msg.$this->postfix;
+            $messages .= $this->template->wrapMessage($msg);
         }
 
-        return sprintf($this->wrapper, ($type == 'error') ? 'danger' : $type, $messages);
+        return $this->template->wrapMessages($messages, $type);
     }
 
     /**
      * If requested as string will HTML will be returned.
      *
-     * @return string
+     * @return string - HTML with flash messages
      */
     public function __toString()
     {
@@ -178,9 +180,9 @@ class Engine
     /**
      * Shortcut for error message.
      *
-     * @param $message
+     * @param $message - message text
      *
-     * @return Engine
+     * @return Engine $this
      */
     public function error($message)
     {
@@ -190,9 +192,9 @@ class Engine
     /**
      * Shortcut for warning message.
      *
-     * @param $message
+     * @param $message - message text
      *
-     * @return Engine
+     * @return Engine $this
      */
     public function warning($message)
     {
@@ -202,9 +204,9 @@ class Engine
     /**
      * Shortcut for info message.
      *
-     * @param $message
+     * @param $message - message text
      *
-     * @return Engine
+     * @return Engine $this
      */
     public function info($message)
     {
@@ -214,12 +216,23 @@ class Engine
     /**
      * Shortcut for success message.
      *
-     * @param $message
+     * @param $message - message text
      *
-     * @return Engine
+     * @return Engine $this
      */
     public function success($message)
     {
         return $this->message($message, 'success');
+    }
+
+    /**
+     * @param TemplateInterface $template
+     *
+     * @return Engine $this
+     */
+    public function setTemplate(TemplateInterface $template)
+    {
+        $this->template = $template;
+        return $this;
     }
 }
