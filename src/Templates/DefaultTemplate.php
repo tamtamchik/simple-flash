@@ -10,7 +10,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class DefaultTemplate implements TemplateInterface
 {
-    private $prefix = '<p>';
+    private $prefix  = '<p>';
     private $postfix = '</p>';
     private $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
 

@@ -3,7 +3,7 @@
 namespace Tamtamchik\SimpleFlash;
 
 /**
- * Class Template
+ * Interface TemplateInterface.
  */
 interface TemplateInterface
 {

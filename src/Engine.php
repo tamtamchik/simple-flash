@@ -233,6 +233,7 @@ class Engine
     public function setTemplate(TemplateInterface $template)
     {
         $this->template = $template;
+
         return $this;
     }
 }
