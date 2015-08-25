@@ -1,29 +1,43 @@
 {
-  "name": "tamtamchik/simple-flash",
-  "description": "Easy, framework agnostic flash notifications.",
-  "keywords": ["flash", "notifications", "messages", "agnostic"],
-  "homepage": "http://github.com/tamtamchik/simple-flash",
-  "minimum-stability": "stable",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Yuri Tkachenko",
-      "email": "yuri.tam.tkachenko@gmail.com",
-      "homepage": "http://tamtamchika.net"
-    }
-  ],
-  "require": {
-    "php": ">=5.4"
-  },
-  "autoload": {
-    "psr-4": {
-      "Tamtamchik\\SimpleFlash\\": "src"
+    "name": "tamtamchik/simple-flash",
+    "description": "Easy, framework agnostic flash notifications.",
+    "keywords": [
+        "flash",
+        "notifications",
+        "messages",
+        "agnostic"
+    ],
+    "homepage": "http://github.com/tamtamchik/simple-flash",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yuri Tkachenko",
+            "email": "yuri.tam.tkachenko@gmail.com",
+            "homepage": "http://tamtamchika.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "scrutinizer/ocular": "~1.1"
     },
-    "files": [
-      "src/function.php"
-    ]
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^4.8"
-  }
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tamtamchik\\SimpleFlash\\": "src"
+        },
+        "files": [
+            "src/function.php"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
