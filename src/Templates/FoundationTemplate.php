@@ -15,6 +15,8 @@ class FoundationTemplate extends BaseTemplate
     protected $wrapper = '<div data-alert class="alert-box %s radius">%s</div>';
 
     /**
+     * Override base function to suite Foundation alert naming.
+     * 
      * @param $messages - message text
      * @param $type     - message type: success, info, warning, danger
      *

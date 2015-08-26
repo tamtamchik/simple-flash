@@ -10,7 +10,5 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
  */
 class DefaultTemplate extends BaseTemplate
 {
-    // Fully use base template designed for Bootstrap 3 markdown.
-    // In order to create your template extend \Tamtamchik\SimpleFlash\BaseTemplate and
-    // override protected $prefix, $postfix and $wrapper variables.
+    // Fully implemented in BaseTemplate.
 }
