@@ -1,21 +1,19 @@
 <?php
 session_start();
 
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-$messages = flash();
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Test Bootstrap 3 default template.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
@@ -24,7 +22,7 @@ $messages = flash();
 <br/>
 
 <div class="container" style="width: 600px;">
-    <?= $messages ?>
+    <?= flash() ?>
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
