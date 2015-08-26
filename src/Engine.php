@@ -39,7 +39,7 @@ class Engine
      * Base method for adding messages to flash.
      *
      * @param string $message - message text
-     * @param string $type    - message type: success, info, warning, danger
+     * @param string $type    - message type: success, info, warning, error
      *
      * @return Engine $this
      */
@@ -60,7 +60,7 @@ class Engine
      * Add message to $_SESSION.
      *
      * @param string $message - message text
-     * @param string $type    - message type: success, info, warning, danger
+     * @param string $type    - message type: success, info, warning, error
      *
      * @return Engine $this
      */
@@ -84,7 +84,7 @@ class Engine
     /**
      * Returns Bootstrap ready HTML for Engine messages.
      *
-     * @param string $type - message type: success, info, warning, danger
+     * @param string $type - message type: success, info, warning, error
      *
      * @return string - HTML with flash messages
      */
@@ -112,7 +112,7 @@ class Engine
     /**
      * Returns if there are any messages in container.
      *
-     * @param string $type - message type: success, info, warning, danger
+     * @param string $type - message type: success, info, warning, error
      *
      * @return bool
      */
@@ -134,7 +134,7 @@ class Engine
     /**
      * Clears messages from session store.
      *
-     * @param string $type - message type: success, info, warning, danger
+     * @param string $type - message type: success, info, warning, error
      *
      * @return Engine $this
      */
@@ -153,7 +153,7 @@ class Engine
      * Builds messages for a single type.
      *
      * @param array  $flashes - array of messages to show
-     * @param string $type    - message type: success, info, warning, danger
+     * @param string $type    - message type: success, info, warning, error
      *
      * @return string - HTML with flash messages
      */

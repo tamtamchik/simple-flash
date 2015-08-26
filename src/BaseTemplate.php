@@ -20,7 +20,7 @@ abstract class BaseTemplate implements TemplateInterface
 
     /**
      * @param $messages - message text
-     * @param $type     - message type: success, info, warning, danger
+     * @param $type     - message type: success, info, warning, error
      *
      * @return string
      */

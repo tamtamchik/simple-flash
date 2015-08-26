@@ -16,9 +16,9 @@ class FoundationTemplate extends BaseTemplate
 
     /**
      * Override base function to suite Foundation alert naming.
-     * 
+     *
      * @param $messages - message text
-     * @param $type     - message type: success, info, warning, danger
+     * @param $type     - message type: success, info, warning, error
      *
      * @return string
      */

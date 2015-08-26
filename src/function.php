@@ -6,7 +6,7 @@ if ( ! function_exists('flash')) {
      * Wrapper for flash object to be used as global function.
      *
      * @param string $message - message text
-     * @param string $type    - message type: success, info, warning, danger
+     * @param string $type    - message type: success, info, warning, error
      *
      * @throws Exception
      *
