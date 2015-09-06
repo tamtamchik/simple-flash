@@ -25,10 +25,15 @@ class Flash
      */
     private static $engine;
 
-    public function __construct()
+    /**
+     * Creates flash container from session.
+     *
+     * @param TemplateInterface|null $template
+     */
+    public function __construct(TemplateInterface $template = null)
     {
         if ( ! isset(self::$engine)) {
-            self::$engine = new Engine();
+            self::$engine = new Engine($template);
         }
     }
 

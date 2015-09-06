@@ -19,9 +19,17 @@ flash()->error(['Invalid email!', 'Invalid username!'])
 </head>
 <body>
 
-<br/>
+<br />
 
 <div class="container" style="width: 600px;">
+
+    <ul class="list-inline">
+        <li><a href="/">Bootstrap 3</a></li>
+        <li><a href="/foundation.php">Foundation 5</a></li>
+    </ul>
+
+    <hr />
+
     <?= flash() ?>
 </div>
 

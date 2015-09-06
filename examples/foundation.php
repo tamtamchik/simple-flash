@@ -8,7 +8,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\FoundationTemplate());
+flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template());
 
 ?>
 
@@ -25,6 +25,14 @@ flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\FoundationTemplate())
 <br/>
 
 <div class="row" style="width: 600px;">
+
+    <ul class="inline-list">
+        <li><a href="/">Bootstrap 3</a></li>
+        <li><a href="/foundation.php">Foundation 5</a></li>
+    </ul>
+
+    <hr />
+
     <?= flash() ?>
 </div>
 

@@ -2,7 +2,7 @@
 
 namespace Tamtamchik\SimpleFlash;
 
-abstract class BaseTemplate implements TemplateInterface
+class BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<p>';
     protected $postfix = '</p>';

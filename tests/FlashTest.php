@@ -112,7 +112,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testAccessAsString()
     {
-        $flash = new \Tamtamchik\SimpleFlash\Engine();
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
         $flash->clear();
 
         $flash->message('Test message');
@@ -204,7 +204,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testDefaultTemplate()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\DefaultTemplate();
+        $template = new \Tamtamchik\SimpleFlash\BaseTemplate();
 
         $prefix  = $template->getPrefix();
         $postfix = $template->getPostfix();
@@ -232,7 +232,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testFoundationTemplate()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\FoundationTemplate();
+        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
         $flash    = new \Tamtamchik\SimpleFlash\Flash();
 
         $flash->setTemplate($template);

@@ -2,8 +2,6 @@
 
 namespace Tamtamchik\SimpleFlash;
 
-use Tamtamchik\SimpleFlash\Templates\DefaultTemplate;
-
 /**
  * Class Engine.
  */
@@ -25,10 +23,15 @@ class Engine
 
     /**
      * Creates flash container from session.
+     *
+     * @param TemplateInterface|null $template
      */
-    public function __construct()
+    public function __construct(TemplateInterface $template = null)
     {
-        $this->template = new DefaultTemplate();
+        // Better use IoC & DI, this are unnecessary dependencies.
+        if (is_null($template)) {
+            $this->template = new BaseTemplate();
+        }
 
         if ( ! array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
