@@ -1,6 +1,7 @@
 <?php
 
 namespace Tamtamchik\SimpleFlash;
+
 use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 
 /**

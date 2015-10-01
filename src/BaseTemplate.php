@@ -3,7 +3,8 @@
 namespace Tamtamchik\SimpleFlash;
 
 /**
- * Class BaseTemplate
+ * Class BaseTemplate.
+ *
  * @property string prefix  - line prefix
  * @property string postfix - line postfix
  * @property string wrapper - flash wrapper
