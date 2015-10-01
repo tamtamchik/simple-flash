@@ -3,6 +3,7 @@
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once 'BadTemplate.php';
 
 class FlashTest extends PHPUnit_Framework_TestCase
 {
@@ -228,7 +229,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function testTemplateWithConstructor()
+    public function testClassWithTemplateConstructor()
     {
         $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
         $flash    = new \Tamtamchik\SimpleFlash\Flash($template);
@@ -236,6 +237,17 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $flash->info('Testing templates');
 
         $content = $flash->display();
+        $this->assertContains('data-alert', $content);
+    }
+
+    /** @test */
+    public function testFunctionWithTemplateConstructor()
+    {
+        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
+
+        flash('Testing templates', 'info', $template);
+
+        $content = flash()->display();
         $this->assertContains('data-alert', $content);
     }
 
@@ -249,5 +261,20 @@ class FlashTest extends PHPUnit_Framework_TestCase
 
         $content = $flash->setTemplate($template)->display();
         $this->assertContains('data-alert', $content);
+    }
+
+    /** @test */
+    public function testBadTemplate()
+    {
+        $template = new BadTemplate();
+        $flash    = new \Tamtamchik\SimpleFlash\Flash();
+
+        $flash->info('Testing templates');
+
+        try {
+            $flash->setTemplate($template)->display();
+        } catch (\Exception $e) {
+            $this->assertContains('Please, make sure you have prefix, postfix and wrapper defined!', $e->getMessage());
+        }
     }
 }

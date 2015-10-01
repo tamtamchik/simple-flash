@@ -20,9 +20,7 @@ abstract class BaseTemplate
      */
     public function __get($name)
     {
-        if ( ! isset($this->$name)) {
-            throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
-        }
+        throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }
 
     /**
