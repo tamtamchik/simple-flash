@@ -204,11 +204,10 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testDefaultTemplate()
     {
-        $template = new \Tamtamchik\SimpleFlash\BaseTemplate();
+        $template = new \Tamtamchik\SimpleFlash\Templates\Bootstrap3Template();
 
         $prefix  = $template->getPrefix();
         $postfix = $template->getPostfix();
-        $wrapper = $template->getWrapper();
         $template->setPrefix('');
         $template->setPostfix('');
         $template->setWrapper('<div class="flash flash-%s" role="alert">%s</div>');
@@ -226,7 +225,6 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $this->assertContains('Testing templates', $content);
         $this->assertNotContains($prefix, $content);
         $this->assertNotContains($postfix, $content);
-        $this->assertNotContains($wrapper, $content);
     }
 
     /** @test */
@@ -235,12 +233,9 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
         $flash    = new \Tamtamchik\SimpleFlash\Flash();
 
-        $flash->setTemplate($template);
+        $flash->info('Testing templates');
 
-        $flash->info('Testing templates')->display();
-
-        $content = $flash->info('Testing templates')->display();
-
-        $this->assertContains('<div data-alert class="alert-box', $content);
+        $content = $flash->setTemplate($template)->display();
+        $this->assertContains('data-alert', $content);
     }
 }

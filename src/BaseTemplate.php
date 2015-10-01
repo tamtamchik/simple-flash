@@ -2,11 +2,27 @@
 
 namespace Tamtamchik\SimpleFlash;
 
-class BaseTemplate implements TemplateInterface
+/**
+ * Class BaseTemplate
+ * @property string prefix  - line prefix
+ * @property string postfix - line postfix
+ * @property string wrapper - flash wrapper
+ */
+abstract class BaseTemplate
 {
-    protected $prefix  = '<p>';
-    protected $postfix = '</p>';
-    protected $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
+    /**
+     * Check that you have add fields defined in template and throw an exception if not.
+     *
+     * @param $name
+     *
+     * @throws \Exception
+     */
+    public function __get($name)
+    {
+        if ( ! isset($this->$name)) {
+            throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
+        }
+    }
 
     /**
      * @param $message - message text
@@ -16,17 +32,6 @@ class BaseTemplate implements TemplateInterface
     public function wrapMessage($message)
     {
         return $this->getPrefix() . $message . $this->getPostfix();
-    }
-
-    /**
-     * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
-     *
-     * @return string
-     */
-    public function wrapMessages($messages, $type)
-    {
-        return sprintf($this->getWrapper(), ($type == 'error') ? 'danger' : $type, $messages);
     }
 
     /**

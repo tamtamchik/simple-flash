@@ -1,6 +1,7 @@
 <?php
 
 namespace Tamtamchik\SimpleFlash;
+use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 
 /**
  * Class Engine.
@@ -28,9 +29,9 @@ class Engine
      */
     public function __construct(TemplateInterface $template = null)
     {
-        // Better use IoC & DI, this are unnecessary dependencies.
+        // FIXME: Better use IoC & DI, this are unnecessary dependencies.
         if (is_null($template)) {
-            $this->template = new BaseTemplate();
+            $this->template = new Bootstrap3Template();
         }
 
         if ( ! array_key_exists($this->key, $_SESSION)) {
