@@ -31,9 +31,7 @@ class Engine
     public function __construct(TemplateInterface $template = null)
     {
         // FIXME: Better use IoC & DI, this are unnecessary dependencies.
-        if (is_null($template)) {
-            $this->template = new Bootstrap3Template();
-        }
+        $this->template = is_null($template) ? new Bootstrap3Template() : $template;
 
         if ( ! array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];

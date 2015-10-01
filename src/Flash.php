@@ -32,7 +32,7 @@ class Flash
      */
     public function __construct(TemplateInterface $template = null)
     {
-        if ( ! isset(self::$engine)) {
+        if ( ! is_null($template) || ! isset(self::$engine)) {
             self::$engine = new Engine($template);
         }
     }

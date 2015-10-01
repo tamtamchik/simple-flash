@@ -228,7 +228,19 @@ class FlashTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function testFoundationTemplate()
+    public function testTemplateWithConstructor()
+    {
+        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
+        $flash    = new \Tamtamchik\SimpleFlash\Flash($template);
+
+        $flash->info('Testing templates');
+
+        $content = $flash->display();
+        $this->assertContains('data-alert', $content);
+    }
+
+    /** @test */
+    public function testSetTemplateFunction()
     {
         $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
         $flash    = new \Tamtamchik\SimpleFlash\Flash();
