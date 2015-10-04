@@ -11,7 +11,7 @@ namespace Tamtamchik\SimpleFlash;
  */
 abstract class BaseTemplate implements TemplateInterface
 {
-    abstract function wrapMessages($messages, $type);
+    abstract public function wrapMessages($messages, $type);
 
     /**
      * @param $message - message text
