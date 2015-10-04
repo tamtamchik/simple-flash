@@ -9,7 +9,7 @@ namespace Tamtamchik\SimpleFlash;
  * @property string postfix - line postfix
  * @property string wrapper - flash wrapper
  */
-abstract class BaseTemplate
+abstract class BaseTemplate implements TemplateInterface
 {
     abstract function wrapMessages($messages, $type);
 

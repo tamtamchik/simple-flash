@@ -1,12 +1,11 @@
 <?php
 
 use Tamtamchik\SimpleFlash\BaseTemplate;
-use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class BadTemplate.
  */
-class BadTemplate extends BaseTemplate implements TemplateInterface
+class BadTemplate extends BaseTemplate
 {
     function wrapMessages($messages, $type)
     {
