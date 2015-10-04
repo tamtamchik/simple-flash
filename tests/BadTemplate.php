@@ -8,8 +8,8 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class BadTemplate extends BaseTemplate implements TemplateInterface
 {
-    public function wrapMessages($messages, $type)
+    function wrapMessages($messages, $type)
     {
-        return sprintf($this->getWrapper(), ($type == 'error') ? 'danger' : $type, $messages);
+        // TODO: Implement wrapMessages() method.
     }
 }

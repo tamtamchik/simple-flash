@@ -11,17 +11,7 @@ namespace Tamtamchik\SimpleFlash;
  */
 abstract class BaseTemplate
 {
-    /**
-     * Check that you have add fields defined in template and throw an exception if not.
-     *
-     * @param $name
-     *
-     * @throws \Exception
-     */
-    public function __get($name)
-    {
-        throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
-    }
+    abstract function wrapMessages($messages, $type);
 
     /**
      * @param $message - message text
@@ -79,5 +69,17 @@ abstract class BaseTemplate
     public function getWrapper()
     {
         return $this->wrapper;
+    }
+
+    /**
+     * Check that you have add fields defined in template and throw an exception if not.
+     *
+     * @param $name
+     *
+     * @throws \Exception
+     */
+    public function __get($name)
+    {
+        throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }
 }
