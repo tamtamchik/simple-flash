@@ -16,7 +16,7 @@ flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template()
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Foundation 3 default template.</title>
+    <title>Test Foundation 5 template.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
 </head>

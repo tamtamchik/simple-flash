@@ -109,6 +109,13 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 $ composer test
 ```
 
+## Examples
+
+``` bash
+$ composer examples
+```
+And then just visit [http://localhost:8000](http://localhost:8000)
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
