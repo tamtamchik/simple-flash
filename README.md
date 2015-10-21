@@ -118,7 +118,7 @@ And then just visit [http://localhost:8000](http://localhost:8000)
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
 
 ## Security
 
