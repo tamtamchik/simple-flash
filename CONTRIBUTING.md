@@ -25,7 +25,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/tamtamc
 ## Running Tests
 
 ``` bash
-$ composer test
+$ composer tests
 ```
 
 
