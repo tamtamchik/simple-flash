@@ -35,7 +35,6 @@ class Flash
      */
     public function __construct(TemplateInterface $template = null)
     {
-        //TODO: Use Factory or abstraction
         if ($assigned = is_null($template)) {
             $template = new Bootstrap3Template();
         }
