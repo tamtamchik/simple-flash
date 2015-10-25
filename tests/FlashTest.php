@@ -277,7 +277,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Need to be last - because spoils template
+     * Need to be last - because spoils template.
+     *
      * @test
      */
     public function testBadTemplate()
