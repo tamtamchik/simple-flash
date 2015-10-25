@@ -276,8 +276,10 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $this->assertContains('BBBBBBBB', $content);
     }
 
-    /** @test */
-    // need to be last - because spoils template
+    /**
+     * Need to be last - because spoils template
+     * @test
+     */
     public function testBadTemplate()
     {
         $template = new BadTemplate();

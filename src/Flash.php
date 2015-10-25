@@ -35,8 +35,10 @@ class Flash
      */
     public function __construct(TemplateInterface $template = null)
     {
-        if ($assigned = is_null($template))
-            $template = new Bootstrap3Template(); //FIXME: Factory?
+        //FIXME: Use Factory or abstraction
+        if ($assigned = is_null($template)) {
+            $template = new Bootstrap3Template();
+        }
 
         if ( ! $assigned || ! isset(self::$engine)) {
             self::$engine = new Engine($template);
