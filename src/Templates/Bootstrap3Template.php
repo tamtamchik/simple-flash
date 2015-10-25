@@ -6,7 +6,7 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 
 /**
  * Class Bootstrap3Template.
- * Use default Bootstrap 3 markdown for flash messages.
+ * Uses default Bootstrap 3 markdown for flash messages.
  */
 class Bootstrap3Template extends BaseTemplate
 {
@@ -15,6 +15,8 @@ class Bootstrap3Template extends BaseTemplate
     protected $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
 
     /**
+     * Override base function to suite Bootstrap 3 alert naming.
+     *
      * @param $messages - message text
      * @param $type     - message type: success, info, warning, error
      *

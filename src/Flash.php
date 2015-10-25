@@ -2,6 +2,8 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
+
 /**
  * Class Flash.
  *
@@ -15,6 +17,7 @@ namespace Tamtamchik\SimpleFlash;
  * @method static Engine info($message) Shortcut for info message.
  * @method static Engine success($message) Shortcut for success message.
  * @method static Engine setTemplate(TemplateInterface $template) Change render template.
+ * @method static TemplateInterface getTemplate() Get template for modifications.
  */
 class Flash
 {
@@ -32,7 +35,10 @@ class Flash
      */
     public function __construct(TemplateInterface $template = null)
     {
-        if ( ! is_null($template) || ! isset(self::$engine)) {
+        if ($assigned = is_null($template))
+            $template = new Bootstrap3Template(); //FIXME: Factory?
+
+        if ( ! $assigned || ! isset(self::$engine)) {
             self::$engine = new Engine($template);
         }
     }

@@ -11,6 +11,12 @@ namespace Tamtamchik\SimpleFlash;
  */
 abstract class BaseTemplate implements TemplateInterface
 {
+    /**
+     * @param string $messages - message text
+     * @param string $type     - message type: success, info, warning, error
+     *
+     * @return string
+     */
     abstract public function wrapMessages($messages, $type);
 
     /**
@@ -33,10 +39,14 @@ abstract class BaseTemplate implements TemplateInterface
 
     /**
      * @param string $prefix
+     *
+     * @return TemplateInterface $this
      */
     public function setPrefix($prefix)
     {
         $this->prefix = $prefix;
+
+        return $this;
     }
 
     /**
@@ -49,18 +59,14 @@ abstract class BaseTemplate implements TemplateInterface
 
     /**
      * @param string $postfix
+     *
+     * @return TemplateInterface $this
      */
     public function setPostfix($postfix)
     {
         $this->postfix = $postfix;
-    }
 
-    /**
-     * @param string $wrapper
-     */
-    public function setWrapper($wrapper)
-    {
-        $this->wrapper = $wrapper;
+        return $this;
     }
 
     /**
@@ -69,6 +75,18 @@ abstract class BaseTemplate implements TemplateInterface
     public function getWrapper()
     {
         return $this->wrapper;
+    }
+
+    /**
+     * @param string $wrapper
+     *
+     * @return TemplateInterface $this
+     */
+    public function setWrapper($wrapper)
+    {
+        $this->wrapper = $wrapper;
+
+        return $this;
     }
 
     /**

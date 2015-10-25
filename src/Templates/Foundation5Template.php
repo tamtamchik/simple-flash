@@ -6,7 +6,7 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 
 /**
  * Class Foundation5Template.
- * Use Foundation 5 markdown for flash messages.
+ * Uses Foundation 5 markdown for flash messages.
  */
 class Foundation5Template extends BaseTemplate
 {

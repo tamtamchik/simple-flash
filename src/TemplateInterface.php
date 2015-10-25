@@ -39,16 +39,22 @@ interface TemplateInterface
 
     /**
      * @param string $prefix - default: '<p>'
+     *
+     * @return TemplateInterface
      */
     public function setPrefix($prefix);
 
     /**
      * @param string $postfix - default: '</p>';
+     *
+     * @return TemplateInterface
      */
     public function setPostfix($postfix);
 
     /**
      * @param string $wrapper - default: '<div class="alert alert-%s" role="alert">%s</div>'
+     *
+     * @return TemplateInterface
      */
     public function setWrapper($wrapper);
 }
