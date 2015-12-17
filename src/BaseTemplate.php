@@ -2,6 +2,8 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateException;
+
 /**
  * Class BaseTemplate.
  *
@@ -94,10 +96,10 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @param $name
      *
-     * @throws \Exception
+     * @throws FlashTemplateException
      */
     public function __get($name)
     {
-        throw new \Exception("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
+        throw new FlashTemplateException("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }
 }

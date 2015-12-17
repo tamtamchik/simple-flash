@@ -287,6 +287,27 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $this->assertContains('Testing static', $content);
     }
 
+    /** @test */
+    public function testCloneRestriction()
+    {
+        $flash      = new \Tamtamchik\SimpleFlash\Flash();
+        $reflection = new ReflectionClass($flash);
+
+        $this->assertFalse($reflection->isCloneable());
+    }
+
+    /** @test */
+    public function testNotSerializable()
+    {
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
+
+        try {
+            serialize($flash);
+        } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException $e) {
+            $this->assertContains('Serializing of Flash is not allowed!', $e->getMessage());
+        }
+    }
+
     /**
      * Need to be last - because spoils template.
      *
@@ -301,7 +322,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
 
         try {
             $flash->setTemplate($template)->display();
-        } catch (\Exception $e) {
+        } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashTemplateException $e) {
             $this->assertContains('Please, make sure you have prefix, postfix and wrapper defined!', $e->getMessage());
         }
     }

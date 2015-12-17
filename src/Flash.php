@@ -2,6 +2,7 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
 use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 
 /**
@@ -26,6 +27,14 @@ class Flash
      * @var Engine
      */
     private static $engine;
+
+    // Don't allow instantiation
+    private final function __clone() { }
+
+    public final function __sleep()
+    {
+        throw new FlashSingletonException('Serializing of Flash is not allowed!');
+    }
 
     /**
      * Creates flash container from session.
