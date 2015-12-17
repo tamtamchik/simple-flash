@@ -266,7 +266,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testGetTemplate()
     {
-        $flash    = new \Tamtamchik\SimpleFlash\Flash();
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
         $flash->getTemplate()->setPrefix('AAAAAAAA')->setPostfix('BBBBBBBB');
 
         $flash->info('Testing templates');
@@ -274,6 +274,17 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $content = $flash->display();
         $this->assertContains('AAAAAAAA', $content);
         $this->assertContains('BBBBBBBB', $content);
+    }
+
+    /** @test */
+    public function testStaticMethods()
+    {
+        \Tamtamchik\SimpleFlash\Flash::setTemplate(new \Tamtamchik\SimpleFlash\Templates\Bootstrap3Template());
+
+        \Tamtamchik\SimpleFlash\Flash::info('Testing static');
+
+        $content = \Tamtamchik\SimpleFlash\Flash::display();
+        $this->assertContains('Testing static', $content);
     }
 
     /**

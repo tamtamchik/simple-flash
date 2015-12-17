@@ -7,7 +7,6 @@ use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 /**
  * Class Flash.
  *
- *
  * @method static Engine message($message, $type = 'info') Base method for adding messages to flash.
  * @method static string display($type = null) Returns Bootstrap ready HTML for Engine messages.
  * @method static bool hasMessages($type = null) Returns if there are any messages in container.
