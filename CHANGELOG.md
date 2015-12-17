@@ -1,18 +1,32 @@
 # Changelog
 
-### 0.4.2
+All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
-* Now supports array as `$message` variable.
+## 1.0.0 - 2015-08-14
 
-### 0.4.1
+### Added
+- Bumped version to 1.0.0
 
-* Fixed singleton instance.
-* Fixed empty `message` bug.
+## 0.4.2 - 2015-05-30
 
-### 0.4.0
+### Added
+- Support for array as `$message` variable.
 
-* Namespace changed from `\Tamtamchik\Flash\Flash` to `\Tamtamchik\SimpleFlash\Flash`.
+## 0.4.1 - 2015-05-29
 
-### 0.3.2
+### Fixed
+- Singleton instance.
+- Empty `$message` bug.
 
-* Initial version
+## 0.4.0 - 2015-05-28
+
+### Added
+- New namespace `\Tamtamchik\SimpleFlash\Flash`.
+
+### Deprecated
+- Old namespace `\Tamtamchik\Flash\Flash`.
+
+## 0.3.2 - 2015-05-28
+
+### Added
+- Initial version
