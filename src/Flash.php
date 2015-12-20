@@ -2,6 +2,8 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
+
 /**
  * Class Flash.
  *
@@ -24,9 +26,17 @@ class Flash
      */
     private static $engine;
 
+    // Don't allow instantiation
+    private final function __clone() { }
+
+    public final function __sleep()
+    {
+        throw new FlashSingletonException('Serializing of Flash is not allowed!');
+    }
+
     public function __construct()
     {
-        if (!isset(self::$engine)) {
+        if ( ! isset(self::$engine)) {
             self::$engine = new Engine();
         }
     }

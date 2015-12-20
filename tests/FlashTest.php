@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class FlashTest extends PHPUnit_Framework_TestCase
 {
@@ -199,5 +199,26 @@ class FlashTest extends PHPUnit_Framework_TestCase
         $content = flash()->display();
         $this->assertContains('Invalid name', $content);
         $this->assertContains('Invalid email', $content);
+    }
+
+    /** @test */
+    public function testCloneRestriction()
+    {
+        $flash      = new \Tamtamchik\SimpleFlash\Flash();
+        $reflection = new ReflectionClass($flash);
+
+        $this->assertFalse($reflection->isCloneable());
+    }
+
+    /** @test */
+    public function testNotSerializable()
+    {
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
+
+        try {
+            serialize($flash);
+        } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException $e) {
+            $this->assertContains('Serializing of Flash is not allowed!', $e->getMessage());
+        }
     }
 }
