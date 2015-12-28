@@ -304,7 +304,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
         try {
             serialize($flash);
         } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException $e) {
-            $this->assertContains('Serializing of Flash is not allowed!', $e->getMessage());
+            $this->assertContains('Serialization of Flash is not allowed!', $e->getMessage());
         }
     }
 

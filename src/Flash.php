@@ -33,7 +33,7 @@ class Flash
 
     public final function __sleep()
     {
-        throw new FlashSingletonException('Serializing of Flash is not allowed!');
+        throw new FlashSingletonException('Serialization of Flash is not allowed!');
     }
 
     /**
