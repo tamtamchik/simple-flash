@@ -6,10 +6,10 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
- * Class UiKit2Template.
+ * Class Uikit2Template.
  * Uses default Semantic UI markdown for flash messages.
  */
-class UiKit2Template extends BaseTemplate implements TemplateInterface
+class Uikit2Template extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<p>';
     protected $postfix = '</p>';

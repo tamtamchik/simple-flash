@@ -75,6 +75,6 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     public function testUiKit2Template()
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('uikit2');
-        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\UiKit2Template', get_class($template));
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Uikit2Template', get_class($template));
     }
 }
