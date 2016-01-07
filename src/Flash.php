@@ -28,9 +28,9 @@ class Flash
     private static $engine;
 
     // Don't allow instantiation
-    private final function __clone() { }
+    final private function __clone() { }
 
-    public final function __sleep()
+    final public function __sleep()
     {
         throw new FlashSingletonException('Serialization of Flash is not allowed!');
     }

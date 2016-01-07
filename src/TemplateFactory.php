@@ -6,7 +6,7 @@ use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 use Tamtamchik\SimpleFlash\Templates\Foundation5Template;
 
 /**
- * Class TemplateFactory
+ * Class TemplateFactory.
  */
 class TemplateFactory
 {
