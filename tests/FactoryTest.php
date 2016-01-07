@@ -5,7 +5,7 @@ require_once 'BadTemplate.php';
 
 class FactoryTest extends PHPUnit_Framework_TestCase
 {
-    private $templates = ['bootstrap3', 'foundation5', 'foundation6', 'semantic2'];
+    private $templates = ['bootstrap3', 'foundation5', 'foundation6', 'semantic2', 'uikit2'];
 
     private function _testTemplate($name)
     {
@@ -69,5 +69,12 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('semantic2');
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Semantic2Template', get_class($template));
+    }
+
+    /** @test */
+    public function testUiKit2Template()
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('uikit2');
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\UiKit2Template', get_class($template));
     }
 }

@@ -6,6 +6,7 @@ use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 use Tamtamchik\SimpleFlash\Templates\Foundation5Template;
 use Tamtamchik\SimpleFlash\Templates\Foundation6Template;
 use Tamtamchik\SimpleFlash\Templates\Semantic2Template;
+use Tamtamchik\SimpleFlash\Templates\UiKit2Template;
 
 /**
  * Class TemplateFactory.
@@ -22,6 +23,9 @@ class TemplateFactory
     public static function create($name = 'bootstrap3')
     {
         switch ($name) {
+            case 'uikit2':
+                $result = new UiKit2Template();
+                break;
             case 'semantic2':
                 $result = new Semantic2Template();
                 break;
