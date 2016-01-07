@@ -3,10 +3,6 @@
 namespace Tamtamchik\SimpleFlash;
 
 use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
-use Tamtamchik\SimpleFlash\Templates\Foundation5Template;
-use Tamtamchik\SimpleFlash\Templates\Foundation6Template;
-use Tamtamchik\SimpleFlash\Templates\Semantic2Template;
-use Tamtamchik\SimpleFlash\Templates\Uikit2Template;
 
 /**
  * Class TemplateFactory.
