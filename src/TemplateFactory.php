@@ -4,6 +4,7 @@ namespace Tamtamchik\SimpleFlash;
 
 use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 use Tamtamchik\SimpleFlash\Templates\Foundation5Template;
+use Tamtamchik\SimpleFlash\Templates\Foundation6Template;
 
 /**
  * Class TemplateFactory.
@@ -20,6 +21,9 @@ class TemplateFactory
     public static function create($name = 'bootstrap3')
     {
         switch ($name) {
+            case 'foundation6':
+                $result = new Foundation6Template();
+                break;
             case 'foundation5':
                 $result = new Foundation5Template();
                 break;

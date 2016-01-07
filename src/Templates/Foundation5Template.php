@@ -25,6 +25,8 @@ class Foundation5Template extends BaseTemplate implements TemplateInterface
      */
     public function wrapMessages($messages, $type)
     {
-        return sprintf($this->getWrapper(), ($type == 'error') ? 'alert' : $type, $messages);
+        $type = ($type == 'error') ? 'alert' : $type;
+
+        return sprintf($this->getWrapper(), $type, $messages);
     }
 }

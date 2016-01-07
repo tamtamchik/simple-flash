@@ -8,7 +8,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template());
+flash()->setTemplate(\Tamtamchik\SimpleFlash\TemplateFactory::create('foundation5'));
 
 ?>
 
@@ -18,7 +18,7 @@ flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template()
     <meta charset="UTF-8">
     <title>Test Foundation 5 template.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/5.5.3/css/foundation.min.css">
 </head>
 <body>
 
@@ -26,10 +26,7 @@ flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template()
 
 <div class="row" style="width: 600px;">
 
-    <ul class="inline-list">
-        <li><a href="/">Bootstrap 3</a></li>
-        <li><a href="/foundation.php">Foundation 5</a></li>
-    </ul>
+    <?php include_once '_menu.php'; ?>
 
     <hr />
 
@@ -37,8 +34,8 @@ flash()->setTemplate(new \Tamtamchik\SimpleFlash\Templates\Foundation5Template()
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/foundation/5.5.3/js/foundation.min.js"></script>
 
 </body>
 </html>
