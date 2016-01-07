@@ -5,6 +5,35 @@ require_once 'BadTemplate.php';
 
 class FactoryTest extends PHPUnit_Framework_TestCase
 {
+    private function _testTemplate($name)
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create($name);
+
+        $flash = new \Tamtamchik\SimpleFlash\Flash();
+
+        $flash->setTemplate($template);
+
+        $msg  = $template->wrapMessage('Testing templates');
+        $text = $template->wrapMessages($msg, 'info');
+
+        $content = $flash->info('Testing templates')->display();
+
+        $this->assertContains($text, $content);
+
+        unset($flash);
+    }
+
+    /** @test */
+    public function testTemplates()
+    {
+        $templates = ['bootstrap3', 'foundation5', 'foundation6'];
+        array_push($templates, null); //need to reset to default after tests
+
+        foreach ($templates as $template) {
+            $this->_testTemplate($template);
+        }
+    }
+
     /** @test */
     public function testDefaultTemplate()
     {
@@ -20,9 +49,16 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function testFoundationTemplate()
+    public function testFoundation5Template()
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation5');
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation5Template', get_class($template));
+    }
+
+    /** @test */
+    public function testFoundation6Template()
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation6');
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation6Template', get_class($template));
     }
 }
