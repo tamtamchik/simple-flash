@@ -3,12 +3,13 @@
 namespace Tamtamchik\SimpleFlash\Templates;
 
 use Tamtamchik\SimpleFlash\BaseTemplate;
+use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class Foundation5Template.
  * Uses Foundation 5 markdown for flash messages.
  */
-class Foundation5Template extends BaseTemplate
+class Foundation5Template extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '';
     protected $postfix = '<br />';

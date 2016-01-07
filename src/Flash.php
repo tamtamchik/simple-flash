@@ -3,7 +3,6 @@
 namespace Tamtamchik\SimpleFlash;
 
 use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
-use Tamtamchik\SimpleFlash\Templates\Bootstrap3Template;
 
 /**
  * Class Flash.
@@ -44,7 +43,7 @@ class Flash
     public function __construct(TemplateInterface $template = null)
     {
         if ($assigned = is_null($template)) {
-            $template = new Bootstrap3Template();
+            $template = TemplateFactory::create();
         }
 
         if ( ! $assigned || ! isset(self::$engine)) {

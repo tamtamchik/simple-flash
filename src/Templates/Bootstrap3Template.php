@@ -3,12 +3,13 @@
 namespace Tamtamchik\SimpleFlash\Templates;
 
 use Tamtamchik\SimpleFlash\BaseTemplate;
+use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class Bootstrap3Template.
  * Uses default Bootstrap 3 markdown for flash messages.
  */
-class Bootstrap3Template extends BaseTemplate
+class Bootstrap3Template extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<p>';
     protected $postfix = '</p>';

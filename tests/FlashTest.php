@@ -205,7 +205,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testDefaultTemplate()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\Bootstrap3Template();
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create();
 
         $prefix  = $template->getPrefix();
         $postfix = $template->getPostfix();
@@ -231,7 +231,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testClassWithTemplateConstructor()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation5');
         $flash    = new \Tamtamchik\SimpleFlash\Flash($template);
 
         $flash->info('Testing templates');
@@ -243,7 +243,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testFunctionWithTemplateConstructor()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation5');
 
         flash('Testing templates', 'info', $template);
 
@@ -254,7 +254,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testSetTemplateFunction()
     {
-        $template = new \Tamtamchik\SimpleFlash\Templates\Foundation5Template();
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation5');
         $flash    = new \Tamtamchik\SimpleFlash\Flash();
 
         $flash->info('Testing templates');
@@ -279,7 +279,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testStaticMethods()
     {
-        \Tamtamchik\SimpleFlash\Flash::setTemplate(new \Tamtamchik\SimpleFlash\Templates\Bootstrap3Template());
+        \Tamtamchik\SimpleFlash\Flash::setTemplate(\Tamtamchik\SimpleFlash\TemplateFactory::create());
 
         \Tamtamchik\SimpleFlash\Flash::info('Testing static');
 

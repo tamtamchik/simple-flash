@@ -92,7 +92,7 @@ abstract class BaseTemplate implements TemplateInterface
     }
 
     /**
-     * Check that you have add fields defined in template and throw an exception if not.
+     * Check that you have all fields defined in template and throw an exception if not.
      *
      * @param $name
      *
