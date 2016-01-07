@@ -5,6 +5,8 @@ require_once 'BadTemplate.php';
 
 class FactoryTest extends PHPUnit_Framework_TestCase
 {
+    private $templates = ['bootstrap3', 'foundation5', 'foundation6', 'semantic2'];
+
     private function _testTemplate($name)
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create($name);
@@ -26,7 +28,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testTemplates()
     {
-        $templates = ['bootstrap3', 'foundation5', 'foundation6'];
+        $templates = $this->templates;
         array_push($templates, null); //need to reset to default after tests
 
         foreach ($templates as $template) {
@@ -60,5 +62,12 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('foundation6');
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation6Template', get_class($template));
+    }
+
+    /** @test */
+    public function testSemantic2Template()
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create('semantic2');
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Semantic2Template', get_class($template));
     }
 }
