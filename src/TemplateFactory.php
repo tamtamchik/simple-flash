@@ -12,7 +12,7 @@ class TemplateFactory
     /**
      * Return template from available list of templates.
      *
-     * @param string $name - available templates: bootstrap3, foundation5
+     * @param string $name - available templates: bootstrap3, foundation5, foundation6, semantic2, uikit2
      *
      * @return TemplateInterface
      */
