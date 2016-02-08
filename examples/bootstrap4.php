@@ -12,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC2_TEMPLATE));
+flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP4_TEMPLATE));
 
 ?>
 
@@ -20,27 +20,29 @@ flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC2_TEMPLATE));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Semantic UI 2 template.</title>
+    <title>Test Bootstrap 4 default template.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.1.7/semantic.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css"
+          integrity="sha384-XXXXXXXX" crossorigin="anonymous">
 </head>
 <body>
 
-<br />
+<br/>
 
-<div class="ui text container">
+<div class="container" style="width: 600px;">
 
     <?php include_once '_menu.php'; ?>
 
-    <hr />
+    <hr/>
 
     <?= flash() ?>
-
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.1.7/semantic.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" integrity="sha384-XXXXXXXX"
+        crossorigin="anonymous"></script>
+
 
 </body>
 </html>

@@ -12,11 +12,11 @@ class TemplateFactory
     /**
      * Return template from available list of templates.
      *
-     * @param string $name - available templates: bootstrap3, foundation5, foundation6, semantic2, uikit2
+     * @param string $name - available templates: bootstrap3, bootstrap4, foundation5, foundation6, semantic2, uikit2
      *
      * @return TemplateInterface
      */
-    public static function create($name = 'bootstrap3')
+    public static function create($name = Templates::BOOTSTRAP3_TEMPLATE)
     {
         $result = new Bootstrap3Template();
 

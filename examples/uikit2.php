@@ -1,4 +1,8 @@
 <?php
+
+use Tamtamchik\SimpleFlash\TemplateFactory;
+use Tamtamchik\SimpleFlash\Templates;
+
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -8,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(\Tamtamchik\SimpleFlash\TemplateFactory::create('uikit2'));
+flash()->setTemplate(TemplateFactory::create(Templates::UIKIT2_TEMPLATE));
 
 ?>
 
@@ -22,13 +26,13 @@ flash()->setTemplate(\Tamtamchik\SimpleFlash\TemplateFactory::create('uikit2'));
 </head>
 <body>
 
-<br />
+<br/>
 
 <div class="uk-container-center uk-width-1-3">
 
     <?php include_once '_menu.php'; ?>
 
-    <hr />
+    <hr/>
 
     <?= flash() ?>
 

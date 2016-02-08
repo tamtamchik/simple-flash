@@ -1,4 +1,8 @@
 <?php
+
+use Tamtamchik\SimpleFlash\TemplateFactory;
+use Tamtamchik\SimpleFlash\Templates;
+
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -8,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(\Tamtamchik\SimpleFlash\TemplateFactory::create('foundation6'));
+flash()->setTemplate(TemplateFactory::create(Templates::FOUNDATION6_TEMPLATE));
 
 ?>
 
