@@ -12,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP4));
+flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP_4));
 
 ?>
 

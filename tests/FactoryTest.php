@@ -59,42 +59,42 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testBootstrap3Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP3);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP_3);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Bootstrap3Template', get_class($template));
     }
 
     /** @test */
     public function testBootstrap4Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP4);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP_4);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Bootstrap4Template', get_class($template));
     }
 
     /** @test */
     public function testFoundation5Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION5);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION_5);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation5Template', get_class($template));
     }
 
     /** @test */
     public function testFoundation6Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION6);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION_6);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation6Template', get_class($template));
     }
 
     /** @test */
     public function testSemantic2Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::SEMANTIC2);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::SEMANTIC_2);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Semantic2Template', get_class($template));
     }
 
     /** @test */
     public function testUiKit2Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::UIKIT2);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::UIKIT_2);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Uikit2Template', get_class($template));
     }
 

@@ -231,7 +231,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testClassWithTemplateConstructor()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION5);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION_5);
         $flash    = new \Tamtamchik\SimpleFlash\Flash($template);
 
         $flash->info('Testing templates');
@@ -243,7 +243,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testFunctionWithTemplateConstructor()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION5);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION_5);
 
         flash('Testing templates', 'info', $template);
 
@@ -254,7 +254,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testSetTemplateFunction()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION5);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(\Tamtamchik\SimpleFlash\Templates::FOUNDATION_5);
         $flash    = new \Tamtamchik\SimpleFlash\Flash();
 
         $flash->info('Testing templates');

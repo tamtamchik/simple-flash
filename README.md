@@ -7,7 +7,16 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). Creates [Bootstrap](http://getbootstrap.com) friendly alert notifications.
+Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box: 
+
+* [Bootstrap 3](http://getbootstrap.com) [default style]
+* [Bootstrap 4](http://v4-alpha.getbootstrap.com)
+* [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
+* [Foundation 6](http://foundation.zurb.com)
+* [Semantic UI 2](http://semantic-ui.com)
+* [UIKit 2](http://getuikit.com)
+
+Demo: [http://demo.tamtamchika.net/simple-flash/examples/](http://demo.tamtamchika.net/simple-flash/examples/)
 
 ![simple-flash](https://dl.dropboxusercontent.com/u/1285445/pub/simple-flash.png)
 
@@ -39,14 +48,14 @@ There are 3 ways to use library:
 ```php
 use \Tamtamchik\SimpleFlash\Flash;
 
-// instance
+// Instance
 $flash = new Flash();
 $flash->message('Tea.');
 
-// static
+// Static
 Flash::message('Earl Gray.');
 
-// function
+// Function
 flash()->message('Hot!');
 ```
 
@@ -97,6 +106,91 @@ $flash->warning('It is totally just for display, never do this in real life...')
   <?= $flash; ?>
 </div>
 <!-- ... some other html -->
+```
+
+## Templates
+
+### Template Factory
+
+Package comes with a set of templates for most popular CSS frameworks. [Bootstrap 3](http://getbootstrap.com), 
+[Bootstrap 4](http://v4-alpha.getbootstrap.com), [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3),
+[Foundation 6](http://foundation.zurb.com), [Semantic UI 2](http://semantic-ui.com), [UIKit 2](http://getuikit.com).
+
+This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.  
+All templates have aliases defined in [Templates](src/Templates.php).
+
+```php
+use Tamtamchik\SimpleFlash\Flash;
+use Tamtamchik\SimpleFlash\TemplateFactory;
+use Tamtamchik\SimpleFlash\Templates;
+
+// get template from factory, e.g. template for Foundation 6 
+$template = TemplateFactory::create(Templates::FOUNDATION_6);
+
+// passing template via function
+flash('Info message using Foundation 6 template!', 'info', $template);
+
+// passing to constructor
+$flash = new Flash($template);
+
+// using setTemplate function
+$flash->setTemplate($template);
+```
+
+### Creating own templates
+
+Template is basically any class that implements [TemplateInterface](src/TemplateInterface.php). But to make it easy 
+you can extend [BaseTemplate](src/BaseTemplate.php), it contains most of the functions.
+
+Defining and using this sample class as template:
+
+```php
+use Tamtamchik\SimpleFlash\BaseTemplate;
+use Tamtamchik\SimpleFlash\TemplateInterface;
+
+class CustomTemplate extends BaseTemplate implements TemplateInterface
+{
+    protected $prefix  = '<li>'; // every line prefix
+    protected $postfix = '</li>'; // every postfix
+    protected $wrapper = '<ul class="alert-%s">%s</ul>'; // wrapper over messages of same type
+    
+    /**
+     * @param $messages - message text
+     * @param $type     - message type: success, info, warning, error
+     *
+     * @return string
+     */
+    public function wrapMessages($messages, $type)
+    {
+        return sprintf($this->getWrapper(), $type, $messages);
+    }
+}
+
+flash()
+    ->setTemplate(new CustomTemplate)
+    ->error(['Invalid email!', 'Invalid username!'])
+    ->warning('Warning message.')
+    ->info('Info message.')
+    ->success('Success message!')
+    ->display();
+```
+
+Will output following:
+
+```html
+<ul class="alert-error">
+    <li>Invalid email!</li>
+    <li>Invalid username!</li>
+</ul>
+<ul class="alert-warning">
+    <li>Warning message.</li>
+</ul>
+<ul class="alert-info">
+    <li>Info message.</li>
+</ul>
+<ul class="alert-success">
+    <li>Success message!</li>
+</ul>
 ```
 
 ## Change log

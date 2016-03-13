@@ -7,11 +7,11 @@ namespace Tamtamchik\SimpleFlash;
  */
 class Templates
 {
-    const BASE        = 'bootstrap3';
-    const BOOTSTRAP3  = 'bootstrap3';
-    const BOOTSTRAP4  = 'bootstrap4';
-    const FOUNDATION5 = 'foundation5';
-    const FOUNDATION6 = 'foundation6';
-    const SEMANTIC2   = 'semantic2';
-    const UIKIT2      = 'uikit2';
+    const BASE         = 'bootstrap3';
+    const BOOTSTRAP_3  = 'bootstrap3';
+    const BOOTSTRAP_4  = 'bootstrap4';
+    const FOUNDATION_5 = 'foundation5';
+    const FOUNDATION_6 = 'foundation6';
+    const SEMANTIC_2   = 'semantic2';
+    const UIKIT_2      = 'uikit2';
 }
