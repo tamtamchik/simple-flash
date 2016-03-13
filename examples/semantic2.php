@@ -12,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC2_TEMPLATE));
+flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC2));
 
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 
+use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
 if ( ! function_exists('flash')) {
@@ -11,11 +12,11 @@ if ( ! function_exists('flash')) {
      * @param string            $type     - message type: success, info, warning, error
      * @param TemplateInterface $template - template (optional)
      *
-     * @return \Tamtamchik\SimpleFlash\Flash
+     * @return Flash
      */
     function flash($message = '', $type = 'info', TemplateInterface $template = null)
     {
-        $flash = new \Tamtamchik\SimpleFlash\Flash($template);
+        $flash = new Flash($template);
 
         if ( ! empty($message)) {
             return $flash->message($message, $type);

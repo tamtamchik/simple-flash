@@ -44,10 +44,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testTemplates()
     {
-        $templates = $this->templates;
-        array_push($templates, null); //need to reset to default after tests
-
-        foreach ($templates as $template) {
+        foreach ($this->templates as $template) {
             $this->_testTemplate($template);
         }
     }
@@ -62,42 +59,52 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function testBootstrap3Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP3_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP3);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Bootstrap3Template', get_class($template));
     }
 
     /** @test */
     public function testBootstrap4Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP4_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::BOOTSTRAP4);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Bootstrap4Template', get_class($template));
     }
 
     /** @test */
     public function testFoundation5Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION5_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION5);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation5Template', get_class($template));
     }
 
     /** @test */
     public function testFoundation6Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION6_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::FOUNDATION6);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Foundation6Template', get_class($template));
     }
 
     /** @test */
     public function testSemantic2Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::SEMANTIC2_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::SEMANTIC2);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Semantic2Template', get_class($template));
     }
 
     /** @test */
     public function testUiKit2Template()
     {
-        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::UIKIT2_TEMPLATE);
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::UIKIT2);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Uikit2Template', get_class($template));
+    }
+
+    /** @test */
+    public function testNotFoundTemplate()
+    {
+        try {
+            \Tamtamchik\SimpleFlash\TemplateFactory::create('ABCTemplate');
+        } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException $e) {
+            $this->assertContains('Template "ABCTemplate" not found!', $e->getMessage());
+        }
     }
 }
