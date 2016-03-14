@@ -4,12 +4,12 @@ All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 1.1.1 - 2015-12-20
+## 1.1.1 - 2016-03-14
 
 ### Added
 - `FlashInterface`
 
-## 1.1.0 - 2015-12-20
+## 1.1.0 - 2016-03-13
 
 ### Added
 - Templates
