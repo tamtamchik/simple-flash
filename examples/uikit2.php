@@ -20,7 +20,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::UIKIT_2));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Semantic UI 2 template.</title>
+    <title>Test Semantic UI 2 template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/uikit/2.24.3/css/uikit.gradient.min.css">
 </head>

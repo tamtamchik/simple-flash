@@ -36,9 +36,7 @@ flash()->setTemplate(new CustomTemplate)->error(['Invalid email!', 'Invalid user
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Semantic UI 2 template.</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/uikit/2.24.3/css/uikit.gradient.min.css">
+    <title>Test custom template example.</title>
 </head>
 <body>
 
@@ -53,10 +51,6 @@ flash()->setTemplate(new CustomTemplate)->error(['Invalid email!', 'Invalid user
     <?= flash() ?>
 
 </div>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/uikit/2.24.3/js/uikit.min.js"></script>
 
 </body>
 </html>

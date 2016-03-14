@@ -13,7 +13,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Bootstrap 3 default template.</title>
+    <title>Test Bootstrap 3 default template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>

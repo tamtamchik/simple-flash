@@ -20,7 +20,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::FOUNDATION_6));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Foundation 6 template.</title>
+    <title>Test Foundation 6 template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.1.1/foundation.min.css">
 </head>

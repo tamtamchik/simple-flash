@@ -20,7 +20,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP_4));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Bootstrap 4 default template.</title>
+    <title>Test Bootstrap 4 default template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css"
           integrity="sha384-XXXXXXXX" crossorigin="anonymous">
