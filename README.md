@@ -193,6 +193,13 @@ Will output following:
 </ul>
 ```
 
+## Interfaces
+
+Package provide 2 main interfaces:
+
+* `FlashInterface` - for `Flash` type of objects.
+* `TemplateInterface` - for Simple Flash templates.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
