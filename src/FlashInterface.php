@@ -15,7 +15,7 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function message($message, $type = 'info');
+    public function message($message = '', $type = 'info');
 
     /**
      * Returns Bootstrap ready HTML for Engine messages.
@@ -24,7 +24,7 @@ interface FlashInterface
      *
      * @return string - HTML with flash messages
      */
-    public static function display($type = null);
+    public function display($type = null);
 
     /**
      * Returns if there are any messages in container.
@@ -33,7 +33,7 @@ interface FlashInterface
      *
      * @return bool
      */
-    public static function hasMessages($type = null);
+    public function hasMessages($type = null);
 
     /**
      * Clears messages from session store.
@@ -42,7 +42,7 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function clear($type = null);
+    public function clear($type = null);
 
     /**
      * Shortcut for error message.
@@ -51,7 +51,7 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function error($message);
+    public function error($message);
 
     /**
      * Shortcut for warning message.
@@ -60,7 +60,7 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function warning($message);
+    public function warning($message);
 
     /**
      * Shortcut for info message.
@@ -69,7 +69,7 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function info($message);
+    public function info($message);
 
     /**
      * Shortcut for success message.
@@ -78,21 +78,5 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function success($message);
-
-    /**
-     * Setter for $template.
-     *
-     * @param TemplateInterface $template
-     *
-     * @return Engine $this
-     */
-    public static function setTemplate(TemplateInterface $template);
-
-    /**
-     * Getter for $template.
-     *
-     * @return TemplateInterface
-     */
-    public static function getTemplate();
+    public function success($message);
 }

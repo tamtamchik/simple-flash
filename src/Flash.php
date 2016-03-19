@@ -6,11 +6,20 @@ use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
 
 /**
  * Class Flash.
+ *
+ * @method static Engine message($message, $type = 'info') Base method for adding messages to flash.
+ * @method static string display($type = null) Returns Bootstrap ready HTML for Engine messages.
+ * @method static bool hasMessages($type = null) Returns if there are any messages in container.
+ * @method static Engine clear($type = null) Clears messages from session store.
+ * @method static Engine error($message) Shortcut for error message.
+ * @method static Engine warning($message) Shortcut for warning message.
+ * @method static Engine info($message) Shortcut for info message.
+ * @method static Engine success($message) Shortcut for success message.
+ * @method static Engine setTemplate(TemplateInterface $template) Change render template.
+ * @method static TemplateInterface getTemplate() Get template for modifications.
  */
-class Flash implements FlashInterface
+class Flash
 {
-    use FlashStubs;
-
     /**
      * Base instance of Flash engine.
      *
@@ -70,8 +79,7 @@ class Flash implements FlashInterface
      */
     public static function __callStatic($method, array $arguments)
     {
-        if ( ! isset(self::$engine))
-            new self();
+        new self();
 
         return self::invoke($method, $arguments);
     }

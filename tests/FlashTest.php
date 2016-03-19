@@ -4,7 +4,6 @@ session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';
-require_once 'WrapperClass.php';
 
 class FlashTest extends PHPUnit_Framework_TestCase
 {
@@ -307,15 +306,6 @@ class FlashTest extends PHPUnit_Framework_TestCase
         } catch (\Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException $e) {
             $this->assertContains('Serialization of Flash is not allowed!', $e->getMessage());
         }
-    }
-
-    /** @test */
-    public function testInterface()
-    {
-        $flash = new \Tamtamchik\SimpleFlash\Flash();
-
-        $wrapper = new WrapperClass($flash);
-        $this->assertInstanceOf('WrapperClass', $wrapper);
     }
 
     /**
