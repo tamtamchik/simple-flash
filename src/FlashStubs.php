@@ -2,10 +2,7 @@
 
 namespace Tamtamchik\SimpleFlash;
 
-/**
- * Class Engine.
- */
-interface FlashInterface
+trait FlashStubs
 {
     /**
      * Base method for adding messages to flash.
@@ -15,7 +12,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function message($message, $type = 'info');
+    public static function message($message, $type = 'info')
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Returns Bootstrap ready HTML for Engine messages.
@@ -24,7 +24,10 @@ interface FlashInterface
      *
      * @return string - HTML with flash messages
      */
-    public static function display($type = null);
+    public static function display($type = null)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Returns if there are any messages in container.
@@ -33,7 +36,10 @@ interface FlashInterface
      *
      * @return bool
      */
-    public static function hasMessages($type = null);
+    public static function hasMessages($type = null)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Clears messages from session store.
@@ -42,7 +48,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function clear($type = null);
+    public static function clear($type = null)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Shortcut for error message.
@@ -51,7 +60,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function error($message);
+    public static function error($message)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Shortcut for warning message.
@@ -60,7 +72,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function warning($message);
+    public static function warning($message)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Shortcut for info message.
@@ -69,7 +84,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function info($message);
+    public static function info($message)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Shortcut for success message.
@@ -78,7 +96,10 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function success($message);
+    public static function success($message)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Setter for $template.
@@ -87,12 +108,18 @@ interface FlashInterface
      *
      * @return Engine $this
      */
-    public static function setTemplate(TemplateInterface $template);
+    public static function setTemplate(TemplateInterface $template)
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Getter for $template.
      *
      * @return TemplateInterface
      */
-    public static function getTemplate();
+    public static function getTemplate()
+    {
+        return self::__callStatic(__FUNCTION__, func_get_args());
+    }
 }
