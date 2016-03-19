@@ -5,7 +5,7 @@ namespace Tamtamchik\SimpleFlash;
 /**
  * Class Engine.
  */
-class Engine implements FlashInterface
+class Engine
 {
     /**
      * @var string - main session key for Flash messages.
