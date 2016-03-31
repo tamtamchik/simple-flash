@@ -4,7 +4,12 @@ All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 1.1.2 - 2016-03-19
+## 1.2.0 - 2016-03-19
+
+### Changed
+- Removed `FlashInterface`. It was causing troubles. 
+
+## 1.1.2 - 2016-03-31
 
 ### Changed
 - Removed `FlashInterface`. It was causing troubles. 
