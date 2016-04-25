@@ -10,7 +10,7 @@
 
 Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box:
 
-* [Bootstrap 3](http://getbootstrap.com) [default style]
+* [Bootstrap 3](http://getbootstrap.com) (default)
 * [Bootstrap 4](http://v4-alpha.getbootstrap.com)
 * [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
 * [Foundation 6](http://foundation.zurb.com)
@@ -72,7 +72,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
        ->success('Success message!');
 ```
 
-Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hard coded and designed for [Bootstrap](http://getbootstrap.com).
+Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`.
 
 ```html
 <div class="alert alert-danger" role="alert">
@@ -114,9 +114,15 @@ $flash->warning('It is totally just for display, never do this in real life...')
 
 ### Template Factory
 
-Package comes with a set of templates for most popular CSS frameworks. [Bootstrap 3](http://getbootstrap.com),
-[Bootstrap 4](http://v4-alpha.getbootstrap.com), [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3),
-[Foundation 6](http://foundation.zurb.com), [Semantic UI 2](http://semantic-ui.com), [UIKit 2](http://getuikit.com).
+Package comes with a set of templates for most popular CSS frameworks:
+
+* [Bootstrap 3](http://getbootstrap.com) (default)
+* [Bootstrap 4](http://v4-alpha.getbootstrap.com)
+* [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
+* [Foundation 6](http://foundation.zurb.com)
+* [Semantic UI 2](http://semantic-ui.com)
+* [Siimple](https://siimple.github.io)
+* [UIKit 2](http://getuikit.com)
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.
 All templates have aliases defined in [Templates](src/Templates.php).
@@ -142,7 +148,7 @@ $flash->setTemplate($template);
 ### Creating own templates
 
 Template is basically any class that implements [TemplateInterface](src/TemplateInterface.php). But to make it easy
-you can extend [BaseTemplate](src/BaseTemplate.php), it contains most of the functions.
+you can extend [BaseTemplate](src/BaseTemplate.php), it already contains most of the functions.
 
 Defining and using this sample class as template:
 
