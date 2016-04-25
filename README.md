@@ -15,6 +15,7 @@ Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](http
 * [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
 * [Foundation 6](http://foundation.zurb.com)
 * [Semantic UI 2](http://semantic-ui.com)
+* [Siimple](https://siimple.github.io)
 * [UIKit 2](http://getuikit.com)
 
 Demo: [http://demo.tamtamchika.net/simple-flash/examples/](http://demo.tamtamchika.net/simple-flash/examples/)

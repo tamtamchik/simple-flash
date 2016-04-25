@@ -5,5 +5,6 @@
     <li><a href="./foundation6.php">Foundation 6</a></li>
     <li><a href="./semantic2.php">Semantic UI 2</a></li>
     <li><a href="./uikit2.php">UIKit 2</a></li>
+    <li><a href="./siimple.php">Siimple</a></li>
     <li><a href="./custom.php">Custom Template</a></li>
 </ul>
