@@ -22,9 +22,9 @@ flash()->setTemplate(TemplateFactory::create(Templates::SIIMPLE));
     <meta charset="UTF-8">
     <title>Siimple template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="https://siimple.github.io/css/font.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico">
-    <link rel="stylesheet" type="text/css" href="https://siimple.github.io/css/siimple.min.css">
+    <link rel="stylesheet" type="text/css" href="http://siimple.juanes.xyz/css/font.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" type="text/css" href="http://siimple.juanes.xyz/css/siimple.min.css">
 </head>
 <body>
 
