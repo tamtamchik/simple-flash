@@ -18,8 +18,6 @@ Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [Siimple](http://siimple.github.io)
 * [UIKit 2](http://getuikit.com)
 
-Demo: [http://demo.tamtamchika.net/simple-flash/examples/](http://demo.tamtamchika.net/simple-flash/examples/)
-
 ![simple-flash](https://dl.dropboxusercontent.com/u/1285445/pub/simple-flash.png)
 
 ## Install
