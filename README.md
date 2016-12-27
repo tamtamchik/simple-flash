@@ -17,6 +17,7 @@ Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [Semantic UI 2](http://semantic-ui.com)
 * [Siimple](http://siimple.github.io)
 * [UIKit 2](http://getuikit.com)
+* [Bulma](http://bulma.io)
 
 ![simple-flash](https://dl.dropboxusercontent.com/u/1285445/pub/simple-flash.png)
 
