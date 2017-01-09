@@ -115,13 +115,17 @@ $flash->warning('It is totally just for display, never do this in real life...')
 
 Package comes with a set of templates for most popular CSS frameworks:
 
-* [Bootstrap 3](http://getbootstrap.com) (default)
-* [Bootstrap 4](http://v4-alpha.getbootstrap.com)
-* [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
-* [Foundation 6](http://foundation.zurb.com)
-* [Semantic UI 2](http://semantic-ui.com)
-* [Siimple](https://siimple.github.io)
-* [UIKit 2](http://getuikit.com)
+```php
+Templates::BASE; // Same as Templates::BOOTSTRAP_3
+Templates::BOOTSTRAP_3;
+Templates::BOOTSTRAP_4;
+Templates::FOUNDATION_5;
+Templates::FOUNDATION_6;
+Templates::SEMANTIC_2;
+Templates::UIKIT_2;
+Templates::SIIMPLE;
+Templates::BULMA;
+```
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.
 All templates have aliases defined in [Templates](src/Templates.php).
