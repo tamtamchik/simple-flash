@@ -15,8 +15,10 @@ Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
 * [Foundation 6](http://foundation.zurb.com)
 * [Semantic UI 2](http://semantic-ui.com)
-* [Siimple](http://siimple.github.io)
-* [UIKit 2](http://getuikit.com)
+* [Siimple](https://github.com/siimple/siimple/releases/tag/v1.3.7)
+* [Siimple 2](http://siimple.github.io)
+* [UIKit 2](https://getuikit.com/v2/)
+* [UIKit 3](http://getuikit.com)
 * [Bulma](http://bulma.io)
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
@@ -123,7 +125,9 @@ Templates::FOUNDATION_5;
 Templates::FOUNDATION_6;
 Templates::SEMANTIC_2;
 Templates::UIKIT_2;
+Templates::UIKIT_3;
 Templates::SIIMPLE;
+Templates::SIIMPLE_2;
 Templates::BULMA;
 ```
 
@@ -162,7 +166,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 class CustomTemplate extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<li>'; // every line prefix
-    protected $postfix = '</li>'; // every postfix
+    protected $postfix = '</li>'; // every line postfix
     protected $wrapper = '<ul class="alert-%s">%s</ul>'; // wrapper over messages of same type
 
     /**
