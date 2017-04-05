@@ -15,6 +15,8 @@ class Templates
     const FOUNDATION_6 = 'foundation6';
     const SEMANTIC_2   = 'semantic2';
     const UIKIT_2      = 'uikit2';
+    const UIKIT_3      = 'uikit3';
     const SIIMPLE      = 'siimple';
+    const SIIMPLE_2    = 'siimple2';
     const BULMA        = 'bulma';
 }
