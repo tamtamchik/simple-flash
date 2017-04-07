@@ -1,4 +1,4 @@
-# Simple Flash Messages [![SensioLabsInsight](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16/small.png)](https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16)
+# Simple Flash Messages
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -6,19 +6,22 @@
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
+[![SensioLabs Insight][ico-insight]][link-insight]
 
-Easy, framework agnostic flash notifications. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box: 
+Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box:
 
-* [Bootstrap 3](http://getbootstrap.com) [default style]
+* [Bootstrap 3](http://getbootstrap.com) (default)
 * [Bootstrap 4](http://v4-alpha.getbootstrap.com)
 * [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3)
 * [Foundation 6](http://foundation.zurb.com)
 * [Semantic UI 2](http://semantic-ui.com)
-* [UIKit 2](http://getuikit.com)
+* [Siimple](https://github.com/siimple/siimple/releases/tag/v1.3.7)
+* [Siimple 2](http://siimple.github.io)
+* [UIKit 2](https://getuikit.com/v2/)
+* [UIKit 3](http://getuikit.com)
+* [Bulma](http://bulma.io)
 
-Demo: [http://demo.tamtamchika.net/simple-flash/examples/](http://demo.tamtamchika.net/simple-flash/examples/)
-
-![simple-flash](https://dl.dropboxusercontent.com/u/1285445/pub/simple-flash.png)
+![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
 ## Install
 
@@ -70,7 +73,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
        ->success('Success message!');
 ```
 
-Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`. So far output is hard coded and designed for [Bootstrap](http://getbootstrap.com).
+Out of the box library support 4 different types of messages: `error`, `warning`, `info`, `success`.
 
 ```html
 <div class="alert alert-danger" role="alert">
@@ -92,14 +95,14 @@ $output = flash()->display('error');
 $output = flash()->display();
 
 // Also rendering possible when you just read instance of \Tamtamchik\SimpleFlash\Flash object as a string
-(string) flash(); 
+(string) flash();
 
 // or ... it's totally just for display, never do this in real life...
-<?php 
-// ... some code 
-$flash = new Flash();  
+<?php
+// ... some code
+$flash = new Flash();
 $flash->warning('It is totally just for display, never do this in real life...');
-// ... some other code 
+// ... some other code
 ?>
 <!-- ... some html -->
 <div class="flashes">
@@ -112,11 +115,23 @@ $flash->warning('It is totally just for display, never do this in real life...')
 
 ### Template Factory
 
-Package comes with a set of templates for most popular CSS frameworks. [Bootstrap 3](http://getbootstrap.com), 
-[Bootstrap 4](http://v4-alpha.getbootstrap.com), [Foundation 5](http://foundation.zurb.com/sites/docs/v/5.5.3),
-[Foundation 6](http://foundation.zurb.com), [Semantic UI 2](http://semantic-ui.com), [UIKit 2](http://getuikit.com).
+Package comes with a set of templates for most popular CSS frameworks:
 
-This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.  
+```php
+Templates::BASE; // Same as Templates::BOOTSTRAP_3
+Templates::BOOTSTRAP_3;
+Templates::BOOTSTRAP_4;
+Templates::FOUNDATION_5;
+Templates::FOUNDATION_6;
+Templates::SEMANTIC_2;
+Templates::UIKIT_2;
+Templates::UIKIT_3;
+Templates::SIIMPLE;
+Templates::SIIMPLE_2;
+Templates::BULMA;
+```
+
+This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.
 All templates have aliases defined in [Templates](src/Templates.php).
 
 ```php
@@ -124,7 +139,7 @@ use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
 
-// get template from factory, e.g. template for Foundation 6 
+// get template from factory, e.g. template for Foundation 6
 $template = TemplateFactory::create(Templates::FOUNDATION_6);
 
 // passing template via function
@@ -139,8 +154,8 @@ $flash->setTemplate($template);
 
 ### Creating own templates
 
-Template is basically any class that implements [TemplateInterface](src/TemplateInterface.php). But to make it easy 
-you can extend [BaseTemplate](src/BaseTemplate.php), it contains most of the functions.
+Template is basically any class that implements [TemplateInterface](src/TemplateInterface.php). But to make it easy
+you can extend [BaseTemplate](src/BaseTemplate.php), it already contains most of the functions.
 
 Defining and using this sample class as template:
 
@@ -151,9 +166,9 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 class CustomTemplate extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<li>'; // every line prefix
-    protected $postfix = '</li>'; // every postfix
+    protected $postfix = '</li>'; // every line postfix
     protected $wrapper = '<ul class="alert-%s">%s</ul>'; // wrapper over messages of same type
-    
+
     /**
      * @param $messages - message text
      * @param $type     - message type: success, info, warning, error
@@ -237,6 +252,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
+[ico-insight]: https://img.shields.io/sensiolabs/i/64bbe2d0-055e-402a-8704-ea7dd6087b16.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-travis]: https://travis-ci.org/tamtamchik/simple-flash
@@ -245,5 +261,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-author]: https://github.com/tamtamchik
 [link-contributors]: ../../contributors
+[link-insight]: https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16
 
 [![Join the chat at https://gitter.im/tamtamchik/simple-flash](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tamtamchik/simple-flash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

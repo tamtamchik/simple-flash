@@ -47,6 +47,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
         foreach ($this->templates as $template) {
             $this->_testTemplate($template);
         }
+        $this->_testTemplate(Templates::BASE);
     }
 
     /** @test */
@@ -96,6 +97,13 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     {
         $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::UIKIT_2);
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\Uikit2Template', get_class($template));
+    }
+
+    /** @test */
+    public function testSiimpleTemplate()
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::SIIMPLE);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SiimpleTemplate', get_class($template));
     }
 
     /** @test */
