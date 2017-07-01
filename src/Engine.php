@@ -120,11 +120,11 @@ class Engine
     {
         if ( ! is_null($type)) {
             return ! empty($_SESSION[$this->key][$type]);
-        } else {
-            foreach ($this->types as $type) {
-                if ( ! empty($_SESSION[$this->key][$type])) {
-                    return true;
-                }
+        }
+        
+        foreach ($this->types as $type) {
+            if ( ! empty($_SESSION[$this->key][$type])) {
+                return true;
             }
         }
 
