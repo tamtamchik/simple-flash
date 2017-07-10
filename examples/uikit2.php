@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::UIKIT_2));
     <meta charset="UTF-8">
     <title>Test UiKit 2 template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/uikit.min.css">
 </head>
 <body>
 
@@ -41,7 +41,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::UIKIT_2));
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/js/uikit.min.js"></script>
 
 </body>
 </html>

@@ -35,7 +35,7 @@
     },
     "scripts": {
         "tests": "vendor/bin/phpunit",
-        "examples": "php -S localhost:8000 -t examples"
+        "examples": "php -S localhost:8000 -t examples/"
     },
     "extra": {
         "branch-alias": {
