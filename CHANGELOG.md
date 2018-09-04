@@ -4,6 +4,24 @@ All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## 1.2.5 - 2018-09-04
+
+### Added
+- [Materialize](https://materializecss.com) alerts added.
+- [Spectre.css](https://picturepan2.github.io/spectre) alerts added.
+- [Tailwind](https://tailwindcss.com) alerts added.
+
+## 1.2.4 - 2017-04-05
+
+### Added
+- [Siimple 2](http://siimple.github.io) alerts added.
+- [UIKit 3](http://getuikit.com) alerts added.
+
+## 1.2.3 - 2016-12-21
+
+### Added
+- [Bulma](http://bulma.io) alerts added.
+
 ## 1.2.2 - 2016-05-10
 
 ### Fixed

@@ -20,9 +20,9 @@ flash()->setTemplate(TemplateFactory::create(Templates::BULMA));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Bootstrap 4 default template example.</title>
+    <title>Test Bulma default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" crossorigin="anonymous" />
 </head>
 <body>
 
