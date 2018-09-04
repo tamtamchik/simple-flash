@@ -22,4 +22,5 @@ class Templates
     const BULMA        = 'bulma';
     const MATERIALIZE  = 'materialize';
     const SPECTRE      = 'spectre';
+    const TAILWIND     = 'tailwind';
 }

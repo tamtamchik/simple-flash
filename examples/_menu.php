@@ -51,5 +51,11 @@
         <a href="./spectre.php">Spectre.css</a>
         [<a target="_blank" href="https://picturepan2.github.io/spectre/">https://picturepan2.github.io/spectre/</a>]
     </li>
+    <li>
+        <a href="./tailwind.php">Tailwind</a>
+        [<a target="_blank" href="https://tailwindcss.com">https://tailwindcss.com</a>]
+    </li>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+
     <li><a href="./custom.php">Custom Template</a></li>
 </ul>

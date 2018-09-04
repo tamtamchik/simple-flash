@@ -180,6 +180,15 @@ class FactoryTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SpectreTemplate', get_class($template));
     }
 
+    /** @test
+     * @throws \Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException
+     */
+    public function testTailwindTemplate()
+    {
+        $template = \Tamtamchik\SimpleFlash\TemplateFactory::create(Templates::TAILWIND);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\TailwindTemplate', get_class($template));
+    }
+
     /** @test */
     public function testNotFoundTemplate()
     {
