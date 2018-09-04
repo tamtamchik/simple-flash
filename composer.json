@@ -1,48 +1,51 @@
 {
-    "name": "tamtamchik/simple-flash",
-    "type": "library",
-    "description": "Easy, framework agnostic flash notifications for PHP.",
-    "keywords": [
-        "flash",
-        "notifications",
-        "messages",
-        "agnostic"
-    ],
-    "homepage": "http://github.com/tamtamchik/simple-flash",
-    "minimum-stability": "stable",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Yuri Tkachenko",
-            "email": "yuri.tam.tkachenko@gmail.com",
-            "homepage": "http://tamtamchika.net"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "4.*",
-        "scrutinizer/ocular": "1.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Tamtamchik\\SimpleFlash\\": "src"
-        },
-        "files": [
-            "src/function.php"
-        ]
-    },
-    "scripts": {
-        "tests": "vendor/bin/phpunit",
-        "examples": "php -S localhost:8000 -t examples/"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.3.x-dev",
-            "1.2.x": "1.2.x-dev",
-            "1.1.x": "1.1.x-dev",
-            "1.0.x": "1.0.x-dev"
-        }
+  "name": "tamtamchik/simple-flash",
+  "type": "library",
+  "description": "Easy, framework agnostic flash notifications for PHP.",
+  "keywords": [
+    "flash",
+    "notifications",
+    "messages",
+    "agnostic"
+  ],
+  "homepage": "http://github.com/tamtamchik/simple-flash",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Yuri Tkachenko",
+      "email": "yuri.tam.tkachenko@gmail.com",
+      "homepage": "http://tamtamchika.net"
     }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "scrutinizer/ocular": "1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tamtamchik\\SimpleFlash\\": "src"
+    },
+    "files": [
+      "src/function.php"
+    ]
+  },
+  "scripts": {
+    "tests": "vendor/bin/phpunit",
+    "examples": "php -S localhost:8000 -t examples/"
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.3.x-dev",
+      "1.2.x": "1.2.x-dev",
+      "1.1.x": "1.1.x-dev",
+      "1.0.x": "1.0.x-dev"
+    }
+  }
 }

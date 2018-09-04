@@ -23,7 +23,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SIIMPLE_2));
     <title>Test Siimple 2 template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/siimple/latest/siimple.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/siimple/2.0.1/siimple.min.css">
 </head>
 <body>
 

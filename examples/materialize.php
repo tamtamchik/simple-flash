@@ -12,7 +12,7 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->info('Info message.')
     ->success('Success message!');
 
-flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP_4));
+flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
 
 ?>
 
@@ -20,9 +20,9 @@ flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP_4));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Bootstrap 4 default template example.</title>
+    <title>Test Materialize default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" />
 </head>
 <body>
 
@@ -39,9 +39,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP_4));
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 
 </body>
 </html>
