@@ -47,5 +47,9 @@
         <a href="./materialize.php">Materialize</a>
         [<a target="_blank" href="https://materializecss.com">https://materializecss.com</a>]
     </li>
+    <li>
+        <a href="./spectre.php">Spectre.css</a>
+        [<a target="_blank" href="https://picturepan2.github.io/spectre/">https://picturepan2.github.io/spectre/</a>]
+    </li>
     <li><a href="./custom.php">Custom Template</a></li>
 </ul>

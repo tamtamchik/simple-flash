@@ -22,6 +22,7 @@ Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [UIKit 2](https://getuikit.com/v2/)
 * [Bulma](http://bulma.io)
 * [Materialize](https://materializecss.com)
+* [Spectre.css](https://picturepan2.github.io/spectre)
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
@@ -133,6 +134,7 @@ Templates::SIIMPLE_2;
 Templates::SIIMPLE;
 Templates::BULMA;
 Templates::MATERIALIZE;
+Templates::SPECTRE;
 ```
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.

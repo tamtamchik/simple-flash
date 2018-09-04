@@ -21,4 +21,5 @@ class Templates
     const SIIMPLE      = 'siimple';
     const BULMA        = 'bulma';
     const MATERIALIZE  = 'materialize';
+    const SPECTRE      = 'spectre';
 }
