@@ -1,5 +1,6 @@
 # Simple Flash Messages
 
+[![Buy Me A Coffee][ico-coffee]][link-coffee]
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
@@ -261,6 +262,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
 [ico-insight]: https://img.shields.io/sensiolabs/i/64bbe2d0-055e-402a-8704-ea7dd6087b16.svg?style=flat-square
+[ico-coffee]: https://img.shields.io/badge/Buy%20Me%20A-Coffee-%236F4E37.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-travis]: https://travis-ci.org/tamtamchik/simple-flash
@@ -270,5 +272,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/tamtamchik
 [link-contributors]: ../../contributors
 [link-insight]: https://insight.sensiolabs.com/projects/64bbe2d0-055e-402a-8704-ea7dd6087b16
-
-[![Join the chat at https://gitter.im/tamtamchik/simple-flash](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tamtamchik/simple-flash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[link-coffee]: https://www.buymeacoffee.com/tamtamchik
