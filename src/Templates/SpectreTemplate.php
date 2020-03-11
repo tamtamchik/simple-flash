@@ -7,7 +7,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class SpectreTemplate.
- * Uses default Semantic UI markdown for flash messages.
+ * Uses default Spectre markdown for flash messages.
  */
 class SpectreTemplate extends BaseTemplate implements TemplateInterface
 {

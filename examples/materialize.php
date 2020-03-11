@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
     <meta charset="UTF-8">
     <title>Test Materialize default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 </head>
 <body>
 
@@ -33,13 +33,11 @@ flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
 
     <?php include_once '_menu.php'; ?>
 
-    <hr/>
-
     <?= flash() ?>
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class MaterializeTemplate.
- * Uses default Semantic UI markdown for flash messages.
+ * Uses default Materialize markdown for flash messages.
  */
 class MaterializeTemplate extends BaseTemplate implements TemplateInterface
 {

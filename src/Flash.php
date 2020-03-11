@@ -39,6 +39,7 @@ class Flash
      * Creates flash container from session.
      *
      * @param TemplateInterface|null $template
+     * @throws Exceptions\FlashTemplateNotFoundException
      */
     public function __construct(TemplateInterface $template = null)
     {
@@ -72,10 +73,11 @@ class Flash
     /**
      * Magic methods for static calls.
      *
-     * @param string $method    - method to invoke
-     * @param array  $arguments - arguments for method
+     * @param string $method - method to invoke
+     * @param array $arguments - arguments for method
      *
      * @return mixed
+     * @throws Exceptions\FlashTemplateNotFoundException
      */
     public static function __callStatic($method, array $arguments)
     {

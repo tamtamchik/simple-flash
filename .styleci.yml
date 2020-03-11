@@ -1,9 +1,0 @@
-linting: true
-
-enabled:
-  - align_equals
-  - logical_not_operators_with_spaces
-
-disabled:
-  - unalign_equals
-  - concat_without_spaces

@@ -7,13 +7,13 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class SiimpleTemplate.
- * Uses default Semantic UI markdown for flash messages.
+ * Uses default Siimple markdown for flash messages.
  */
 class SiimpleTemplate extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '';
     protected $postfix = '<br />';
-    protected $wrapper = '<div class="alert alert-%s">%s</div>';
+    protected $wrapper = '<div class="siimple-alert siimple-alert--%s">%s</div>';
 
     /**
      * Override base function to suite Bootstrap 3 alert naming.
@@ -25,7 +25,7 @@ class SiimpleTemplate extends BaseTemplate implements TemplateInterface
      */
     public function wrapMessages($messages, $type)
     {
-        $type = ($type == 'success') ? 'done' : $type;
+        $type = ($type == 'info') ? 'primary' : $type;
 
         return sprintf($this->getWrapper(), $type, $messages);
     }

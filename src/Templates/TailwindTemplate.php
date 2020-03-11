@@ -7,13 +7,13 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
  * Class TailwindTemplate.
- * Uses default Semantic UI markdown for flash messages.
+ * Uses custom Tailwind markdown for flash messages.
  */
 class TailwindTemplate extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '';
     protected $postfix = '<br />';
-    protected $wrapper = '<div class="bg-%s-lightest border border-%s-light text-%s-dark px-4 py-3 mb-3 rounded relative" role="alert"">%s</div>';
+    protected $wrapper = '<div class="bg-%s-300 border border-%s-400 text-%s-800 px-4 py-3 mb-3 rounded relative shadow" role="alert"">%s</div>';
 
     /**
      * Override base function to suite Bootstrap 3 alert naming.

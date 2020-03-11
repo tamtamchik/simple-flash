@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::BULMA));
     <meta charset="UTF-8">
     <title>Test Bulma default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.min.css" crossorigin="anonymous" />
 </head>
 <body>
 
@@ -32,8 +32,6 @@ flash()->setTemplate(TemplateFactory::create(Templates::BULMA));
 <div class="container" style="width: 600px;">
 
     <?php include_once '_menu.php'; ?>
-
-    <hr/>
 
     <?= flash() ?>
 </div>

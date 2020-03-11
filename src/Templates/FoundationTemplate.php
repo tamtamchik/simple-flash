@@ -6,17 +6,17 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
- * Class Semantic2Template.
- * Uses default Semantic UI markdown for flash messages.
+ * Class FoundationTemplate.
+ * Uses Foundation markdown for flash messages.
  */
-class Semantic2Template extends BaseTemplate implements TemplateInterface
+class FoundationTemplate extends BaseTemplate implements TemplateInterface
 {
     protected $prefix  = '<p>';
     protected $postfix = '</p>';
-    protected $wrapper = '<div class="ui message %s">%s</div>';
+    protected $wrapper = '<div class="callout %s">%s</div>';
 
     /**
-     * Override base function to suite Bootstrap 3 alert naming.
+     * Override base function to suite Foundation alert naming.
      *
      * @param $messages - message text
      * @param $type     - message type: success, info, warning, error
@@ -25,6 +25,9 @@ class Semantic2Template extends BaseTemplate implements TemplateInterface
      */
     public function wrapMessages($messages, $type)
     {
+        $type = ($type == 'info') ? 'primary' : $type;
+        $type = ($type == 'error') ? 'alert' : $type;
+
         return sprintf($this->getWrapper(), $type, $messages);
     }
 }

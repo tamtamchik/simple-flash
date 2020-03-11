@@ -2,15 +2,18 @@
 
 namespace Tamtamchik\SimpleFlash\Templates;
 
+use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
- * Class Siimple3Template.
- * Uses default Semantic UI markdown for flash messages.
+ * Class BootstrapTemplate.
+ * Uses default Bootstrap markdown for flash messages.
  */
-class Siimple3Template extends SiimpleTemplate implements TemplateInterface
+class BootstrapTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $wrapper = '<div class="siimple-alert siimple-alert--%s">%s</div>';
+    protected $prefix  = '';
+    protected $postfix = '<br />';
+    protected $wrapper = '<div class="alert alert-%s" role="alert">%s</div>';
 
     /**
      * Override base function to suite Bootstrap 3 alert naming.
@@ -22,7 +25,7 @@ class Siimple3Template extends SiimpleTemplate implements TemplateInterface
      */
     public function wrapMessages($messages, $type)
     {
-        $type = ($type == 'info') ? 'primary' : $type;
+        $type = ($type == 'error') ? 'danger' : $type;
 
         return sprintf($this->getWrapper(), $type, $messages);
     }
