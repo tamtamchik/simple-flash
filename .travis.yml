@@ -18,17 +18,17 @@ jobs:
 
 before_script:
   - if [ $TRAVIS_PHP_VERSION == '7.2' ] || [ $TRAVIS_PHP_VERSION == '7.3' ] || [ $TRAVIS_PHP_VERSION == '7.4' ]; then
-      composer remove phpunit/phpunit --dev
-      composer require phpunit/phpunit:^8 --dev
+      composer remove phpunit/phpunit --dev;
+      composer require phpunit/phpunit:^8 --dev;
     fi
   - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
   - if [ $TRAVIS_PHP_VERSION == '7.2' ] || [ $TRAVIS_PHP_VERSION == '7.3' ] || [ $TRAVIS_PHP_VERSION == '7.4' ]; then
-      vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+      vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
     else
-      vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover
+      vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover;
     fi
 
 after_script:
