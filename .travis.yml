@@ -19,13 +19,13 @@ jobs:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
-  - if [ $TRAVIS_PHP_VERSION >= '7.2 ]; then composer remove phpunit/phpunit --dev; fi
-  - if [ $TRAVIS_PHP_VERSION >= '7.2 ]; then composer require phpunit/phpunit:^8 --dev; fi
-  - if [ $TRAVIS_PHP_VERSION >= '7.2 ]; then find tests -name '*.php' -exec sed -i 's/PHPUnit_Framework_TestCase/PHPUnit\\Framework\\TestCase/' {} \; ; fi
+  - if [ $TRAVIS_PHP_VERSION >= '7.2' ]; then composer remove phpunit/phpunit --dev; fi
+  - if [ $TRAVIS_PHP_VERSION >= '7.2' ]; then composer require phpunit/phpunit:^8 --dev; fi
+  - if [ $TRAVIS_PHP_VERSION >= '7.2' ]; then find tests -name '*.php' -exec sed -i 's/PHPUnit_Framework_TestCase/PHPUnit\\Framework\\TestCase/' {} \; ; fi
 
 script:
-  - if [ $TRAVIS_PHP_VERSION >= '7.2 ]; then vendor/bin/phpunit --configuration phpunit.php7.xml --coverage-text --coverage-clover=coverage.clover; fi
-  - if [ $TRAVIS_PHP_VERSION < '7.2 ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover; fi
+  - if [ $TRAVIS_PHP_VERSION >= '7.2' ]; then vendor/bin/phpunit --configuration phpunit.php7.xml --coverage-text --coverage-clover=coverage.clover; fi
+  - if [ $TRAVIS_PHP_VERSION < '7.2' ]; then vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover; fi
 
 after_script:
   - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
