@@ -28,9 +28,7 @@ class Flash
     private static $engine;
 
     // Don't allow instantiation
-    final private function __clone()
-    {
-    }
+    final private function __clone() {}
 
     final public function __sleep()
     {
