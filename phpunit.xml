@@ -6,7 +6,7 @@
          verbose="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         convertWarningsToExceptions="false"
          processIsolation="false"
          stopOnFailure="false">
 
@@ -25,8 +25,6 @@
     <logging>
         <log type="tap" target="build/report.tap"/>
         <log type="junit" target="build/report.junit.xml"/>
-        <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true"/>
-        <log type="coverage-text" target="build/coverage.txt"/>
         <log type="coverage-text" target="php://output"/>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>

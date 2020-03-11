@@ -1,0 +1,251 @@
+diff --git a/tests/FactoryTest.php b/tests/FactoryTest.php
+index d0b1ab46e1f04df0ff19f59d40941d0c2bad787a..0f0c49faa44508382526cde4219fdac0447752e9 100644
+--- a/tests/FactoryTest.php
++++ b/tests/FactoryTest.php
+@@ -8,7 +8,7 @@ use Tamtamchik\SimpleFlash\Templates;
+ require_once __DIR__ . '/../vendor/autoload.php';
+ require_once 'BadTemplate.php';
+ 
+-class FactoryTest extends PHPUnit_Framework_TestCase
++class FactoryTest extends PHPUnit\Framework\TestCase
+ {
+     private $templates = [];
+ 
+@@ -16,7 +16,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
+      * Prepare setup before tests.
+      * @throws ReflectionException
+      */
+-    public function setUp()
++    protected function setUp(): void
+     {
+         $templatesReflection = new ReflectionClass('Tamtamchik\\SimpleFlash\\Templates');
+         $this->templates = $templatesReflection->getConstants();
+@@ -41,7 +41,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
+ 
+         $content = $flash->info('Testing templates')->display();
+ 
+-        $this->assertContains($text, $content);
++        $this->assertStringContainsString($text, $content);
+ 
+         unset($flash);
+     }
+@@ -162,7 +162,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
+         try {
+             TemplateFactory::create('ABCTemplate');
+         } catch (FlashTemplateNotFoundException $e) {
+-            $this->assertContains('Template "ABCTemplate" not found!', $e->getMessage());
++            $this->assertStringContainsString('Template "ABCTemplate" not found!', $e->getMessage());
+         }
+     }
+ }
+diff --git a/tests/FlashTest.php b/tests/FlashTest.php
+index d38c3024335f039b47bbd70ee1b7389d6d8204f2..316c10a0db9b287c5a2b2634d7be502c7c511188 100644
+--- a/tests/FlashTest.php
++++ b/tests/FlashTest.php
+@@ -12,7 +12,7 @@ session_start();
+ require_once __DIR__ . '/../vendor/autoload.php';
+ require_once 'BadTemplate.php';
+ 
+-class FlashTest extends PHPUnit_Framework_TestCase
++class FlashTest extends PHPUnit\Framework\TestCase
+ {
+     /** @test */
+     public function testStaticCall()
+@@ -54,7 +54,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         }
+ 
+         $this->assertTrue($flash->hasMessages());
+-        $this->assertContains('Test info message', $flash->display());
++        $this->assertStringContainsString('Test info message', $flash->display());
+         $this->assertFalse($flash->hasMessages());
+     }
+ 
+@@ -67,7 +67,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $this->assertFalse(true); // should fail the test
+         }
+ 
+-        $this->assertContains('success', $flash->display());
++        $this->assertStringContainsString('success', $flash->display());
+     }
+ 
+     /** @test */
+@@ -80,8 +80,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         }
+ 
+         $content = $flash->display();
+-        $this->assertContains('Test info message 1', $content);
+-        $this->assertContains('Test info message 2', $content);
++        $this->assertStringContainsString('Test info message 1', $content);
++        $this->assertStringContainsString('Test info message 2', $content);
+     }
+ 
+     /** @test */
+@@ -93,7 +93,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $this->assertFalse(true); // should fail the test
+         }
+ 
+-        $this->assertContains('info', $flash->display());
++        $this->assertStringContainsString('info', $flash->display());
+     }
+ 
+     /** @test */
+@@ -110,10 +110,10 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         }
+ 
+         $content = $flash->display();
+-        $this->assertContains('success', $content);
+-        $this->assertContains('info', $content);
+-        $this->assertContains('success', $content);
+-        $this->assertContains('danger', $content);
++        $this->assertStringContainsString('success', $content);
++        $this->assertStringContainsString('info', $content);
++        $this->assertStringContainsString('success', $content);
++        $this->assertStringContainsString('danger', $content);
+     }
+ 
+     /** @test */
+@@ -129,8 +129,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
+ 
+         $content = $flash->display('success');
+ 
+-        $this->assertContains('Dummy 1', $content);
+-        $this->assertNotContains('Dummy 2', $content);
++        $this->assertStringContainsString('Dummy 1', $content);
++        $this->assertStringNotContainsString('Dummy 2', $content);
+     }
+ 
+     /** @test */
+@@ -156,7 +156,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         $flash->clear();
+ 
+         $flash->message('Test message');
+-        $this->assertContains('Test message', "{$flash}");
++        $this->assertStringContainsString('Test message', "{$flash}");
+     }
+ 
+     /** @test */
+@@ -178,7 +178,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             flash('Checking shared');
+ 
+             $content = flash()->display();
+-            $this->assertContains('Checking shared', $content);
++            $this->assertStringContainsString('Checking shared', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -217,10 +217,10 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             flash()->error('Info message')->warning('Info message')->info('Info message')->success('Info message');
+ 
+             $content = flash()->display();
+-            $this->assertContains('danger', $content);
+-            $this->assertContains('warning', $content);
+-            $this->assertContains('info', $content);
+-            $this->assertContains('success', $content);
++            $this->assertStringContainsString('danger', $content);
++            $this->assertStringContainsString('warning', $content);
++            $this->assertStringContainsString('info', $content);
++            $this->assertStringContainsString('success', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -232,11 +232,11 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         try {
+             flash('Testing toString', 'success');
+             $flash1 = new Flash();
+-            $this->assertContains('toString', (string)$flash1);
++            $this->assertStringContainsString('toString', (string)$flash1);
+ 
+             flash('Testing toString', 'success');
+             $flash2 = flash();
+-            $this->assertContains('toString', (string)$flash2);
++            $this->assertStringContainsString('toString', (string)$flash2);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -265,8 +265,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             flash($errors, 'error');
+ 
+             $content = flash()->display();
+-            $this->assertContains('Invalid name', $content);
+-            $this->assertContains('Invalid email', $content);
++            $this->assertStringContainsString('Invalid name', $content);
++            $this->assertStringContainsString('Invalid email', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -298,8 +298,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
+ 
+         $this->assertEquals('', $prefix);
+         $this->assertNotEquals($contentOriginal, $content);
+-        $this->assertContains('Testing templates', $content);
+-        $this->assertNotContains($postfix, $content);
++        $this->assertStringContainsString('Testing templates', $content);
++        $this->assertStringNotContainsString($postfix, $content);
+     }
+ 
+     /** @test */
+@@ -312,7 +312,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $flash->info('Testing templates');
+ 
+             $content = $flash->display();
+-            $this->assertContains('callout', $content);
++            $this->assertStringContainsString('callout', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -327,7 +327,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             flash('Testing templates', 'info', $template);
+ 
+             $content = flash()->display();
+-            $this->assertContains('callout', $content);
++            $this->assertStringContainsString('callout', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -343,7 +343,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $flash->info('Testing templates');
+ 
+             $content = $flash->setTemplate($template)->display();
+-            $this->assertContains('callout', $content);
++            $this->assertStringContainsString('callout', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -359,8 +359,8 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $flash->info('Testing templates');
+ 
+             $content = $flash->display();
+-            $this->assertContains('AAAAAAAA', $content);
+-            $this->assertContains('BBBBBBBB', $content);
++            $this->assertStringContainsString('AAAAAAAA', $content);
++            $this->assertStringContainsString('BBBBBBBB', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -375,7 +375,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             Flash::info('Testing static');
+ 
+             $content = Flash::display();
+-            $this->assertContains('Testing static', $content);
++            $this->assertStringContainsString('Testing static', $content);
+         } catch (FlashTemplateNotFoundException $e) {
+             $this->assertFalse(true); // should fail the test
+         }
+@@ -404,7 +404,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+         try {
+             serialize($flash);
+         } catch (FlashSingletonException $e) {
+-            $this->assertContains('Serialization of Flash is not allowed!', $e->getMessage());
++            $this->assertStringContainsString('Serialization of Flash is not allowed!', $e->getMessage());
+         }
+     }
+ 
+@@ -422,7 +422,7 @@ class FlashTest extends PHPUnit_Framework_TestCase
+             $flash->info('Testing templates');
+             $flash->setTemplate($template)->display();
+         } catch (FlashTemplateException $e) {
+-            $this->assertContains('Please, make sure you have prefix, postfix and wrapper defined!', $e->getMessage());
++            $this->assertStringContainsString('Please, make sure you have prefix, postfix and wrapper defined!', $e->getMessage());
+         }
+     }
+ }
