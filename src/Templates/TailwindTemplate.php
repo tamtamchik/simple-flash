@@ -11,7 +11,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class TailwindTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix  = '';
+    protected $prefix = '';
     protected $postfix = '<br />';
     protected $wrapper = '<div class="bg-%s-300 border border-%s-400 text-%s-800 px-4 py-3 mb-3 rounded relative shadow" role="alert"">%s</div>';
 
@@ -19,7 +19,7 @@ class TailwindTemplate extends BaseTemplate implements TemplateInterface
      * Override base function to suite Bootstrap 3 alert naming.
      *
      * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
+     * @param $type - message type: success, info, warning, error
      *
      * @return string
      */

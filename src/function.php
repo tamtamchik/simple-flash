@@ -5,7 +5,7 @@ use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 
-if ( ! function_exists('flash')) {
+if (!function_exists('flash')) {
 
     /**
      * Wrapper for flash object to be used as global function.
@@ -21,7 +21,7 @@ if ( ! function_exists('flash')) {
     {
         $flash = new Flash($template);
 
-        if ( ! empty($message)) {
+        if (!empty($message)) {
             return $flash->message($message, $type);
         }
 

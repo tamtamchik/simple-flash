@@ -8,15 +8,15 @@ namespace Tamtamchik\SimpleFlash;
  */
 class Templates
 {
-    const BASE        = 'bootstrap';
-    const BOOTSTRAP   = 'bootstrap';
-    const FOUNDATION  = 'foundation';
-    const BULMA       = 'bulma';
+    const BASE = 'bootstrap';
+    const BOOTSTRAP = 'bootstrap';
+    const FOUNDATION = 'foundation';
+    const BULMA = 'bulma';
     const MATERIALIZE = 'materialize';
-    const TAILWIND    = 'tailwind';
-    const PRIMER      = 'primer';
-    const UIKIT       = 'uikit';
-    const SEMANTIC    = 'semantic';
-    const SPECTRE     = 'spectre';
-    const SIIMPLE     = 'siimple';
+    const TAILWIND = 'tailwind';
+    const PRIMER = 'primer';
+    const UIKIT = 'uikit';
+    const SEMANTIC = 'semantic';
+    const SPECTRE = 'spectre';
+    const SIIMPLE = 'siimple';
 }

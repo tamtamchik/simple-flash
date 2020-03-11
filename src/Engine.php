@@ -30,7 +30,7 @@ class Engine
     {
         $this->template = $template;
 
-        if ( ! array_key_exists($this->key, $_SESSION)) {
+        if (!array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
         }
     }
@@ -39,7 +39,7 @@ class Engine
      * Base method for adding messages to flash.
      *
      * @param string $message - message text
-     * @param string $type    - message type: success, info, warning, error
+     * @param string $type - message type: success, info, warning, error
      *
      * @return Engine $this
      */
@@ -60,7 +60,7 @@ class Engine
      * Add message to $_SESSION.
      *
      * @param string $message - message text
-     * @param string $type    - message type: success, info, warning, error
+     * @param string $type - message type: success, info, warning, error
      *
      * @return Engine $this
      */
@@ -68,11 +68,11 @@ class Engine
     {
         $type = strip_tags($type);
 
-        if (empty($message) || ! in_array($type, $this->types)) {
+        if (empty($message) || !in_array($type, $this->types)) {
             return $this;
         }
 
-        if ( ! array_key_exists($type, $_SESSION[$this->key])) {
+        if (!array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];
         }
 
@@ -92,7 +92,7 @@ class Engine
     {
         $result = '';
 
-        if ( ! is_null($type) && ! in_array($type, $this->types)) {
+        if (!is_null($type) && !in_array($type, $this->types)) {
             return $result;
         }
 
@@ -118,12 +118,12 @@ class Engine
      */
     public function hasMessages($type = null)
     {
-        if ( ! is_null($type)) {
-            return ! empty($_SESSION[$this->key][$type]);
+        if (!is_null($type)) {
+            return !empty($_SESSION[$this->key][$type]);
         }
-        
+
         foreach ($this->types as $type) {
-            if ( ! empty($_SESSION[$this->key][$type])) {
+            if (!empty($_SESSION[$this->key][$type])) {
                 return true;
             }
         }
@@ -152,8 +152,8 @@ class Engine
     /**
      * Builds messages for a single type.
      *
-     * @param array  $flashes - array of messages to show
-     * @param string $type    - message type: success, info, warning, error
+     * @param array $flashes - array of messages to show
+     * @param string $type - message type: success, info, warning, error
      *
      * @return string - HTML with flash messages
      */

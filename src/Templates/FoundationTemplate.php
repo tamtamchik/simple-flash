@@ -11,7 +11,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class FoundationTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix  = '<p>';
+    protected $prefix = '<p>';
     protected $postfix = '</p>';
     protected $wrapper = '<div class="callout %s">%s</div>';
 
@@ -19,7 +19,7 @@ class FoundationTemplate extends BaseTemplate implements TemplateInterface
      * Override base function to suite Foundation alert naming.
      *
      * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
+     * @param $type - message type: success, info, warning, error
      *
      * @return string
      */

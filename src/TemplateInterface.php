@@ -16,7 +16,7 @@ interface TemplateInterface
 
     /**
      * @param string $messages - messages text
-     * @param string $type     - message type: success, info, warning, error
+     * @param string $type - message type: success, info, warning, error
      *
      * @return string
      */

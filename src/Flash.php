@@ -28,7 +28,9 @@ class Flash
     private static $engine;
 
     // Don't allow instantiation
-    final private function __clone() { }
+    final private function __clone()
+    {
+    }
 
     final public function __sleep()
     {
@@ -47,7 +49,7 @@ class Flash
             $template = TemplateFactory::create();
         }
 
-        if ( ! $assigned || ! isset(self::$engine)) {
+        if (!$assigned || !isset(self::$engine)) {
             self::$engine = new Engine($template);
         }
     }
@@ -55,8 +57,8 @@ class Flash
     /**
      * Invoke Engine methods.
      *
-     * @param string $method    - method to invoke
-     * @param array  $arguments - arguments for method
+     * @param string $method - method to invoke
+     * @param array $arguments - arguments for method
      *
      * @return mixed
      */
@@ -89,8 +91,8 @@ class Flash
     /**
      * Magic methods for instances calls.
      *
-     * @param string $method    - method to invoke
-     * @param array  $arguments - arguments for method
+     * @param string $method - method to invoke
+     * @param array $arguments - arguments for method
      *
      * @return mixed
      */

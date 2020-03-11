@@ -11,7 +11,7 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class SiimpleTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix  = '';
+    protected $prefix = '';
     protected $postfix = '<br />';
     protected $wrapper = '<div class="siimple-alert siimple-alert--%s">%s</div>';
 
@@ -19,7 +19,7 @@ class SiimpleTemplate extends BaseTemplate implements TemplateInterface
      * Override base function to suite Bootstrap 3 alert naming.
      *
      * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
+     * @param $type - message type: success, info, warning, error
      *
      * @return string
      */
