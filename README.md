@@ -24,6 +24,9 @@ Easy, framework agnostic flash notifications for PHP. Inspired by [laracasts/fla
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
+> **The documentation below is for version 2.x!**  
+> **If you are looking the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).**
+
 ## Install
 
 Via [Composer](http://getcomposer.org).
