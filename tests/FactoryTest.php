@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateFactory;
@@ -8,7 +9,7 @@ use Tamtamchik\SimpleFlash\Templates;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';
 
-class FactoryTest extends PHPUnit\Framework\TestCase
+class FactoryTest extends TestCase
 {
     private $templates = [];
 
