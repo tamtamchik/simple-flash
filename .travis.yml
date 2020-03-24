@@ -11,9 +11,6 @@ php:
   - 7.3
   - 7.4
 
-env:
-  - LEGACY=false
-
 jobs:
   include:
     - php: 5.4
