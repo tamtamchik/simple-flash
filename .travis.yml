@@ -11,20 +11,38 @@ php:
   - 7.3
   - 7.4
 
+env:
+  - LEGACY=false
+
+jobs:
+  include:
+    - php: 5.4
+      env:
+        - LEGACY=true
+        - COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+    - php: 5.5
+      env: LEGACY=true
+    - php: 5.6
+      env: LEGACY=true
+    - php: 7.0
+      env: LEGACY=true
+    - php: 7.1
+      env: LEGACY=true
+
 before_script:
-  - if [[ $TRAVIS_PHP_VERSION != '7.2' && $TRAVIS_PHP_VERSION != '7.3' && $TRAVIS_PHP_VERSION != '7.4' ]]; then
+  - if [[ $LEGACY == 'true' ]]; then
       composer remove phpunit/phpunit --dev;
       composer require phpunit/phpunit:^4 --dev;
       ./legacy.sh;
     fi
   - "travis_retry composer self-update"
-  - "travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-dist"
+  - "travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source"
 
 script:
-  - if [[ $TRAVIS_PHP_VERSION != '7.2' && $TRAVIS_PHP_VERSION != '7.3' && $TRAVIS_PHP_VERSION != '7.4' ]]; then
-      vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
-    else
+  - if [[ $LEGACY == 'true' ]]; then
       vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover;
+    else
+      vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
     fi
 
 after_script:
