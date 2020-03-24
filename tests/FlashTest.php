@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateException;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
@@ -12,7 +13,7 @@ session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';
 
-class FlashTest extends PHPUnit\Framework\TestCase
+class FlashTest extends TestCase
 {
     /** @test */
     public function testStaticCall()
