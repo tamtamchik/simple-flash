@@ -23,16 +23,17 @@ jobs:
       env: LEGACY=false
 
 before_script:
-  - if [[ $LEGACY == 'true' ]]; then
+  - travis_retry composer self-update -q
+  - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
+  - if [ "$LEGACY" -eq "true" ]; then
       travis_retry composer remove phpunit/phpunit --dev;
       travis_retry composer require phpunit/phpunit:^4.8.36 --dev;
       ./legacy.sh;
     fi
-  - travis_retry composer self-update
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - if [[ $LEGACY == 'true' ]]; then
+  - if [ "$LEGACY" -eq "true" ]; then
       vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover;
     else
       vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
