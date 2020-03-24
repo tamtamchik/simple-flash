@@ -8,7 +8,7 @@ use Tamtamchik\SimpleFlash\Templates;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';
 
-class FactoryTest extends PHPUnit_Framework_TestCase
+class FactoryTest extends PHPUnit\Framework\TestCase
 {
     private $templates = [];
 
@@ -16,7 +16,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
      * Prepare setup before tests.
      * @throws ReflectionException
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $templatesReflection = new ReflectionClass('Tamtamchik\\SimpleFlash\\Templates');
         $this->templates = $templatesReflection->getConstants();
@@ -41,7 +41,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
 
         $content = $flash->info('Testing templates')->display();
 
-        $this->assertContains($text, $content);
+        $this->assertStringContainsString($text, $content);
 
         unset($flash);
     }
@@ -162,7 +162,7 @@ class FactoryTest extends PHPUnit_Framework_TestCase
         try {
             TemplateFactory::create('ABCTemplate');
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertContains('Template "ABCTemplate" not found!', $e->getMessage());
+            $this->assertStringContainsString('Template "ABCTemplate" not found!', $e->getMessage());
         }
     }
 }
