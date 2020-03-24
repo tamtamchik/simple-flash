@@ -12,7 +12,7 @@ php:
   - 7.4
 
 before_script:
-  - if [ $TRAVIS_PHP_VERSION != '7.2' ] || [ $TRAVIS_PHP_VERSION != '7.3' ] || [ $TRAVIS_PHP_VERSION != '7.4' ]; then
+  - if [[ $TRAVIS_PHP_VERSION != '7.2' && $TRAVIS_PHP_VERSION != '7.3' && $TRAVIS_PHP_VERSION != '7.4' ]]; then
       composer remove phpunit/phpunit --dev;
       composer require phpunit/phpunit:^4 --dev;
       ./legacy.sh;
@@ -21,7 +21,7 @@ before_script:
   - "travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-dist"
 
 script:
-  - if [ $TRAVIS_PHP_VERSION != '7.2' ] || [ $TRAVIS_PHP_VERSION != '7.3' ] || [ $TRAVIS_PHP_VERSION != '7.4' ]; then
+  - if [[ $TRAVIS_PHP_VERSION != '7.2' && $TRAVIS_PHP_VERSION != '7.3' && $TRAVIS_PHP_VERSION != '7.4' ]]; then
       vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
     else
       vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover;
