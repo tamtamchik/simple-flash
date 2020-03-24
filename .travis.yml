@@ -24,12 +24,12 @@ jobs:
 
 before_script:
   - if [[ $LEGACY == 'true' ]]; then
-      composer remove phpunit/phpunit --dev;
-      composer require phpunit/phpunit:^4 --dev;
+      travis_retry composer remove phpunit/phpunit --dev;
+      travis_retry composer require phpunit/phpunit:^4 --dev;
       ./legacy.sh;
     fi
-  - "travis_retry composer self-update"
-  - "travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source"
+  - travis_retry composer self-update
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
   - if [[ $LEGACY == 'true' ]]; then
