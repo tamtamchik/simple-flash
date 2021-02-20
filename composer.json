@@ -52,5 +52,8 @@
       "1.1.x": "1.1.x-dev",
       "1.0.x": "1.0.x-dev"
     }
+  },
+  "archive": {
+    "exclude": ["/examples", "/issues", "/tests"]
   }
 }
