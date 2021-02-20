@@ -1,7 +1,9 @@
 <?php
 
+use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 use Tamtamchik\SimpleFlash\BaseTemplate;
+use Tamtamchik\SimpleFlash\Templates;
 
 if (!session_id()) @session_start();
 
@@ -30,7 +32,7 @@ class Bootstrap5DismissibleTemplate extends BaseTemplate implements TemplateInte
     }
 }
 
-flash()->setTemplate(new Bootstrap5DismissibleTemplate())
+flash()
     ->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
@@ -49,7 +51,12 @@ flash()->setTemplate(new Bootstrap5DismissibleTemplate())
 <body>
 
 <div class="container" style="width: 600px; margin: 1em auto;">
-    <?= flash() ?>
+    <?php
+    if (flash()->hasMessages('error')) {
+        echo flash()->setTemplate(new Bootstrap5DismissibleTemplate())->display('error');
+    }
+    echo flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP))->display()
+    ?>
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
