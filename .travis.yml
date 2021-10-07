@@ -3,41 +3,18 @@ dist: trusty
 
 jobs:
   include:
-    - php: 5.4
-      env:
-        - LEGACY=true
-        - COMPOSER_FLAGS="--prefer-lowest"
-    - php: 5.5
-      env: LEGACY=true
-    - php: 5.6
-      env: LEGACY=true
-    - php: 7.0
-      env: LEGACY=true
-    - php: 7.1
-      env: LEGACY=true
-    - php: 7.2
-      env: LEGACY=false
     - php: 7.3
-      env: LEGACY=false
+      env: COMPOSER_FLAGS="--prefer-lowest"
     - php: 7.4
-      env: LEGACY=false
+    - php: 8.0
 
 before_script:
   - travis_retry composer self-update -q
   - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
-  - if [[ $LEGACY == "true" ]]; then
-      travis_retry composer remove phpunit/phpunit --dev;
-      travis_retry composer require phpunit/phpunit:^4.8.36 --dev;
-      ./legacy.sh;
-    fi
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - if [[ $LEGACY == "true" ]]; then
-      vendor/bin/phpunit --configuration phpunit.legacy.xml --coverage-text --coverage-clover=coverage.clover;
-    else
-      vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
-    fi
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover;
 
 after_script:
   - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover

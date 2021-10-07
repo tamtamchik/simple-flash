@@ -8,22 +8,22 @@
     "messages",
     "agnostic"
   ],
-  "homepage": "http://github.com/tamtamchik/simple-flash",
+  "homepage": "https://github.com/tamtamchik/simple-flash",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
       "name": "Yuri Tkachenko",
       "email": "yuri.tam.tkachenko@gmail.com",
-      "homepage": "http://tamtamchika.net"
+      "homepage": "https://tamtamchika.net"
     }
   ],
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=7.3"
   },
   "require-dev": {
-    "scrutinizer/ocular": "1.*",
-    "phpunit/phpunit": "^8"
+    "scrutinizer/ocular": "^1",
+    "phpunit/phpunit": "^9"
   },
   "autoload": {
     "psr-4": {
@@ -47,7 +47,8 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "2.0.x-dev",
+      "dev-master": "3.0.x-dev",
+      "2.0.x": "2.0.x-dev",
       "1.2.x": "1.2.x-dev",
       "1.1.x": "1.1.x-dev",
       "1.0.x": "1.0.x-dev"
