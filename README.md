@@ -258,7 +258,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-coffee]: https://img.shields.io/badge/Buy%20Me%20A-Coffee-%236F4E37.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
-[link-travis]: https://travis-ci.org/tamtamchik/simple-flash
+[link-travis]: https://app.travis-ci.com/github/tamtamchik/simple-flash
 [link-scrutinizer]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash
 [link-downloads]: https://packagist.org/packages/tamtamchik/simple-flash
