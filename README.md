@@ -130,7 +130,6 @@ Templates::PRIMER;
 Templates::UIKIT;
 Templates::SEMANTIC;
 Templates::SPECTRE;
-Templates::SIIMPLE;
 ```
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.
