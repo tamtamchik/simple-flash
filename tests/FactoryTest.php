@@ -106,15 +106,6 @@ class FactoryTest extends TestCase
     /** @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testSiimpleTemplate()
-    {
-        $template = TemplateFactory::create(Templates::SIIMPLE);
-        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SiimpleTemplate', get_class($template));
-    }
-
-    /** @test
-     * @throws FlashTemplateNotFoundException
-     */
     public function testBulmaTemplate()
     {
         $template = TemplateFactory::create(Templates::BULMA);

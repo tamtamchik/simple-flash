@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SPECTRE));
     <meta charset="UTF-8">
     <title>Test Spectre.css default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.8/spectre.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css" />
     <style>
         /* Custom margins for Spectre.css toasts */
         .toast {

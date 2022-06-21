@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::FOUNDATION));
     <meta charset="UTF-8">
     <title>Test Foundation template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.1/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/css/foundation.min.css" integrity="sha512-TgmH0v8FUwmsr3yDgd5PTCgR6lRZ2Q5c7KsUNTHcoxZpOExCX16MYECIL4xdRQOhQlz7pCnZlmA4zda58QWxBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -35,10 +35,6 @@ flash()->setTemplate(TemplateFactory::create(Templates::FOUNDATION));
 
     <?= flash() ?>
 </div>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.1/js/foundation.min.js"></script>
 
 </body>
 </html>

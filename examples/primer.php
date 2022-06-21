@@ -22,7 +22,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::PRIMER));
     <meta charset="UTF-8">
     <title>Test Premier template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/14.2.0/primer.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/20.2.3/primer.min.css" integrity="sha512-+79KFmNBldu8KvXWMyY6nu2wGb4oukBBoQX1nMu4T//5W8SBSSdSRiiCGsH2uP2OzIWqSTXGTwfCL914oQi6Ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom CSS for Primer flash styles separation. */
         .flash {

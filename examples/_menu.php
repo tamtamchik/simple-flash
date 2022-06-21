@@ -35,10 +35,6 @@
         <a href="./spectre.php">Spectre.css</a>
         [<a target="_blank" href="https://picturepan2.github.io/spectre/">https://picturepan2.github.io/spectre/</a>]
     </li>
-    <li>
-        <a href="./siimple.php">Siimple</a>
-        [<a target="_blank" href="https://www.siimple.xyz">https://www.siimple.xyz</a>]
-    </li>
     <li><a href="./custom.php">Custom Template</a></li>
 </ul>
 

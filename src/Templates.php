@@ -18,5 +18,4 @@ class Templates
     public const UIKIT = 'uikit';
     public const SEMANTIC = 'semantic';
     public const SPECTRE = 'spectre';
-    public const SIIMPLE = 'siimple';
 }

@@ -19,7 +19,7 @@ class CustomTemplate extends BaseTemplate implements TemplateInterface
      *
      * @return string
      */
-    public function wrapMessages(string $messages, string $type)
+    public function wrapMessages(string $messages, string $type): string
     {
         return sprintf($this->getWrapper(), $type, $messages);
     }

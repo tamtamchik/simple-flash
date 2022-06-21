@@ -27,7 +27,7 @@ class TailwindTemplate extends BaseTemplate implements TemplateInterface
     {
         $type = ($type == 'success') ? 'green' : $type;
         $type = ($type == 'info') ? 'blue' : $type;
-        $type = ($type == 'warning') ? 'orange' : $type;
+        $type = ($type == 'warning') ? 'yellow' : $type;
         $type = ($type == 'error') ? 'red' : $type;
 
         return sprintf($this->getWrapper(), $type, $type, $type, $messages);
