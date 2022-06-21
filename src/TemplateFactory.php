@@ -17,7 +17,7 @@ class TemplateFactory
      * @return TemplateInterface
      * @throws FlashTemplateNotFoundException
      */
-    public static function create($name = Templates::BASE)
+    public static function create(string $name = Templates::BASE): TemplateInterface
     {
         $class = __NAMESPACE__ . '\\Templates\\' . ucwords($name) . 'Template';
 

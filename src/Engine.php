@@ -38,12 +38,12 @@ class Engine
     /**
      * Base method for adding messages to flash.
      *
-     * @param string $message - message text
+     * @param string|string[] $message - message text
      * @param string $type - message type: success, info, warning, error
      *
      * @return Engine $this
      */
-    public function message($message = '', $type = 'info')
+    public function message($message = '', string $type = 'info'): Engine
     {
         if (is_array($message)) {
             foreach ($message as $issue) {
@@ -64,7 +64,7 @@ class Engine
      *
      * @return Engine $this
      */
-    protected function addMessage($message = '', $type = 'info')
+    protected function addMessage(string $message = '', string $type = 'info'): Engine
     {
         $type = strip_tags($type);
 
@@ -84,11 +84,11 @@ class Engine
     /**
      * Returns Bootstrap ready HTML for Engine messages.
      *
-     * @param string $type - message type: success, info, warning, error
+     * @param string|null $type - message type: success, info, warning, error
      *
      * @return string - HTML with flash messages
      */
-    public function display($type = null)
+    public function display(string $type = null): string
     {
         $result = '';
 
@@ -112,11 +112,11 @@ class Engine
     /**
      * Returns if there are any messages in container.
      *
-     * @param string $type - message type: success, info, warning, error
+     * @param string|null $type - message type: success, info, warning, error
      *
      * @return bool
      */
-    public function hasMessages($type = null)
+    public function hasMessages(string $type = null): bool
     {
         if (!is_null($type)) {
             return !empty($_SESSION[$this->key][$type]);
@@ -134,11 +134,11 @@ class Engine
     /**
      * Clears messages from session store.
      *
-     * @param string $type - message type: success, info, warning, error
+     * @param string|null $type - message type: success, info, warning, error
      *
      * @return Engine $this
      */
-    public function clear($type = null)
+    public function clear(string $type = null): Engine
     {
         if (is_null($type)) {
             $_SESSION[$this->key] = [];
@@ -157,7 +157,7 @@ class Engine
      *
      * @return string - HTML with flash messages
      */
-    protected function buildMessages(array $flashes, $type)
+    protected function buildMessages(array $flashes, string $type): string
     {
         $messages = '';
         foreach ($flashes as $msg) {
@@ -184,7 +184,7 @@ class Engine
      *
      * @return Engine $this
      */
-    public function error($message)
+    public function error($message): Engine
     {
         return $this->message($message, 'error');
     }
@@ -196,7 +196,7 @@ class Engine
      *
      * @return Engine $this
      */
-    public function warning($message)
+    public function warning($message): Engine
     {
         return $this->message($message, 'warning');
     }
@@ -208,9 +208,9 @@ class Engine
      *
      * @return Engine $this
      */
-    public function info($message)
+    public function info($message): Engine
     {
-        return $this->message($message, 'info');
+        return $this->message($message);
     }
 
     /**
@@ -220,7 +220,7 @@ class Engine
      *
      * @return Engine $this
      */
-    public function success($message)
+    public function success($message): Engine
     {
         return $this->message($message, 'success');
     }
@@ -232,7 +232,7 @@ class Engine
      *
      * @return Engine $this
      */
-    public function setTemplate(TemplateInterface $template)
+    public function setTemplate(TemplateInterface $template): Engine
     {
         $this->template = $template;
 
@@ -244,7 +244,7 @@ class Engine
      *
      * @return TemplateInterface
      */
-    public function getTemplate()
+    public function getTemplate(): ?TemplateInterface
     {
         return $this->template;
     }

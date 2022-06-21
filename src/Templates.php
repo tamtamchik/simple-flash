@@ -4,19 +4,19 @@ namespace Tamtamchik\SimpleFlash;
 
 /**
  * Class Templates.
- * Collection of available out of the box templates.
+ * Collection of available out-of-the-box templates.
  */
 class Templates
 {
-    const BASE = 'bootstrap';
-    const BOOTSTRAP = 'bootstrap';
-    const FOUNDATION = 'foundation';
-    const BULMA = 'bulma';
-    const MATERIALIZE = 'materialize';
-    const TAILWIND = 'tailwind';
-    const PRIMER = 'primer';
-    const UIKIT = 'uikit';
-    const SEMANTIC = 'semantic';
-    const SPECTRE = 'spectre';
-    const SIIMPLE = 'siimple';
+    public const BASE = 'bootstrap';
+    public const BOOTSTRAP = 'bootstrap';
+    public const FOUNDATION = 'foundation';
+    public const BULMA = 'bulma';
+    public const MATERIALIZE = 'materialize';
+    public const TAILWIND = 'tailwind';
+    public const PRIMER = 'primer';
+    public const UIKIT = 'uikit';
+    public const SEMANTIC = 'semantic';
+    public const SPECTRE = 'spectre';
+    public const SIIMPLE = 'siimple';
 }

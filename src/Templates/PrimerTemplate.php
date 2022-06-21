@@ -18,12 +18,12 @@ class PrimerTemplate extends BaseTemplate implements TemplateInterface
     /**
      * Override base function to suite Bootstrap 3 alert naming.
      *
-     * @param $messages - message text
-     * @param $type - message type: success, info, warning, error
+     * @param string $messages - message text
+     * @param string $type - message type: success, info, warning, error
      *
      * @return string
      */
-    public function wrapMessages($messages, $type)
+    public function wrapMessages(string $messages, string $type): string
     {
         $type = ($type == 'warning') ? 'warn' : $type;
 

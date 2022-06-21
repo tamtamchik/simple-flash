@@ -12,7 +12,7 @@ interface TemplateInterface
      *
      * @return mixed
      */
-    public function wrapMessage($message);
+    public function wrapMessage(string $message);
 
     /**
      * @param string $messages - messages text
@@ -20,41 +20,41 @@ interface TemplateInterface
      *
      * @return string
      */
-    public function wrapMessages($messages, $type);
+    public function wrapMessages(string $messages, string $type): string;
 
     /**
      * @return string
      */
-    public function getPrefix();
+    public function getPrefix(): string;
 
     /**
      * @return string
      */
-    public function getPostfix();
+    public function getPostfix(): string;
 
     /**
      * @return string
      */
-    public function getWrapper();
+    public function getWrapper(): string;
 
     /**
      * @param string $prefix - default: '<p>'
      *
      * @return TemplateInterface
      */
-    public function setPrefix($prefix);
+    public function setPrefix(string $prefix): TemplateInterface;
 
     /**
      * @param string $postfix - default: '</p>';
      *
      * @return TemplateInterface
      */
-    public function setPostfix($postfix);
+    public function setPostfix(string $postfix): TemplateInterface;
 
     /**
      * @param string $wrapper - default: '<div class="alert alert-%s" role="alert">%s</div>'
      *
      * @return TemplateInterface
      */
-    public function setWrapper($wrapper);
+    public function setWrapper(string $wrapper): TemplateInterface;
 }

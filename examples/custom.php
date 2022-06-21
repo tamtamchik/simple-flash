@@ -14,12 +14,12 @@ class CustomTemplate extends BaseTemplate implements TemplateInterface
     protected $wrapper = '<ul class="a a-%s">%s</ul>'; // wrapper over messages of same type
 
     /**
-     * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
+     * @param string $messages - message text
+     * @param string $type     - message type: success, info, warning, error
      *
      * @return string
      */
-    public function wrapMessages($messages, $type)
+    public function wrapMessages(string $messages, string $type)
     {
         return sprintf($this->getWrapper(), $type, $messages);
     }

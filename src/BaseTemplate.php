@@ -19,14 +19,14 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @return string
      */
-    abstract public function wrapMessages($messages, $type);
+    abstract public function wrapMessages(string $messages, string $type): string;
 
     /**
-     * @param $message - message text
+     * @param string $message - message text
      *
      * @return string
      */
-    public function wrapMessage($message)
+    public function wrapMessage(string $message): string
     {
         return $this->getPrefix() . $message . $this->getPostfix();
     }
@@ -34,7 +34,7 @@ abstract class BaseTemplate implements TemplateInterface
     /**
      * @return string
      */
-    public function getPrefix()
+    public function getPrefix(): string
     {
         return $this->prefix;
     }
@@ -44,7 +44,7 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @return TemplateInterface $this
      */
-    public function setPrefix($prefix)
+    public function setPrefix(string $prefix): TemplateInterface
     {
         $this->prefix = $prefix;
 
@@ -54,7 +54,7 @@ abstract class BaseTemplate implements TemplateInterface
     /**
      * @return string
      */
-    public function getPostfix()
+    public function getPostfix(): string
     {
         return $this->postfix;
     }
@@ -64,7 +64,7 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @return TemplateInterface $this
      */
-    public function setPostfix($postfix)
+    public function setPostfix(string $postfix): TemplateInterface
     {
         $this->postfix = $postfix;
 
@@ -74,7 +74,7 @@ abstract class BaseTemplate implements TemplateInterface
     /**
      * @return string
      */
-    public function getWrapper()
+    public function getWrapper(): string
     {
         return $this->wrapper;
     }
@@ -84,7 +84,7 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @return TemplateInterface $this
      */
-    public function setWrapper($wrapper)
+    public function setWrapper(string $wrapper): TemplateInterface
     {
         $this->wrapper = $wrapper;
 
@@ -98,7 +98,7 @@ abstract class BaseTemplate implements TemplateInterface
      *
      * @throws FlashTemplateException
      */
-    public function __get($name)
+    public function __get($name): void
     {
         throw new FlashTemplateException("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }

@@ -30,6 +30,9 @@ class Flash
     // Don't allow instantiation
     private function __clone() {}
 
+    /**
+     * @throws FlashSingletonException
+     */
     public function __sleep()
     {
         throw new FlashSingletonException('Serialization of Flash is not allowed!');
@@ -60,7 +63,7 @@ class Flash
      *
      * @return mixed
      */
-    protected static function invoke($method, array $arguments)
+    protected static function invoke(string $method, array $arguments)
     {
         $target = [
             self::$engine,
@@ -77,9 +80,8 @@ class Flash
      * @param array $arguments - arguments for method
      *
      * @return mixed
-     * @throws Exceptions\FlashTemplateNotFoundException
      */
-    public static function __callStatic($method, array $arguments)
+    public static function __callStatic(string $method, array $arguments)
     {
         new self();
 
@@ -94,7 +96,7 @@ class Flash
      *
      * @return mixed
      */
-    public function __call($method, array $arguments)
+    public function __call(string $method, array $arguments)
     {
         return $this->invoke($method, $arguments);
     }

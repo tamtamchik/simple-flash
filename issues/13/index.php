@@ -19,12 +19,12 @@ class Bootstrap5DismissibleTemplate extends BaseTemplate implements TemplateInte
                           </div>'; // wrapper over messages of same type
 
     /**
-     * @param $messages - message text
-     * @param $type     - message type: success, info, warning, error
+     * @param string $messages - message text
+     * @param string $type     - message type: success, info, warning, error
      *
      * @return string
      */
-    public function wrapMessages($messages, $type)
+    public function wrapMessages(string $messages, string $type)
     {
         $type = ($type == 'error') ? 'danger' : $type;
 
