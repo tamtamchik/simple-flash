@@ -22,6 +22,7 @@ class DisplayTest extends TestCase
     private $uikit = '<div uk-alert class="uk-alert-primary"><p>Info message!</p></div>';
     private $semantic = '<div class="ui message info"><p>Info message!</p></div>';
     private $spectre = '<div class="toast toast-primary">Info message!<br /></div>';
+    private $halfmoon = '<div class="alert alert-primary" role="alert">Info message!<br /></div>';
 
     /**
      * @throws FlashTemplateNotFoundException
@@ -257,6 +258,30 @@ class DisplayTest extends TestCase
 
         $content = flash()->displaySpectre();
         $this->assertEquals($this->spectre, $content);
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testDisplayWithHalfmoon()
+    {
+        flash()->info('Info message!');
+
+        $content = flash()->display(null, Templates::HALFMOON);
+        $this->assertEquals($this->halfmoon, $content);
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testDisplayHalfmoon()
+    {
+        flash()->info('Info message!');
+
+        $content = flash()->displayHalfmoon();
+        $this->assertEquals($this->halfmoon, $content);
     }
 
 }

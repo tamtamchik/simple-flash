@@ -19,6 +19,7 @@ Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [UIKit](https://getuikit.com)
 * [Semantic UI](https://semantic-ui.com)
 * [Spectre.css](https://picturepan2.github.io/spectre)
+* [Halfmoon](https://www.gethalfmoon.com)
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
@@ -132,6 +133,7 @@ Templates::PRIMER;
 Templates::UIKIT;
 Templates::SEMANTIC;
 Templates::SPECTRE;
+Templates::HALFMOON;
 ```
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.

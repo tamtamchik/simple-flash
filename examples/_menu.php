@@ -35,6 +35,10 @@
         <a href="./spectre.php">Spectre.css (0.5.9)</a>
         [<a target="_blank" href="https://picturepan2.github.io/spectre/">https://picturepan2.github.io/spectre/</a>]
     </li>
+    <li>
+        <a href="./halfmoon.php">Halfmoon (1.1.1)</a>
+        [<a target="_blank" href="https://www.gethalfmoon.com">https://www.gethalfmoon.com</a>]
+    </li>
     <li><a href="./custom.php">Custom Template</a></li>
 </ul>
 

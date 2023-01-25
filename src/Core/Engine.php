@@ -302,4 +302,16 @@ class Engine extends MessageManager
     {
         return $this->display($type, Templates::SPECTRE);
     }
+
+    /**
+     * Returns Spectre ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayHalfmoon(string $type = null): string
+    {
+        return $this->display($type, Templates::HALFMOON);
+    }
 }

@@ -30,6 +30,7 @@ use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
  * @method static string displayUiKit($type = null) Returns UiKit ready for messages.
  * @method static string displaySemantic($type = null) Returns Semantic UI ready for messages.
  * @method static string displaySpectre($type = null) Returns Spectre.css ready for messages.
+ * @method static string displayHalfmoon($type = null) Returns Spectre.css ready for messages.
  */
 class Flash
 {
