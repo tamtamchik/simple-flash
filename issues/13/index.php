@@ -55,7 +55,7 @@ flash()
 
 <div class="container" style="width: 600px; margin: 1em auto;">
     <?php
-    if (flash()->hasMessages('error')) {
+    if (flash()->some('error')) {
         echo flash()->setTemplate(new Bootstrap5DismissibleTemplate())->display('error');
     }
     echo flash()->setTemplate(TemplateFactory::create(Templates::BOOTSTRAP))->display()

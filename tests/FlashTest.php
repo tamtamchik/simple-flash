@@ -10,7 +10,7 @@ use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
 
-session_start();
+@session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';
@@ -35,7 +35,7 @@ class FlashTest extends TestCase
     {
         $flash = new Flash();
 
-        $this->assertFalse($flash->hasMessages());
+        $this->assertFalse($flash->some());
         $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
     }
 
@@ -45,7 +45,7 @@ class FlashTest extends TestCase
         try {
             $flash = flash();
 
-            $this->assertFalse($flash->hasMessages());
+            $this->assertFalse($flash->some());
             $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
@@ -58,9 +58,9 @@ class FlashTest extends TestCase
         try {
             $flash = flash('Test info message');
 
-            $this->assertTrue($flash->hasMessages());
+            $this->assertTrue($flash->some());
             $this->assertStringContainsString('Test info message', $flash->display());
-            $this->assertFalse($flash->hasMessages());
+            $this->assertFalse($flash->some());
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
         }
@@ -130,7 +130,7 @@ class FlashTest extends TestCase
         try {
             $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
 
-            $this->assertTrue($flash->hasMessages('success'));
+            $this->assertTrue($flash->some('success'));
 
             $content = $flash->display('success');
             $this->assertStringContainsString('Dummy 1', $content);
@@ -146,7 +146,7 @@ class FlashTest extends TestCase
         try {
             $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
 
-            $this->assertFalse($flash->hasMessages('wrong'));
+            $this->assertFalse($flash->some('wrong'));
 
             $content = $flash->display('wrong');
             $this->assertEmpty($content);
@@ -172,7 +172,7 @@ class FlashTest extends TestCase
             $flash = flash();
             $flash->message('Test message', 'bad');
 
-            $this->assertFalse(flash()->hasMessages());
+            $this->assertFalse(flash()->some());
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
         }
@@ -198,7 +198,7 @@ class FlashTest extends TestCase
             flash('First one', 'success')->message('Other one', 'info')->display();
             flash('Third one', 'error')->display();
 
-            $this->assertFalse(flash()->hasMessages());
+            $this->assertFalse(flash()->some());
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
         }
@@ -211,7 +211,7 @@ class FlashTest extends TestCase
             flash('I\'ll never see this message', 'success');
             flash()->clear();
 
-            $this->assertFalse(flash()->hasMessages());
+            $this->assertFalse(flash()->some());
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
         }
@@ -257,7 +257,7 @@ class FlashTest extends TestCase
         try {
             flash();
 
-            $this->assertFalse(flash()->hasMessages());
+            $this->assertFalse(flash()->some());
         } catch (FlashTemplateNotFoundException $e) {
             $this->fail(); // should fail the test
         }

@@ -1,68 +1,33 @@
 <?php
 
-namespace Tamtamchik\SimpleFlash;
+namespace Tamtamchik\SimpleFlash\Core;
 
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
+use Tamtamchik\SimpleFlash\TemplateFactory;
+use Tamtamchik\SimpleFlash\TemplateInterface;
+use Tamtamchik\SimpleFlash\Templates;
 
 /**
  * Class Engine.
  */
-class Engine
+class Engine extends MessageManager
 {
-    /**
-     * @var string - main session key for Flash messages.
-     */
-    private $key = 'flash_messages';
-
-    private $types = [
-        'error',
-        'warning',
-        'info',
-        'success',
-    ];
-
-    private $template;
-
     /**
      * Creates flash container from session.
      *
-     * @param TemplateInterface|null $template
+     * @param TemplateInterface $template
      */
     public function __construct(TemplateInterface $template)
     {
-        $this->template = $template;
-
-        if ( ! array_key_exists($this->key, $_SESSION)) {
-            $_SESSION[$this->key] = [];
-        }
-    }
-
-    /**
-     * Returns if there are any messages in container.
-     *
-     * @param string|null $type - message type: success, info, warning, error
-     *
-     * @return bool
-     */
-    public function hasMessages(string $type = null): bool
-    {
-        if ( ! is_null($type)) {
-            return ! empty($_SESSION[$this->key][$type]);
-        }
-
-        foreach ($this->types as $type) {
-            if ( ! empty($_SESSION[$this->key][$type])) {
-                return true;
-            }
-        }
-
-        return false;
+        parent::__construct($template);
     }
 
     /**
      * If requested as string will HTML will be returned.
      *
      * @return string - HTML with flash messages
+     *
+     * @throws FlashTemplateNotFoundException
      */
     public function __toString()
     {
@@ -82,11 +47,15 @@ class Engine
     public function display(string $type = null, string $template = null): string
     {
         $result = '';
+        $session = $this->getSession();
 
-        if (
-            ! array_key_exists($this->key, $_SESSION) ||
-            ( ! is_null($type) && ! array_key_exists($type, $_SESSION[$this->key]))
-        ) {
+        $knownType =
+
+        $isEmptySession = empty($session);
+        $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
+        $isTypeNotInTypes = ! is_null($type) && ! $this->_hasMessageType($type);
+
+        if ($isEmptySession || $isTypeNotInSession || $isTypeNotInTypes) {
             return $result;
         }
 
@@ -94,16 +63,12 @@ class Engine
             $this->setTemplate(TemplateFactory::create($template));
         }
 
-        if ( ! is_null($type) && ! in_array($type, $this->types)) {
-            return $result;
-        }
-
-        if (in_array($type, $this->types)) {
-            $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
-        } elseif (is_null($type)) {
-            foreach ($_SESSION[$this->key] as $messageType => $messages) {
-                $result .= $this->buildMessages($messages, $messageType);
+        if (is_null($type)) {
+            foreach ($session as $messageType => $messages) {
+                $result .= $this->_compileMessage($messages, $messageType);
             }
+        } else {
+            $result .= $this->_compileMessage($session[$type], $type);
         }
 
         $this->clear($type);
@@ -112,21 +77,15 @@ class Engine
     }
 
     /**
-     * Builds messages for a single type.
+     * Returns if there are any messages in container.
      *
-     * @param array $flashes - array of messages to show
-     * @param string $type - message type: success, info, warning, error
+     * @param string|null $type - message type: success, info, warning, error
      *
-     * @return string - HTML with flash messages
+     * @return bool
      */
-    protected function buildMessages(array $flashes, string $type): string
+    public function some(string $type = null): bool
     {
-        $messages = '';
-        foreach ($flashes as $msg) {
-            $messages .= $this->template->wrapMessage($msg);
-        }
-
-        return $this->template->wrapMessages($messages, $type);
+        return $this->_hasMessage($type);
     }
 
     /**
@@ -138,25 +97,9 @@ class Engine
      */
     public function clear(string $type = null): Engine
     {
-        if (is_null($type)) {
-            $_SESSION[$this->key] = [];
-        } else {
-            unset($_SESSION[$this->key][$type]);
-        }
+        $this->_clearMessage($type);
 
         return $this;
-    }
-
-    /**
-     * Shortcut for error message.
-     *
-     * @param string|string[] $message - message text
-     *
-     * @return Engine $this
-     */
-    public function error($message): Engine
-    {
-        return $this->message($message, 'error');
     }
 
     /**
@@ -171,38 +114,51 @@ class Engine
     {
         if (is_array($message)) {
             foreach ($message as $issue) {
-                $this->addMessage($issue, $type);
+                $this->_addMessage($issue, $type);
             }
-
-            return $this;
+        } else {
+            $this->_addMessage($message, $type);
         }
+        return $this;
+    }
 
-        return $this->addMessage($message, $type);
+
+    /**
+     * Getter for $template.
+     *
+     * @return TemplateInterface
+     */
+    public
+    function getTemplate(): ?TemplateInterface
+    {
+        return $this->_getTemplate();
     }
 
     /**
-     * Add message to $_SESSION.
+     * Setter for $template.
      *
-     * @param string $message - message text
-     * @param string $type - message type: success, info, warning, error
+     * @param TemplateInterface $template
      *
      * @return Engine $this
      */
-    protected function addMessage(string $message = '', string $type = 'info'): Engine
+    public
+    function setTemplate(TemplateInterface $template): Engine
     {
-        $type = strip_tags($type);
-
-        if (empty($message) || ! in_array($type, $this->types)) {
-            return $this;
-        }
-
-        if ( ! array_key_exists($type, $_SESSION[$this->key])) {
-            $_SESSION[$this->key][$type] = [];
-        }
-
-        $_SESSION[$this->key][$type][] = $message;
+        $this->_setTemplate($template);
 
         return $this;
+    }
+
+    /**
+     * Shortcut for error message.
+     *
+     * @param string|string[] $message - message text
+     *
+     * @return Engine $this
+     */
+    public function error($message): Engine
+    {
+        return $this->message($message, 'error');
     }
 
     /**
@@ -239,30 +195,6 @@ class Engine
     public function success($message): Engine
     {
         return $this->message($message, 'success');
-    }
-
-    /**
-     * Getter for $template.
-     *
-     * @return TemplateInterface
-     */
-    public function getTemplate(): ?TemplateInterface
-    {
-        return $this->template;
-    }
-
-    /**
-     * Setter for $template.
-     *
-     * @param TemplateInterface $template
-     *
-     * @return Engine $this
-     */
-    public function setTemplate(TemplateInterface $template): Engine
-    {
-        $this->template = $template;
-
-        return $this;
     }
 
     /**

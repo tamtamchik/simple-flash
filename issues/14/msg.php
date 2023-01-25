@@ -19,7 +19,7 @@ require_once('../../vendor/autoload.php');
 
 <?php
 try {
-    if (flash()->hasMessages('info')) {
+    if (flash()->some('info')) {
         echo flash()->setTemplate(TemplateFactory::create(Templates::TAILWIND))->display('info');
     }
 } catch (FlashTemplateNotFoundException $e) {

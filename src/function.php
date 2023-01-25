@@ -1,6 +1,6 @@
 <?php
 
-use Tamtamchik\SimpleFlash\Engine;
+use Tamtamchik\SimpleFlash\Core\Engine;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateInterface;

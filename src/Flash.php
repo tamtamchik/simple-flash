@@ -2,13 +2,23 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Core\Engine;
 use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
 
 /**
  * Class Flash.
  *
+ * @method static Engine setTemplate(TemplateInterface $template) Change render template.
+ * @method static TemplateInterface getTemplate() Get template for modifications.
+ *
+ * @method static bool some($type = null) Returns if there are any messages in container.
  * @method static Engine message($message, $type = 'info') Base method for adding messages to flash.
- * @method static bool hasMessages($type = null) Returns if there are any messages in container.
+ * @method static Engine clear($type = null) Clears messages from session store.
+ *
+ * @method static Engine error($message) Shortcut for error message.
+ * @method static Engine warning($message) Shortcut for warning message.
+ * @method static Engine info($message) Shortcut for info message.
+ * @method static Engine success($message) Shortcut for success message.
  *
  * @method static string display($type = null, $template = Templates::BASE) Returns Bootstrap ready HTML for messages.
  * @method static string displayBootstrap($type = null) Returns Bootstrap ready for messages.
@@ -20,15 +30,6 @@ use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
  * @method static string displayUiKit($type = null) Returns UiKit ready for messages.
  * @method static string displaySemantic($type = null) Returns Semantic UI ready for messages.
  * @method static string displaySpectre($type = null) Returns Spectre.css ready for messages.
- *
- * @method static Engine clear($type = null) Clears messages from session store.
- * @method static Engine error($message) Shortcut for error message.
- * @method static Engine warning($message) Shortcut for warning message.
- * @method static Engine info($message) Shortcut for info message.
- * @method static Engine success($message) Shortcut for success message.
- *
- * @method static Engine setTemplate(TemplateInterface $template) Change render template.
- * @method static TemplateInterface getTemplate() Get template for modifications.
  */
 class Flash
 {
@@ -38,8 +39,6 @@ class Flash
      * @var Engine
      */
     private static $engine;
-
-    // Don't allow instantiation
 
     /**
      * Creates flash container from session.
@@ -83,12 +82,7 @@ class Flash
      */
     protected static function invoke(string $method, array $arguments)
     {
-        $target = [
-            self::$engine,
-            $method,
-        ];
-
-        return call_user_func_array($target, $arguments);
+        return call_user_func_array([self::$engine, $method], $arguments);
     }
 
     /**
@@ -122,6 +116,9 @@ class Flash
         return strval(self::$engine);
     }
 
+    /**
+     * Don't allow instantiation.
+     */
     private function __clone()
     {
     }
