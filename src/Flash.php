@@ -40,15 +40,6 @@ class Flash
     private static $engine;
 
     // Don't allow instantiation
-    private function __clone() {}
-
-    /**
-     * @throws FlashSingletonException
-     */
-    public function __sleep()
-    {
-        throw new FlashSingletonException('Serialization of Flash is not allowed!');
-    }
 
     /**
      * Creates flash container from session.
@@ -62,9 +53,24 @@ class Flash
             $template = TemplateFactory::create();
         }
 
-        if (!$assigned || !isset(self::$engine)) {
+        if ( ! $assigned || ! isset(self::$engine)) {
             self::$engine = new Engine($template);
         }
+    }
+
+    /**
+     * Magic methods for static calls.
+     *
+     * @param string $method - method to invoke
+     * @param array $arguments - arguments for method
+     *
+     * @return mixed
+     */
+    public static function __callStatic(string $method, array $arguments)
+    {
+        new self();
+
+        return self::invoke($method, $arguments);
     }
 
     /**
@@ -86,18 +92,11 @@ class Flash
     }
 
     /**
-     * Magic methods for static calls.
-     *
-     * @param string $method - method to invoke
-     * @param array $arguments - arguments for method
-     *
-     * @return mixed
+     * @throws FlashSingletonException
      */
-    public static function __callStatic(string $method, array $arguments)
+    public function __sleep()
     {
-        new self();
-
-        return self::invoke($method, $arguments);
+        throw new FlashSingletonException('Serialization of Flash is not allowed!');
     }
 
     /**
@@ -121,5 +120,9 @@ class Flash
     public function __toString()
     {
         return strval(self::$engine);
+    }
+
+    private function __clone()
+    {
     }
 }

@@ -3,7 +3,7 @@
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 
 if ( ! session_id()) {
-    @session_start();
+    session_start();
 }
 
 require_once('../../vendor/autoload.php');

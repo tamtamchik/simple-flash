@@ -40,6 +40,14 @@ abstract class BaseTemplate implements TemplateInterface
     }
 
     /**
+     * @return string
+     */
+    public function getPostfix(): string
+    {
+        return $this->postfix;
+    }
+
+    /**
      * @param string $prefix
      *
      * @return TemplateInterface $this
@@ -49,14 +57,6 @@ abstract class BaseTemplate implements TemplateInterface
         $this->prefix = $prefix;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostfix(): string
-    {
-        return $this->postfix;
     }
 
     /**

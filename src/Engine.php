@@ -32,9 +32,131 @@ class Engine
     {
         $this->template = $template;
 
-        if (!array_key_exists($this->key, $_SESSION)) {
+        if ( ! array_key_exists($this->key, $_SESSION)) {
             $_SESSION[$this->key] = [];
         }
+    }
+
+    /**
+     * Returns if there are any messages in container.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @return bool
+     */
+    public function hasMessages(string $type = null): bool
+    {
+        if ( ! is_null($type)) {
+            return ! empty($_SESSION[$this->key][$type]);
+        }
+
+        foreach ($this->types as $type) {
+            if ( ! empty($_SESSION[$this->key][$type])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * If requested as string will HTML will be returned.
+     *
+     * @return string - HTML with flash messages
+     */
+    public function __toString()
+    {
+        return $this->display();
+    }
+
+    /**
+     * Returns Bootstrap ready HTML for Engine messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     * @param string|null $template - template name from Templates class
+     *
+     * @return string - HTML with flash messages
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function display(string $type = null, string $template = null): string
+    {
+        $result = '';
+
+        if (
+            ! array_key_exists($this->key, $_SESSION) ||
+            ( ! is_null($type) && ! array_key_exists($type, $_SESSION[$this->key]))
+        ) {
+            return $result;
+        }
+
+        if ( ! is_null($template)) {
+            $this->setTemplate(TemplateFactory::create($template));
+        }
+
+        if ( ! is_null($type) && ! in_array($type, $this->types)) {
+            return $result;
+        }
+
+        if (in_array($type, $this->types)) {
+            $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
+        } elseif (is_null($type)) {
+            foreach ($_SESSION[$this->key] as $messageType => $messages) {
+                $result .= $this->buildMessages($messages, $messageType);
+            }
+        }
+
+        $this->clear($type);
+
+        return $result;
+    }
+
+    /**
+     * Builds messages for a single type.
+     *
+     * @param array $flashes - array of messages to show
+     * @param string $type - message type: success, info, warning, error
+     *
+     * @return string - HTML with flash messages
+     */
+    protected function buildMessages(array $flashes, string $type): string
+    {
+        $messages = '';
+        foreach ($flashes as $msg) {
+            $messages .= $this->template->wrapMessage($msg);
+        }
+
+        return $this->template->wrapMessages($messages, $type);
+    }
+
+    /**
+     * Clears messages from session store.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @return Engine $this
+     */
+    public function clear(string $type = null): Engine
+    {
+        if (is_null($type)) {
+            $_SESSION[$this->key] = [];
+        } else {
+            unset($_SESSION[$this->key][$type]);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Shortcut for error message.
+     *
+     * @param string|string[] $message - message text
+     *
+     * @return Engine $this
+     */
+    public function error($message): Engine
+    {
+        return $this->message($message, 'error');
     }
 
     /**
@@ -70,11 +192,11 @@ class Engine
     {
         $type = strip_tags($type);
 
-        if (empty($message) || !in_array($type, $this->types)) {
+        if (empty($message) || ! in_array($type, $this->types)) {
             return $this;
         }
 
-        if (!array_key_exists($type, $_SESSION[$this->key])) {
+        if ( ! array_key_exists($type, $_SESSION[$this->key])) {
             $_SESSION[$this->key][$type] = [];
         }
 
@@ -84,131 +206,9 @@ class Engine
     }
 
     /**
-     * Returns Bootstrap ready HTML for Engine messages.
-     *
-     * @param string|null $type - message type: success, info, warning, error
-     * @param string|null $template - template name from Templates class
-     *
-     * @return string - HTML with flash messages
-     *
-     * @throws FlashTemplateNotFoundException
-     */
-    public function display(string $type = null, string $template = null): string
-    {
-        $result = '';
-
-        if (
-            !array_key_exists($this->key, $_SESSION) ||
-            (!is_null($type) && !array_key_exists($type, $_SESSION[$this->key]))
-        ) {
-            return $result;
-        }
-
-        if (!is_null($template)) {
-            $this->setTemplate(TemplateFactory::create($template));
-        }
-
-        if (!is_null($type) && !in_array($type, $this->types)) {
-            return $result;
-        }
-
-        if (in_array($type, $this->types)) {
-            $result .= $this->buildMessages($_SESSION[$this->key][$type], $type);
-        } elseif (is_null($type)) {
-            foreach ($_SESSION[$this->key] as $messageType => $messages) {
-                $result .= $this->buildMessages($messages, $messageType);
-            }
-        }
-
-        $this->clear($type);
-
-        return $result;
-    }
-
-    /**
-     * Returns if there are any messages in container.
-     *
-     * @param string|null $type - message type: success, info, warning, error
-     *
-     * @return bool
-     */
-    public function hasMessages(string $type = null): bool
-    {
-        if (!is_null($type)) {
-            return !empty($_SESSION[$this->key][$type]);
-        }
-
-        foreach ($this->types as $type) {
-            if (!empty($_SESSION[$this->key][$type])) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Clears messages from session store.
-     *
-     * @param string|null $type - message type: success, info, warning, error
-     *
-     * @return Engine $this
-     */
-    public function clear(string $type = null): Engine
-    {
-        if (is_null($type)) {
-            $_SESSION[$this->key] = [];
-        } else {
-            unset($_SESSION[$this->key][$type]);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Builds messages for a single type.
-     *
-     * @param array $flashes - array of messages to show
-     * @param string $type - message type: success, info, warning, error
-     *
-     * @return string - HTML with flash messages
-     */
-    protected function buildMessages(array $flashes, string $type): string
-    {
-        $messages = '';
-        foreach ($flashes as $msg) {
-            $messages .= $this->template->wrapMessage($msg);
-        }
-
-        return $this->template->wrapMessages($messages, $type);
-    }
-
-    /**
-     * If requested as string will HTML will be returned.
-     *
-     * @return string - HTML with flash messages
-     */
-    public function __toString()
-    {
-        return $this->display();
-    }
-
-    /**
-     * Shortcut for error message.
-     *
-     * @param $message - message text
-     *
-     * @return Engine $this
-     */
-    public function error($message): Engine
-    {
-        return $this->message($message, 'error');
-    }
-
-    /**
      * Shortcut for warning message.
      *
-     * @param $message - message text
+     * @param string|string[] $message - message text
      *
      * @return Engine $this
      */
@@ -220,7 +220,7 @@ class Engine
     /**
      * Shortcut for info message.
      *
-     * @param $message - message text
+     * @param string|string[] $message - message text
      *
      * @return Engine $this
      */
@@ -232,13 +232,23 @@ class Engine
     /**
      * Shortcut for success message.
      *
-     * @param $message - message text
+     * @param string|string[] $message - message text
      *
      * @return Engine $this
      */
     public function success($message): Engine
     {
         return $this->message($message, 'success');
+    }
+
+    /**
+     * Getter for $template.
+     *
+     * @return TemplateInterface
+     */
+    public function getTemplate(): ?TemplateInterface
+    {
+        return $this->template;
     }
 
     /**
@@ -253,16 +263,6 @@ class Engine
         $this->template = $template;
 
         return $this;
-    }
-
-    /**
-     * Getter for $template.
-     *
-     * @return TemplateInterface
-     */
-    public function getTemplate(): ?TemplateInterface
-    {
-        return $this->template;
     }
 
     /**

@@ -38,7 +38,9 @@ Inside your project make sure to start a session and load [Composer](http://getc
 ````php
 <?php
 // Start a Session
-if( !session_id() ) @session_start();
+if( !session_id() ) {
+    session_start();
+}
 
 // Initialize Composer Autoload
 require_once 'vendor/autoload.php';

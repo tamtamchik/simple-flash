@@ -5,7 +5,7 @@ use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
 
 if ( ! session_id()) {
-    @session_start();
+    session_start();
 }
 
 require_once('../../vendor/autoload.php');
