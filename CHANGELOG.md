@@ -18,6 +18,30 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Security
 
+## 3.0.0 - 2023-01-26
+
+**Breaking Change!** Minimum PHP version is now 7.3.
+
+### Added
+
+- [Halfmoon](https://www.gethalfmoon.com) alerts added.
+- New optional property for framework for display method.
+  - `flash()->display(..., Templates::TAILWIND)`
+- Shortcut methods for displaying alerts with framework templates: 
+  - `flash()->displayBootstrap(...)` 
+  - `flash()->displayFoundation(...)`
+  - `flash()->displayBulma(...)`
+  - `flash()->displayMaterialize(...)`
+  - `flash()->displayTailwind(...)`
+  - `flash()->displayPrimer(...)`
+  - `flash()->displayUikit(...)`
+  - `flash()->displaySemantic(...)`
+  - `flash()->displaySpectre(...)`
+  - `flash()->displayHalfmoon(...)`
+
+
+### Deprecated
+- `flash()->hasMessages(...)` is deprecated. Use `flash()->some(...)` instead.
 
 ## 2.0.1 - 2020-12-28
 
