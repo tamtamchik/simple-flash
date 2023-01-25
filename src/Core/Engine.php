@@ -49,8 +49,6 @@ class Engine extends MessageManager
         $result = '';
         $session = $this->getSession();
 
-        $knownType =
-
         $isEmptySession = empty($session);
         $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
         $isTypeNotInTypes = ! is_null($type) && ! $this->_hasMessageType($type);
