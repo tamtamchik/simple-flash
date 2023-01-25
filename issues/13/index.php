@@ -1,17 +1,19 @@
 <?php
 
+use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\TemplateInterface;
-use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\Templates;
 
-if (!session_id()) @session_start();
+if ( ! session_id()) {
+    @session_start();
+}
 
 require_once '../../vendor/autoload.php';
 
 class Bootstrap5DismissibleTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix  = ''; // every line prefix
+    protected $prefix = ''; // every line prefix
     protected $postfix = '<br>'; // every postfix
     protected $wrapper = '<div class="alert alert-%s alert-dismissible fade show" role="alert">
                             %s
@@ -20,7 +22,7 @@ class Bootstrap5DismissibleTemplate extends BaseTemplate implements TemplateInte
 
     /**
      * @param string $messages - message text
-     * @param string $type     - message type: success, info, warning, error
+     * @param string $type - message type: success, info, warning, error
      *
      * @return string
      */
@@ -46,7 +48,8 @@ flash()
     <meta charset="UTF-8">
     <title>Test Bootstrap default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
 
@@ -60,7 +63,9 @@ flash()
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
