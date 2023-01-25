@@ -24,7 +24,7 @@ class Bootstrap5DismissibleTemplate extends BaseTemplate implements TemplateInte
      *
      * @return string
      */
-    public function wrapMessages(string $messages, string $type)
+    public function wrapMessages(string $messages, string $type): string
     {
         $type = ($type == 'error') ? 'danger' : $type;
 

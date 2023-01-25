@@ -2,6 +2,7 @@
 if (!session_id()) @session_start();
 require_once('../../vendor/autoload.php');
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
 ?>
@@ -13,6 +14,10 @@ use Tamtamchik\SimpleFlash\Templates;
 <h2>MESSAGES</h2>
 
 <?php
-if (flash()->hasMessages('info')) {
-    echo flash()->setTemplate(TemplateFactory::create(Templates::TAILWIND))->display('info');
+try {
+    if (flash()->hasMessages('info')) {
+        echo flash()->setTemplate(TemplateFactory::create(Templates::TAILWIND))->display('info');
+    }
+} catch (FlashTemplateNotFoundException $e) {
+    // No one cares
 }

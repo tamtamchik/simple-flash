@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC));
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC));
     <meta charset="UTF-8">
     <title>Test Semantic UI template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -33,7 +30,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SEMANTIC));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displaySemantic() ?>
 
 </div>
 

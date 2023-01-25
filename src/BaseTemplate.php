@@ -100,6 +100,6 @@ abstract class BaseTemplate implements TemplateInterface
      */
     public function __get($name): void
     {
-        throw new FlashTemplateException("No \"{$name}\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
+        throw new FlashTemplateException("No \"$name\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }
 }

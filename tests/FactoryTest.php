@@ -1,5 +1,7 @@
 <?php
 
+namespace Tamtamchik\SimpleFlash\Test;
+
 use PHPUnit\Framework\TestCase;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
@@ -11,15 +13,19 @@ require_once 'BadTemplate.php';
 
 class FactoryTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        flash()->clear();
+    }
+
     private $templates = [];
 
     /**
      * Prepare setup before tests.
-     * @throws ReflectionException
      */
     protected function setUp(): void
     {
-        $templatesReflection = new ReflectionClass('Tamtamchik\\SimpleFlash\\Templates');
+        $templatesReflection = new \ReflectionClass('Tamtamchik\\SimpleFlash\\Templates');
         $this->templates = $templatesReflection->getConstants();
     }
 
@@ -47,7 +53,8 @@ class FactoryTest extends TestCase
         unset($flash);
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testTemplates()
@@ -58,7 +65,8 @@ class FactoryTest extends TestCase
         $this->_testTemplate(Templates::BASE);
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testDefaultTemplate()
@@ -67,7 +75,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\BootstrapTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testBootstrapTemplate()
@@ -76,7 +85,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\BootstrapTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testFoundationTemplate()
@@ -85,7 +95,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\FoundationTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testSemanticTemplate()
@@ -94,7 +105,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SemanticTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testUiKitTemplate()
@@ -103,7 +115,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\UikitTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testBulmaTemplate()
@@ -112,7 +125,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\BulmaTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testMaterializeTemplate()
@@ -121,7 +135,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\MaterializeTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testSpectreTemplate()
@@ -130,7 +145,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SpectreTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testTailwindTemplate()
@@ -139,7 +155,8 @@ class FactoryTest extends TestCase
         $this->assertEquals('Tamtamchik\SimpleFlash\Templates\TailwindTemplate', get_class($template));
     }
 
-    /** @test
+    /**
+     * @test
      * @throws FlashTemplateNotFoundException
      */
     public function testPrimerTemplate()

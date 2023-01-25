@@ -2,6 +2,8 @@
 
 namespace Tamtamchik\SimpleFlash;
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
+
 /**
  * Class Engine.
  */
@@ -85,12 +87,26 @@ class Engine
      * Returns Bootstrap ready HTML for Engine messages.
      *
      * @param string|null $type - message type: success, info, warning, error
+     * @param string|null $template - template name from Templates class
      *
      * @return string - HTML with flash messages
+     *
+     * @throws FlashTemplateNotFoundException
      */
-    public function display(string $type = null): string
+    public function display(string $type = null, string $template = null): string
     {
         $result = '';
+
+        if (
+            !array_key_exists($this->key, $_SESSION) ||
+            (!is_null($type) && !array_key_exists($type, $_SESSION[$this->key]))
+        ) {
+            return $result;
+        }
+
+        if (!is_null($template)) {
+            $this->setTemplate(TemplateFactory::create($template));
+        }
 
         if (!is_null($type) && !in_array($type, $this->types)) {
             return $result;
@@ -247,5 +263,113 @@ class Engine
     public function getTemplate(): ?TemplateInterface
     {
         return $this->template;
+    }
+
+    /**
+     * Returns Bootstrap ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayBootstrap(string $type = null): string
+    {
+        return $this->display($type, Templates::BOOTSTRAP);
+    }
+
+    /**
+     * Returns Foundation ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayFoundation(string $type = null): string
+    {
+        return $this->display($type, Templates::FOUNDATION);
+    }
+
+    /**
+     * Returns Bulma ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayBulma(string $type = null): string
+    {
+        return $this->display($type, Templates::BULMA);
+    }
+
+    /**
+     * Returns Materialize ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayMaterialize(string $type = null): string
+    {
+        return $this->display($type, Templates::MATERIALIZE);
+    }
+
+    /**
+     * Returns Tailwind ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayTailwind(string $type = null): string
+    {
+        return $this->display($type, Templates::TAILWIND);
+    }
+
+    /**
+     * Returns Primer ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayPrimer(string $type = null): string
+    {
+        return $this->display($type, Templates::PRIMER);
+    }
+
+    /**
+     * Returns UiKit ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayUiKit(string $type = null): string
+    {
+        return $this->display($type, Templates::UIKIT);
+    }
+
+    /**
+     * Returns Semantic ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displaySemantic(string $type = null): string
+    {
+        return $this->display($type, Templates::SEMANTIC);
+    }
+
+    /**
+     * Returns Spectre ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displaySpectre(string $type = null): string
+    {
+        return $this->display($type, Templates::SPECTRE);
     }
 }

@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::BULMA));
-
 ?>
 
 <!doctype html>
@@ -33,7 +30,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::BULMA));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displayBulma() ?>
 </div>
 
 </body>

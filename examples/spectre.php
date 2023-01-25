@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::SPECTRE));
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SPECTRE));
     <meta charset="UTF-8">
     <title>Test Spectre.css default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css" integrity="sha512-9RIcp1f4CE6dEuYX9085tXaEbYd1ap04d2Av1ub/dwuT33WbfbHStDdQ+shKrp5wzZzleh5DOg+7ABSnaQP/nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom margins for Spectre.css toasts */
         .toast {
@@ -39,7 +36,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::SPECTRE));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displaySpectre() ?>
 
 </div>
 

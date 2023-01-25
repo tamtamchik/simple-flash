@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::UIKIT));
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::UIKIT));
     <meta charset="UTF-8">
     <title>Test UiKit template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.14.3/css/uikit.min.css" integrity="sha512-iWrYv6nUp7gzf+Ut/gMjxZn+SWdaiJYn+ZZNq63t2JO6kBpDc40wQfBzC1eOAzlwIMvRyuS974D1R8p1BTdaUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.15.22/css/uikit.min.css" integrity="sha512-yM8ljS4awfnkTcISLgQMDc4Z16q3BXQC6CuiNfCvTOsX/k+awcZBcwIswyHeZVy3w/iTzZKyroHBAJocW2woKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -33,7 +30,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::UIKIT));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displayUiKit() ?>
 
 </div>
 

@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
     <meta charset="UTF-8">
     <title>Test Materialize default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -33,7 +30,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::MATERIALIZE));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displayMaterialize() ?>
 </div>
 
 </body>

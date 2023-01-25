@@ -1,5 +1,7 @@
 <?php
 
+namespace Tamtamchik\SimpleFlash\Test;
+
 use PHPUnit\Framework\TestCase;
 use Tamtamchik\SimpleFlash\Exceptions\FlashSingletonException;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateException;
@@ -15,6 +17,11 @@ require_once 'BadTemplate.php';
 
 class FlashTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        flash()->clear();
+    }
+
     /** @test */
     public function testStaticCall()
     {
@@ -37,12 +44,12 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash();
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $this->assertFalse($flash->hasMessages());
-        $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
+            $this->assertFalse($flash->hasMessages());
+            $this->assertEquals('Tamtamchik\SimpleFlash\Flash', get_class($flash));
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -50,13 +57,13 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash('Test info message');
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $this->assertTrue($flash->hasMessages());
-        $this->assertStringContainsString('Test info message', $flash->display());
-        $this->assertFalse($flash->hasMessages());
+            $this->assertTrue($flash->hasMessages());
+            $this->assertStringContainsString('Test info message', $flash->display());
+            $this->assertFalse($flash->hasMessages());
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -64,11 +71,11 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash('Test info message', 'success');
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $this->assertStringContainsString('success', $flash->display());
+            $this->assertStringContainsString('success', $flash->display());
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -76,13 +83,13 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash()->message('Test info message 1')->message('Test info message 2');
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $content = $flash->display();
-        $this->assertStringContainsString('Test info message 1', $content);
-        $this->assertStringContainsString('Test info message 2', $content);
+            $content = $flash->display();
+            $this->assertStringContainsString('Test info message 1', $content);
+            $this->assertStringContainsString('Test info message 2', $content);
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -90,11 +97,11 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash('Test info message');
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $this->assertStringContainsString('info', $flash->display());
+            $this->assertStringContainsString('info', $flash->display());
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -106,15 +113,15 @@ class FlashTest extends TestCase
                 ->message('Dummy 2', 'info')
                 ->message('Dummy 2', 'warning')
                 ->message('Dummy 2', 'error');
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
 
-        $content = $flash->display();
-        $this->assertStringContainsString('success', $content);
-        $this->assertStringContainsString('info', $content);
-        $this->assertStringContainsString('success', $content);
-        $this->assertStringContainsString('danger', $content);
+            $content = $flash->display();
+            $this->assertStringContainsString('success', $content);
+            $this->assertStringContainsString('info', $content);
+            $this->assertStringContainsString('success', $content);
+            $this->assertStringContainsString('danger', $content);
+        } catch (FlashTemplateNotFoundException $e) {
+            $this->fail(); // should fail the test
+        }
     }
 
     /** @test */
@@ -122,16 +129,15 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
+
+            $this->assertTrue($flash->hasMessages('success'));
+
+            $content = $flash->display('success');
+            $this->assertStringContainsString('Dummy 1', $content);
+            $this->assertStringNotContainsString('Dummy 2', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
-
-        $this->assertTrue($flash->hasMessages('success'));
-
-        $content = $flash->display('success');
-
-        $this->assertStringContainsString('Dummy 1', $content);
-        $this->assertStringNotContainsString('Dummy 2', $content);
     }
 
     /** @test */
@@ -139,15 +145,14 @@ class FlashTest extends TestCase
     {
         try {
             $flash = flash()->message('Dummy 1', 'success')->message('Dummy 2');
+
+            $this->assertFalse($flash->hasMessages('wrong'));
+
+            $content = $flash->display('wrong');
+            $this->assertEmpty($content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
-
-        $this->assertFalse($flash->hasMessages('wrong'));
-
-        $content = $flash->display('wrong');
-
-        $this->assertEmpty($content);
     }
 
     /** @test */
@@ -155,9 +160,9 @@ class FlashTest extends TestCase
     {
         $flash = new Flash();
         $flash->clear();
-
         $flash->message('Test message');
-        $this->assertStringContainsString('Test message', "{$flash}");
+
+        $this->assertStringContainsString('Test message', "$flash");
     }
 
     /** @test */
@@ -166,9 +171,10 @@ class FlashTest extends TestCase
         try {
             $flash = flash();
             $flash->message('Test message', 'bad');
+
             $this->assertFalse(flash()->hasMessages());
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -181,7 +187,7 @@ class FlashTest extends TestCase
             $content = flash()->display();
             $this->assertStringContainsString('Checking shared', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -194,7 +200,7 @@ class FlashTest extends TestCase
 
             $this->assertFalse(flash()->hasMessages());
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -207,7 +213,7 @@ class FlashTest extends TestCase
 
             $this->assertFalse(flash()->hasMessages());
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -223,7 +229,7 @@ class FlashTest extends TestCase
             $this->assertStringContainsString('info', $content);
             $this->assertStringContainsString('success', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -233,13 +239,15 @@ class FlashTest extends TestCase
         try {
             flash('Testing toString', 'success');
             $flash1 = new Flash();
+
             $this->assertStringContainsString('toString', (string)$flash1);
 
             flash('Testing toString', 'success');
             $flash2 = flash();
+
             $this->assertStringContainsString('toString', (string)$flash2);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -247,10 +255,11 @@ class FlashTest extends TestCase
     public function testEmptyFunction()
     {
         try {
-            flash('');
+            flash();
+
             $this->assertFalse(flash()->hasMessages());
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -269,7 +278,7 @@ class FlashTest extends TestCase
             $this->assertStringContainsString('Invalid name', $content);
             $this->assertStringContainsString('Invalid email', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -278,29 +287,24 @@ class FlashTest extends TestCase
     {
         try {
             $template = TemplateFactory::create();
+            $prefix = $template->getPrefix();
+            $postfix = $template->getPostfix();
+            $template->setPrefix('');
+            $template->setPostfix('');
+            $template->setWrapper('<div class="flash flash-%s" role="alert">%s</div>');
+
+            $flash = new Flash();
+            $contentOriginal = $flash->info('Testing templates')->display();
+            $flash->setTemplate($template);
+
+            $content = $flash->info('Testing templates')->display();
+            $this->assertEquals('', $prefix);
+            $this->assertNotEquals($contentOriginal, $content);
+            $this->assertStringContainsString('Testing templates', $content);
+            $this->assertStringNotContainsString($postfix, $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-            return;
+            $this->fail(); // should fail the test
         }
-
-        $prefix = $template->getPrefix();
-        $postfix = $template->getPostfix();
-        $template->setPrefix('');
-        $template->setPostfix('');
-        $template->setWrapper('<div class="flash flash-%s" role="alert">%s</div>');
-
-        $flash = new Flash();
-
-        $contentOriginal = $flash->info('Testing templates')->display();
-
-        $flash->setTemplate($template);
-
-        $content = $flash->info('Testing templates')->display();
-
-        $this->assertEquals('', $prefix);
-        $this->assertNotEquals($contentOriginal, $content);
-        $this->assertStringContainsString('Testing templates', $content);
-        $this->assertStringNotContainsString($postfix, $content);
     }
 
     /** @test */
@@ -315,7 +319,7 @@ class FlashTest extends TestCase
             $content = $flash->display();
             $this->assertStringContainsString('callout', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -330,7 +334,7 @@ class FlashTest extends TestCase
             $content = flash()->display();
             $this->assertStringContainsString('callout', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
@@ -346,25 +350,21 @@ class FlashTest extends TestCase
             $content = $flash->setTemplate($template)->display();
             $this->assertStringContainsString('callout', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
     /** @test */
     public function testGetTemplate()
     {
-        try {
-            $flash = new Flash();
-            $flash->getTemplate()->setPrefix('AAAAAAAA')->setPostfix('BBBBBBBB');
+        $flash = new Flash();
+        $flash->getTemplate()->setPrefix('AAAAAAAA')->setPostfix('BBBBBBBB');
 
-            $flash->info('Testing templates');
+        $flash->info('Testing templates');
 
-            $content = $flash->display();
-            $this->assertStringContainsString('AAAAAAAA', $content);
-            $this->assertStringContainsString('BBBBBBBB', $content);
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
+        $content = $flash->display();
+        $this->assertStringContainsString('AAAAAAAA', $content);
+        $this->assertStringContainsString('BBBBBBBB', $content);
     }
 
     /** @test */
@@ -378,26 +378,23 @@ class FlashTest extends TestCase
             $content = Flash::display();
             $this->assertStringContainsString('Testing static', $content);
         } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
+            $this->fail(); // should fail the test
         }
     }
 
     /** @test */
     public function testCloneRestriction()
     {
-        try {
-            $flash = new Flash();
-            $reflection = new ReflectionClass($flash);
+        $flash = new Flash();
+        $reflection = new \ReflectionClass($flash);
 
-            $this->assertFalse($reflection->isCloneable());
-        } catch (FlashTemplateNotFoundException $e) {
-            $this->assertFalse(true); // should fail the test
-        } catch (ReflectionException $e) {
-            $this->assertFalse(true); // should fail the test
-        }
+        $this->assertFalse($reflection->isCloneable());
     }
 
-    /** @test */
+    /**
+     * @test
+     * @noinspection PhpRedundantCatchClauseInspection
+     */
     public function testNotSerializable()
     {
         $flash = new Flash();
@@ -413,6 +410,7 @@ class FlashTest extends TestCase
      * Need to be last - because spoils template.
      *
      * @test
+     * @noinspection PhpRedundantCatchClauseInspection
      */
     public function testBadTemplate()
     {

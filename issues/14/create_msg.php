@@ -1,8 +1,14 @@
 <?php
 
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
+
 if (!session_id()) @session_start();
 require_once('../../vendor/autoload.php');
 
-flash()->message('This is a info message with TailwindCSS');
+try {
+    flash()->message('This is a info message with TailwindCSS');
+} catch (FlashTemplateNotFoundException $e) {
+    // No one cares
+}
 
 header('Location: msg.php');

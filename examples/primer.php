@@ -11,9 +11,6 @@ flash()->error(['Invalid email!', 'Invalid username!'])
     ->warning('Warning message.')
     ->info('Info message.')
     ->success('Success message!');
-
-flash()->setTemplate(TemplateFactory::create(Templates::PRIMER));
-
 ?>
 
 <!doctype html>
@@ -22,7 +19,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::PRIMER));
     <meta charset="UTF-8">
     <title>Test Premier template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/20.2.3/primer.min.css" integrity="sha512-+79KFmNBldu8KvXWMyY6nu2wGb4oukBBoQX1nMu4T//5W8SBSSdSRiiCGsH2uP2OzIWqSTXGTwfCL914oQi6Ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/20.8.0/primer.min.css" integrity="sha512-FBDbgCWjJV1M4p0eGswLLr6ba+SfiVpj4uCoj0AjzjbVSMtCtb1pH6kM5Cdgf42V1ii4QIRkHAhrn9xr0qSWmA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom CSS for Primer flash styles separation. */
         .flash {
@@ -39,7 +36,7 @@ flash()->setTemplate(TemplateFactory::create(Templates::PRIMER));
 
     <?php include_once '_menu.php'; ?>
 
-    <?= flash() ?>
+    <?= flash()->displayPrimer() ?>
 </div>
 
 </body>
