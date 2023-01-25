@@ -35,6 +35,30 @@ class Engine extends MessageManager
     }
 
     /**
+     * Getter for $template.
+     *
+     * @return TemplateInterface
+     */
+    public function getTemplate(): ?TemplateInterface
+    {
+        return $this->_getTemplate();
+    }
+
+    /**
+     * Setter for $template.
+     *
+     * @param TemplateInterface $template
+     *
+     * @return Engine $this
+     */
+    public function setTemplate(TemplateInterface $template): Engine
+    {
+        $this->_setTemplate($template);
+
+        return $this;
+    }
+
+    /**
      * Returns Bootstrap ready HTML for Engine messages.
      *
      * @param string|null $type - message type: success, info, warning, error
@@ -49,11 +73,7 @@ class Engine extends MessageManager
         $result = '';
         $session = $this->getSession();
 
-        $isEmptySession = empty($session);
-        $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
-        $isTypeNotInTypes = ! is_null($type) && ! $this->_hasMessageType($type);
-
-        if ($isEmptySession || $isTypeNotInSession || $isTypeNotInTypes) {
+        if ($this->isReadyForDisplay($session, $type)) {
             return $result;
         }
 
@@ -72,6 +92,20 @@ class Engine extends MessageManager
         $this->clear($type);
 
         return $result;
+    }
+
+    /**
+     * @param array $session
+     * @param string|null $type
+     * @return bool
+     */
+    private function isReadyForDisplay(array $session, string $type = null): bool
+    {
+        $isEmptySession = empty($session);
+        $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
+        $isTypeNotInTypes = ! is_null($type) && ! $this->_hasMessageType($type);
+
+        return $isEmptySession || $isTypeNotInSession || $isTypeNotInTypes;
     }
 
     /**
@@ -117,33 +151,6 @@ class Engine extends MessageManager
         } else {
             $this->_addMessage($message, $type);
         }
-        return $this;
-    }
-
-
-    /**
-     * Getter for $template.
-     *
-     * @return TemplateInterface
-     */
-    public
-    function getTemplate(): ?TemplateInterface
-    {
-        return $this->_getTemplate();
-    }
-
-    /**
-     * Setter for $template.
-     *
-     * @param TemplateInterface $template
-     *
-     * @return Engine $this
-     */
-    public
-    function setTemplate(TemplateInterface $template): Engine
-    {
-        $this->_setTemplate($template);
-
         return $this;
     }
 
