@@ -118,23 +118,57 @@ $flash->warning('It is totally just for display, never do this in real life...')
 
 ## Templates
 
-### Template Factory
-
+Using templates you can customize how flash messages will be rendered. 
 Package comes with a set of templates for most popular CSS frameworks:
 
 ```php
 Templates::BASE; // Same as Templates::BOOTSTRAP
-Templates::BOOTSTRAP;
-Templates::FOUNDATION;
-Templates::BULMA;
-Templates::MATERIALIZE;
-Templates::TAILWIND;
-Templates::PRIMER;
-Templates::UIKIT;
-Templates::SEMANTIC;
-Templates::SPECTRE;
-Templates::HALFMOON;
+Templates::BOOTSTRAP;   // https://getbootstrap.com
+Templates::FOUNDATION;  // https://get.foundation
+Templates::BULMA;       // https://bulma.io
+Templates::MATERIALIZE; // https://materializecss.com
+Templates::TAILWIND;    // https://tailwindcss.com
+Templates::PRIMER;      // https://primer.style
+Templates::UIKIT;       // https://getuikit.com
+Templates::SEMANTIC;    // https://semantic-ui.com
+Templates::SPECTRE;     // https://picturepan2.github.io/spectre
+Templates::HALFMOON;    // https://www.gethalfmoon.com
 ```
+
+### Shortcuts
+
+You cah pass template name as a second argument to `display()` function:
+
+```php
+flash()->success('Success message!');
+...
+// rendering with Halfmoon template using Templates::HALFMOON as a shortcut
+echo flash()->display('success', Templates::HALFMOON);
+```
+
+Or you can use descriptive display functions:
+
+```php
+flash()->success('Success message!');
+...
+// rendering with Tailwind for example...
+echo flash()->displayTailwind();
+echo flash()->displayBootstrap();
+echo flash()->displayFoundation();
+echo flash()->displayBulma();
+echo flash()->displayMaterialize();
+echo flash()->displayPrimer();
+echo flash()->displayUiKit();
+echo flash()->displaySemantic();
+echo flash()->displaySpectre();
+echo flash()->displayHalfmoon();
+```
+
+```php
+
+### Factory
+
+Package comes with a set of templates for most popular CSS frameworks:
 
 This templates can be created using [TemplateFactory](src/TemplateFactory.php) that comes with package.
 All templates have aliases defined in [Templates](src/Templates.php).
@@ -157,7 +191,7 @@ $flash = new Flash($template);
 $flash->setTemplate($template);
 ```
 
-### Creating own templates
+### Creating templates
 
 Template is basically any class that implements [TemplateInterface](src/TemplateInterface.php). But to make it easy
 you can extend [BaseTemplate](src/BaseTemplate.php), it already contains most of the functions.
