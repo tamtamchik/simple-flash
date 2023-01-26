@@ -1,5 +1,7 @@
 <?php
 
+use function Tamtamchik\SimpleFlash\flash;
+
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';

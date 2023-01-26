@@ -20,7 +20,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## 3.0.0 - 2023-01-26
 
-**Breaking Change!** Minimum PHP version is now 7.3.
+**Breaking Changes!** 
+- Minimum PHP version is now 7.3.
+- Function `flash()` is now namespaced: `Tamtamchik\NameCase\flash`.
 
 ### Added
 
@@ -38,7 +40,6 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
   - `flash()->displaySemantic(...)`
   - `flash()->displaySpectre(...)`
   - `flash()->displayHalfmoon(...)`
-
 
 ### Deprecated
 - `flash()->hasMessages(...)` is deprecated. Use `flash()->some(...)` instead.

@@ -5,6 +5,7 @@ namespace Tamtamchik\SimpleFlash\Test;
 use PHPUnit\Framework\TestCase;
 use Tamtamchik\SimpleFlash\Templates;
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
+use function Tamtamchik\SimpleFlash\flash;
 
 @session_start();
 

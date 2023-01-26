@@ -2,6 +2,7 @@
 
 use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
+use function Tamtamchik\SimpleFlash\flash;
 
 session_start();
 

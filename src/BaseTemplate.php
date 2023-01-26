@@ -94,11 +94,11 @@ abstract class BaseTemplate implements TemplateInterface
     /**
      * Check that you have all fields defined in template and throw an exception if not.
      *
-     * @param $name
+     * @param string $name
      *
      * @throws FlashTemplateException
      */
-    public function __get($name): void
+    public function __get(string $name): void
     {
         throw new FlashTemplateException("No \"$name\" defined in template! Please, make sure you have prefix, postfix and wrapper defined!");
     }

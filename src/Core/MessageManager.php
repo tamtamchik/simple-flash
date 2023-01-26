@@ -4,8 +4,13 @@ namespace Tamtamchik\SimpleFlash\Core;
 
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
-class MessageManager extends TemplateManager
+class MessageManager extends SessionManager
 {
+    /**
+     * @var TemplateManager
+     */
+    protected $template;
+
     private $types = [
         'error',
         'warning',
@@ -15,7 +20,9 @@ class MessageManager extends TemplateManager
 
     public function __construct(TemplateInterface $template)
     {
-        parent::__construct($template);
+        parent::__construct();
+
+        $this->template = new TemplateManager($template);
     }
 
     /**
@@ -24,7 +31,7 @@ class MessageManager extends TemplateManager
      * @param string $message - message text
      * @param string $type - message type: success, info, warning, error
      */
-    protected function _addMessage(string $message = '', string $type = 'info')
+    protected function appendMessage(string $message = '', string $type = 'info'): void
     {
         $session = $this->getSession();
 
@@ -51,14 +58,14 @@ class MessageManager extends TemplateManager
      *
      * @return string - HTML with flash messages
      */
-    protected function _compileMessage(array $flashes, string $type): string
+    protected function compileMessages(array $flashes, string $type): string
     {
         $messages = '';
         foreach ($flashes as $msg) {
-            $messages .= $this->_getTemplate()->wrapMessage($msg);
+            $messages .= $this->template->getTemplate()->wrapMessage($msg);
         }
 
-        return $this->_getTemplate()->wrapMessages($messages, $type);
+        return $this->template->getTemplate()->wrapMessages($messages, $type);
     }
 
     /**
@@ -68,7 +75,7 @@ class MessageManager extends TemplateManager
      *
      * @return bool
      */
-    public function _hasMessageType(string $type): bool
+    public function hasMessageType(string $type): bool
     {
         return in_array($type, $this->types);
     }
@@ -80,7 +87,7 @@ class MessageManager extends TemplateManager
      *
      * @return bool
      */
-    public function _hasMessage(string $type = null): bool
+    public function hasMessage(string $type = null): bool
     {
         $session = $this->getSession();
 
@@ -102,7 +109,7 @@ class MessageManager extends TemplateManager
      *
      * @param string|null $type - message type: success, info, warning, error
      */
-    protected function _clearMessage(string $type = null)
+    protected function clearMessages(string $type = null): void
     {
         if (is_null($type)) {
             $this->setSession([]);

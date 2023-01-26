@@ -4,7 +4,7 @@ namespace Tamtamchik\SimpleFlash\Core;
 
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
-class TemplateManager extends SessionManager
+class TemplateManager
 {
     /**
      * @var TemplateInterface
@@ -13,8 +13,6 @@ class TemplateManager extends SessionManager
 
     public function __construct(TemplateInterface $template)
     {
-        parent::__construct();
-
         $this->template = $template;
     }
 
@@ -23,7 +21,7 @@ class TemplateManager extends SessionManager
      *
      * @return TemplateInterface
      */
-    protected function _getTemplate(): ?TemplateInterface
+    public function getTemplate(): TemplateInterface
     {
         return $this->template;
     }
@@ -33,7 +31,7 @@ class TemplateManager extends SessionManager
      *
      * @param TemplateInterface $template
      */
-    protected function _setTemplate(TemplateInterface $template)
+    public function setTemplate(TemplateInterface $template): void
     {
         $this->template = $template;
     }

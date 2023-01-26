@@ -14,8 +14,6 @@ class Engine extends MessageManager
 {
     /**
      * Creates flash container from session.
-     *
-     * @param TemplateInterface $template
      */
     public function __construct(TemplateInterface $template)
     {
@@ -39,9 +37,9 @@ class Engine extends MessageManager
      *
      * @return TemplateInterface
      */
-    public function getTemplate(): ?TemplateInterface
+    public function getTemplate(): TemplateInterface
     {
-        return $this->_getTemplate();
+        return $this->template->getTemplate();
     }
 
     /**
@@ -53,7 +51,7 @@ class Engine extends MessageManager
      */
     public function setTemplate(TemplateInterface $template): Engine
     {
-        $this->_setTemplate($template);
+        $this->template->setTemplate($template);
 
         return $this;
     }
@@ -83,10 +81,10 @@ class Engine extends MessageManager
 
         if (is_null($type)) {
             foreach ($session as $messageType => $messages) {
-                $result .= $this->_compileMessage($messages, $messageType);
+                $result .= $this->compileMessages($messages, $messageType);
             }
         } else {
-            $result .= $this->_compileMessage($session[$type], $type);
+            $result .= $this->compileMessages($session[$type], $type);
         }
 
         $this->clear($type);
@@ -103,7 +101,7 @@ class Engine extends MessageManager
     {
         $isEmptySession = empty($session);
         $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
-        $isTypeNotInTypes = ! is_null($type) && ! $this->_hasMessageType($type);
+        $isTypeNotInTypes = ! is_null($type) && ! $this->hasMessageType($type);
 
         return $isEmptySession || $isTypeNotInSession || $isTypeNotInTypes;
     }
@@ -117,7 +115,7 @@ class Engine extends MessageManager
      */
     public function some(string $type = null): bool
     {
-        return $this->_hasMessage($type);
+        return $this->hasMessage($type);
     }
 
     /**
@@ -129,7 +127,7 @@ class Engine extends MessageManager
      */
     public function clear(string $type = null): Engine
     {
-        $this->_clearMessage($type);
+        $this->clearMessages($type);
 
         return $this;
     }
@@ -146,10 +144,10 @@ class Engine extends MessageManager
     {
         if (is_array($message)) {
             foreach ($message as $issue) {
-                $this->_addMessage($issue, $type);
+                $this->appendMessage($issue, $type);
             }
         } else {
-            $this->_addMessage($message, $type);
+            $this->appendMessage($message, $type);
         }
         return $this;
     }

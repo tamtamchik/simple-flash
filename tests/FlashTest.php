@@ -9,6 +9,7 @@ use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
+use function Tamtamchik\SimpleFlash\flash;
 
 @session_start();
 

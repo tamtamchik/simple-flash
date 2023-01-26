@@ -7,6 +7,7 @@ use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
+use function Tamtamchik\SimpleFlash\flash;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'BadTemplate.php';

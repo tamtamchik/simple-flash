@@ -1,4 +1,9 @@
-<?php include_once '_init.php'; ?>
+<?php
+
+use function Tamtamchik\SimpleFlash\flash;
+
+include_once '_init.php';
+?>
 
 <!doctype html>
 <html lang="en">

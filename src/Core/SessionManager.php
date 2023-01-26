@@ -21,7 +21,7 @@ class SessionManager
         return $_SESSION[$this->key];
     }
 
-    protected function setSession(array $session)
+    protected function setSession(array $session): void
     {
         $_SESSION[$this->key] = $session;
     }

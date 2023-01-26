@@ -36,7 +36,10 @@
   "autoload-dev": {
     "psr-4": {
       "Tamtamchik\\SimpleFlash\\Test\\": "tests"
-    }
+    },
+    "files": [
+      "src/function.php"
+    ]
   },
   "scripts": {
     "tests": "vendor/bin/phpunit",
@@ -55,6 +58,10 @@
     }
   },
   "archive": {
-    "exclude": ["/examples", "/issues", "/tests"]
+    "exclude": [
+      "/examples",
+      "/issues",
+      "/tests"
+    ]
   }
 }
