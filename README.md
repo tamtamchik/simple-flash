@@ -23,8 +23,8 @@ Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/fla
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
-> **The documentation below is for version 3.x!**
-> **If you are looking the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).**
+> **The documentation below is for version 3.x!**  
+> **If you are looking the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).**  
 > **If you are looking the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).**
 
 ## Install
@@ -48,14 +48,13 @@ if( !session_id() ) {
 require_once 'vendor/autoload.php';
 ````
 
-> **Warning!** This library contains global `flash()` function, that potentially can break your function with this name. Now you are warned!
-
 ## Usage
 
 There are 3 ways to use library:
 
 ```php
 use \Tamtamchik\SimpleFlash\Flash;
+use function Tamtamchik\SimpleFlash\flash;
 
 // Instance
 $flash = new Flash();
@@ -73,6 +72,8 @@ Messages added by calling `message($message, $type = 'info')` method. In case of
 Because any of creation types return `\Tamtamchik\SimpleFlash\Flash` instance, so you can always use chaining to add multiple messages. Shortcuts available for all types of base message types, also you can pass arrays as `$message`.
 
 ```php
+use function Tamtamchik\SimpleFlash\flash;
+
 flash()->error(['Invalid email!', 'Invalid username!'])
        ->warning('Warning message.')
        ->info('Info message.')
@@ -94,6 +95,8 @@ Out of the box library support 4 different types of messages: `error`, `warning`
 Rendering is simple:
 
 ```php
+use function Tamtamchik\SimpleFlash\flash;
+
 // Rendering specific type
 $output = flash()->display('error');
 
@@ -141,6 +144,8 @@ Templates::HALFMOON;    // https://www.gethalfmoon.com
 You cah pass template name as a second argument to `display()` function:
 
 ```php
+use function Tamtamchik\SimpleFlash\flash;
+
 flash()->success('Success message!');
 ...
 // rendering with Halfmoon template using Templates::HALFMOON as a shortcut
@@ -150,6 +155,8 @@ echo flash()->display('success', Templates::HALFMOON);
 Or you can use descriptive display functions:
 
 ```php
+use function Tamtamchik\SimpleFlash\flash;
+
 flash()->success('Success message!');
 ...
 echo flash()->displayBootstrap();
@@ -199,6 +206,7 @@ Defining and using this sample class as template:
 ```php
 use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
+use function Tamtamchik\SimpleFlash\flash;
 
 class CustomTemplate extends BaseTemplate implements TemplateInterface
 {
