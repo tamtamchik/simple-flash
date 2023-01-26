@@ -3,6 +3,7 @@
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\Templates;
+use function Tamtamchik\SimpleFlash\flash;
 
 if ( ! session_id()) {
     session_start();

@@ -1,6 +1,7 @@
 <?php
 
 use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
+use function Tamtamchik\SimpleFlash\flash;
 
 if ( ! session_id()) {
     session_start();

@@ -4,6 +4,7 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateFactory;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 use Tamtamchik\SimpleFlash\Templates;
+use function Tamtamchik\SimpleFlash\flash;
 
 if ( ! session_id()) {
     session_start();
