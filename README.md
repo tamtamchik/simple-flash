@@ -1,12 +1,12 @@
 # Simple Flash Messages
 
-[![Buy Me A Coffee][ico-coffee]][link-coffee]
 [![Latest Version on Packagist][ico-version]][link-packagist]
+[![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
+[![SensioLabsInsight][ico-insight]][link-insight]
 
 Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box:
 
@@ -283,6 +283,8 @@ If you discover any security related issues, please email <yuri.tam.tkachenko@gm
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+[![Buy Me A Coffee][ico-coffee]][link-coffee]
+
 [ico-version]: https://img.shields.io/packagist/v/tamtamchik/simple-flash.svg?style=flat-square
 [ico-license]: https://img.shields.io/packagist/l/tamtamchik/simple-flash.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/tamtamchik/simple-flash/master.svg?style=flat-square
@@ -290,6 +292,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
 [ico-coffee]: https://img.shields.io/badge/Buy%20Me%20A-Coffee-%236F4E37.svg?style=flat-square
+[ico-insight]: https://img.shields.io/symfony/i/grade/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-travis]: https://app.travis-ci.com/github/tamtamchik/simple-flash
@@ -299,3 +302,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/tamtamchik
 [link-contributors]: ../../contributors
 [link-coffee]: https://www.buymeacoffee.com/tamtamchik
+[link-insight]: https://insight.symfony.com/projects/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25
