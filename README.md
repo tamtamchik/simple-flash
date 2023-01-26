@@ -152,20 +152,17 @@ Or you can use descriptive display functions:
 ```php
 flash()->success('Success message!');
 ...
-// rendering with Tailwind for example...
-echo flash()->displayTailwind();
 echo flash()->displayBootstrap();
 echo flash()->displayFoundation();
 echo flash()->displayBulma();
 echo flash()->displayMaterialize();
+echo flash()->displayTailwind();
 echo flash()->displayPrimer();
 echo flash()->displayUiKit();
 echo flash()->displaySemantic();
 echo flash()->displaySpectre();
 echo flash()->displayHalfmoon();
 ```
-
-```php
 
 ### Factory
 
