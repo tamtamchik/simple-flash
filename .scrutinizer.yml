@@ -3,6 +3,7 @@ build:
 
   nodes:
     tests-php-7.3:
+      image: default-bionic
       environment:
         php:
           version: 7.3
