@@ -2,12 +2,7 @@ build:
   image: default-jammy
 
   nodes:
-    tests-php-7.4:
-      image: default-bionic
-      environment:
-        php:
-          version: 7.4
-
+    build:
       tests:
         override:
           - command: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
