@@ -3,7 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
+[![Build Status][ico-scrutinizer-build]][link-scrutinizer]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![SensioLabsInsight][ico-insight]][link-insight]
@@ -295,7 +295,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/tamtamchik/simple-flash.svg?style=flat-square
 [ico-license]: https://img.shields.io/packagist/l/tamtamchik/simple-flash.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/tamtamchik/simple-flash/master.svg?style=flat-square
+[ico-scrutinizer-build]: https://img.shields.io/scrutinizer/build/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
@@ -303,7 +303,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-insight]: https://img.shields.io/symfony/i/grade/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
-[link-travis]: https://app.travis-ci.com/github/tamtamchik/simple-flash
 [link-scrutinizer]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash
 [link-downloads]: https://packagist.org/packages/tamtamchik/simple-flash
