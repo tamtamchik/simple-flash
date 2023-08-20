@@ -1,12 +1,7 @@
 build:
-  image: default-bionic
-  nodes:
-    analysis:
-      tests:
-        override:
-          - php-scrutinizer-run
-          - phpcs-run
+  image: default-jammy
 
+  nodes:
     tests-php-7.3:
       environment:
         php:
@@ -18,6 +13,12 @@ build:
             coverage:
               file: coverage.clover
               format: clover
+
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
+          - phpcs-run
 
 filter:
     excluded_paths: [tests/*]
