@@ -22,7 +22,6 @@
     "php": ">=7.3"
   },
   "require-dev": {
-    "scrutinizer/ocular": "^1",
     "phpunit/phpunit": "^9"
   },
   "autoload": {
