@@ -1,6 +1,7 @@
 # Simple Flash Messages
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
+![PHP][ico-php]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-scrutinizer-build]][link-scrutinizer]
@@ -303,6 +304,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
 [ico-coffee]: https://img.shields.io/badge/Buy%20Me%20A-Coffee-%236F4E37.svg?style=flat-square
 [ico-insight]: https://insight.symfony.com/projects/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25/small.svg
+[ico-php]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Ftamtamchik%2Fsimple-flash%2Fraw%2Fmaster%2Fcomposer.json&query=%24.require.php&style=flat-square&label=PHP
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-scrutinizer]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash/code-structure
