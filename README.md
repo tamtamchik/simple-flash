@@ -6,6 +6,7 @@
 [![Build Status][ico-scrutinizer-build]][link-scrutinizer]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
+
 [![SensioLabsInsight][ico-insight]][link-insight]
 
 Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/flash](https://github.com/laracasts/flash) and [plasticbrain/PHP-Flash-Messages](https://github.com/plasticbrain/PHP-Flash-Messages). It supports multiple CSS frameworks out of the box:
@@ -301,7 +302,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/tamtamchik/simple-flash.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/tamtamchik/simple-flash.svg?style=flat-square
 [ico-coffee]: https://img.shields.io/badge/Buy%20Me%20A-Coffee-%236F4E37.svg?style=flat-square
-[ico-insight]: https://img.shields.io/symfony/i/grade/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25.svg?style=flat-square
+[ico-insight]: https://insight.symfony.com/projects/a92cacf2-ba32-4f36-b040-5a9f1d7f8f25/small.svg
 
 [link-packagist]: https://packagist.org/packages/tamtamchik/simple-flash
 [link-scrutinizer]: https://scrutinizer-ci.com/g/tamtamchik/simple-flash/code-structure
