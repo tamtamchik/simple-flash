@@ -87,7 +87,7 @@ class MessageManager extends SessionManager
      *
      * @return bool
      */
-    public function hasMessage(string $type = null): bool
+    public function hasMessage(?string $type = null): bool
     {
         $session = $this->getSession();
 
@@ -109,7 +109,7 @@ class MessageManager extends SessionManager
      *
      * @param string|null $type - message type: success, info, warning, error
      */
-    protected function clearMessages(string $type = null): void
+    protected function clearMessages(?string $type = null): void
     {
         if (is_null($type)) {
             $this->setSession([]);
