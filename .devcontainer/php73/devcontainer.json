@@ -1,0 +1,15 @@
+{
+    "name": "PHP 7.3 Environment",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "xdebug.php-debug",
+                "bmewburn.vscode-intelephense-client",
+                "mikestead.dotenv"
+            ]
+        }
+    },
+    "forwardPorts": [8073],
+    "postCreateCommand": "composer install"
+} 
