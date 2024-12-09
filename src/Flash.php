@@ -47,7 +47,7 @@ class Flash
      * @param TemplateInterface|null $template
      * @throws Exceptions\FlashTemplateNotFoundException
      */
-    public function __construct(TemplateInterface $template = null)
+    public function __construct(?TemplateInterface $template = null)
     {
         if ($assigned = is_null($template)) {
             $template = TemplateFactory::create();

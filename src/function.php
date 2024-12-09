@@ -17,7 +17,7 @@ if ( ! function_exists('flash')) {
      * @return Engine|Flash
      * @throws FlashTemplateNotFoundException
      */
-    function flash($message = '', string $type = 'info', TemplateInterface $template = null)
+    function flash($message = '', string $type = 'info', ?TemplateInterface $template = null)
     {
         $flash = new Flash($template);
 

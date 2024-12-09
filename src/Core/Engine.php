@@ -66,7 +66,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function display(string $type = null, string $template = null): string
+    public function display(?string $type = null, ?string $template = null): string
     {
         $result = '';
         $session = $this->getSession();
@@ -97,7 +97,7 @@ class Engine extends MessageManager
      * @param string|null $type
      * @return bool
      */
-    private function isReadyForDisplay(array $session, string $type = null): bool
+    private function isReadyForDisplay(array $session, ?string $type = null): bool
     {
         $isEmptySession = empty($session);
         $isTypeNotInSession = ! is_null($type) && ! array_key_exists($type, $session);
@@ -113,7 +113,7 @@ class Engine extends MessageManager
      *
      * @return bool
      */
-    public function some(string $type = null): bool
+    public function some(?string $type = null): bool
     {
         return $this->hasMessage($type);
     }
@@ -125,7 +125,7 @@ class Engine extends MessageManager
      *
      * @return Engine $this
      */
-    public function clear(string $type = null): Engine
+    public function clear(?string $type = null): Engine
     {
         $this->clearMessages($type);
 
@@ -207,7 +207,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayBootstrap(string $type = null): string
+    public function displayBootstrap(?string $type = null): string
     {
         return $this->display($type, Templates::BOOTSTRAP);
     }
@@ -219,7 +219,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayFoundation(string $type = null): string
+    public function displayFoundation(?string $type = null): string
     {
         return $this->display($type, Templates::FOUNDATION);
     }
@@ -231,7 +231,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayBulma(string $type = null): string
+    public function displayBulma(?string $type = null): string
     {
         return $this->display($type, Templates::BULMA);
     }
@@ -243,7 +243,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayMaterialize(string $type = null): string
+    public function displayMaterialize(?string $type = null): string
     {
         return $this->display($type, Templates::MATERIALIZE);
     }
@@ -255,7 +255,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayTailwind(string $type = null): string
+    public function displayTailwind(?string $type = null): string
     {
         return $this->display($type, Templates::TAILWIND);
     }
@@ -267,7 +267,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayPrimer(string $type = null): string
+    public function displayPrimer(?string $type = null): string
     {
         return $this->display($type, Templates::PRIMER);
     }
@@ -279,7 +279,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayUiKit(string $type = null): string
+    public function displayUiKit(?string $type = null): string
     {
         return $this->display($type, Templates::UIKIT);
     }
@@ -291,7 +291,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displaySemantic(string $type = null): string
+    public function displaySemantic(?string $type = null): string
     {
         return $this->display($type, Templates::SEMANTIC);
     }
@@ -303,7 +303,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displaySpectre(string $type = null): string
+    public function displaySpectre(?string $type = null): string
     {
         return $this->display($type, Templates::SPECTRE);
     }
@@ -315,7 +315,7 @@ class Engine extends MessageManager
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayHalfmoon(string $type = null): string
+    public function displayHalfmoon(?string $type = null): string
     {
         return $this->display($type, Templates::HALFMOON);
     }
