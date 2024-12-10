@@ -18,6 +18,15 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Security
 
+## 3.0.1 - 2024-12-10
+
+### Added
+- PHP 8.4 support (#17) added.
+- Integration with Devcontainers for local development.
+
+### Changed
+- Build and tests CI processed moved to scrutinizer.
+
 ## 3.0.0 - 2023-01-26
 
 **Breaking Changes!** 
