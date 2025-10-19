@@ -11,8 +11,8 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test UiKit template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.15.22/css/uikit.min.css"
-          integrity="sha512-yM8ljS4awfnkTcISLgQMDc4Z16q3BXQC6CuiNfCvTOsX/k+awcZBcwIswyHeZVy3w/iTzZKyroHBAJocW2woKQ=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.11/css/uikit.min.css"
+          integrity="sha512-OnzL+z8yBWMnEBBo415KDF5JLIDvlBMPLnHFbCxKDyFztM0qDWLvvxpLlA2RCEFsgu6F8XDkNjdTcA6zc9A2rg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>

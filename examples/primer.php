@@ -11,8 +11,8 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Premier template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/20.8.0/primer.min.css"
-          integrity="sha512-FBDbgCWjJV1M4p0eGswLLr6ba+SfiVpj4uCoj0AjzjbVSMtCtb1pH6kM5Cdgf42V1ii4QIRkHAhrn9xr0qSWmA=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/21.0.9/primer.min.css"
+          integrity="sha512-XfZfr3UmRhIzRmRcwntxCfBATwbZwLjCwiQqH7nEl5pf/0BtM7SqfJ6eCnmJcbp0XtJbNXXZdADUqJPFr8gKGw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         /* Custom CSS for Primer flash styles separation. */

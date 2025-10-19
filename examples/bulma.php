@@ -11,8 +11,8 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Bulma default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
-          integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.min.css"
+          integrity="sha512-RpeJZX3aH5oZN3U3JhE7Sd+HG8XmuR8G5CsqIjo0OBLuU8qA/HDASi7rQlSgPqdZcT+LLmNfP7GIZRKWyLBCEw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>

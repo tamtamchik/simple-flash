@@ -1,14 +1,14 @@
 <ul>
     <li>
-        <a href="bootstrap.php">Bootstrap (5.3.0-alpha1)</a>
+        <a href="bootstrap.php">Bootstrap (5.3.3)</a>
         [<a target="_blank" href="https://getbootstrap.com">https://getbootstrap.com</a>]
     </li>
     <li>
-        <a href="foundation.php">Foundation (6.7.5)</a>
+        <a href="foundation.php">Foundation (6.8.1)</a>
         [<a target="_blank" href="https://get.foundation">https://get.foundation</a>]
     </li>
     <li>
-        <a href="./bulma.php">Bulma (0.9.4)</a>
+        <a href="./bulma.php">Bulma (1.0.2)</a>
         [<a target="_blank" href="https://bulma.io">https://bulma.io</a>]
     </li>
     <li>
@@ -20,11 +20,11 @@
         [<a target="_blank" href="https://tailwindcss.com">https://tailwindcss.com</a>]
     </li>
     <li>
-        <a href="./primer.php">Primer (20.8.0)</a>
+        <a href="./primer.php">Primer (21.0.9)</a>
         [<a target="_blank" href="https://primer.style">https://primer.style</a>]
     </li>
     <li>
-        <a href="uikit.php">UiKit (3.15.22)</a>
+        <a href="uikit.php">UiKit (3.21.11)</a>
         [<a target="_blank" href="https://getuikit.com">https://getuikit.com</a>]
     </li>
     <li>
@@ -36,7 +36,7 @@
         [<a target="_blank" href="https://picturepan2.github.io/spectre/">https://picturepan2.github.io/spectre/</a>]
     </li>
     <li>
-        <a href="./halfmoon.php">Halfmoon (1.1.1)</a>
+        <a href="./halfmoon.php">Halfmoon (2.0.1)</a>
         [<a target="_blank" href="https://www.gethalfmoon.com">https://www.gethalfmoon.com</a>]
     </li>
     <li><a href="./custom.php">Custom Template</a></li>
