@@ -12,7 +12,6 @@ include_once '_init.php';
     <title>Test UiKit template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.21.11/css/uikit.min.css"
-          integrity="sha512-OnzL+z8yBWMnEBBo415KDF5JLIDvlBMPLnHFbCxKDyFztM0qDWLvvxpLlA2RCEFsgu6F8XDkNjdTcA6zc9A2rg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>

@@ -12,7 +12,6 @@ include_once '_init.php';
     <title>Test Halfmoon default template example.</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Halfmoon/2.0.1/css/halfmoon.min.css"
-          integrity="sha512-jm/lwgRCyPqoZqsVzKIYkPyPy4EXRRuP2DdLiPMsWYg0lWIf9fCGxRXzxf3CjMpXKzIR+EW1EmJU9TRKHmaNig=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
         /* Custom margins for Halfmoon toasts */
@@ -35,7 +34,6 @@ include_once '_init.php';
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Halfmoon/2.0.1/js/halfmoon.min.js"
-        integrity="sha512-hLcBGEHN/bGbBXNnQjrZMR5uP3uy5TLqWR1g3r5oZz0zvCLOPh5B8rJgV/KjAo/9dHYZqvPTOlb5++hDGa+O8Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
     // Dark mode toggle demo
