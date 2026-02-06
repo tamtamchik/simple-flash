@@ -100,10 +100,10 @@ class FactoryTest extends TestCase
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testSemanticTemplate()
+    public function testFomanticTemplate()
     {
-        $template = TemplateFactory::create(Templates::SEMANTIC);
-        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SemanticTemplate', get_class($template));
+        $template = TemplateFactory::create(Templates::FOMANTIC);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\FomanticTemplate', get_class($template));
     }
 
     /**
@@ -130,20 +130,30 @@ class FactoryTest extends TestCase
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testMaterializeTemplate()
+    public function testCirrusTemplate()
     {
-        $template = TemplateFactory::create(Templates::MATERIALIZE);
-        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\MaterializeTemplate', get_class($template));
+        $template = TemplateFactory::create(Templates::CIRRUS);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\CirrusTemplate', get_class($template));
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testSpectreTemplate()
+    public function testVanillaTemplate()
     {
-        $template = TemplateFactory::create(Templates::SPECTRE);
-        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\SpectreTemplate', get_class($template));
+        $template = TemplateFactory::create(Templates::VANILLA);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\VanillaTemplate', get_class($template));
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testBeercssTemplate()
+    {
+        $template = TemplateFactory::create(Templates::BEERCSS);
+        $this->assertEquals('Tamtamchik\SimpleFlash\Templates\BeercssTemplate', get_class($template));
     }
 
     /**

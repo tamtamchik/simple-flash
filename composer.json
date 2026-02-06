@@ -42,14 +42,15 @@
   },
   "scripts": {
     "tests": "vendor/bin/phpunit",
-    "examples": "php -S localhost:8000 -t examples/"
+    "examples": "php -S 0.0.0.0:8000 -t examples/"
   },
   "config": {
     "process-timeout": 0
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "3.0.x-dev",
+      "dev-master": "4.0.x-dev",
+      "3.0.x": "3.0.x-dev",
       "2.0.x": "2.0.x-dev",
       "1.2.x": "1.2.x-dev",
       "1.1.x": "1.1.x-dev",

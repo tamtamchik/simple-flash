@@ -6,18 +6,16 @@ use Tamtamchik\SimpleFlash\BaseTemplate;
 use Tamtamchik\SimpleFlash\TemplateInterface;
 
 /**
- * Class MaterializeTemplate.
- * Uses default Materialize markdown for flash messages.
+ * Class BeercssTemplate.
+ * Uses default Beer CSS markup for flash messages.
  */
-class MaterializeTemplate extends BaseTemplate implements TemplateInterface
+class BeercssTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix = '<div>';
-    protected $postfix = '</div>';
-    protected $wrapper = '<div class="card-panel %s lighten-4 %s-text text-darken-4">%s</div>';
+    protected $prefix = '<span>';
+    protected $postfix = '</span>';
+    protected $wrapper = '<div class="%s padding round">%s</div>';
 
     /**
-     * Override base function to suite Bootstrap 3 alert naming.
-     *
      * @param string $messages - message text
      * @param string $type - message type: success, info, warning, error
      *
@@ -27,9 +25,9 @@ class MaterializeTemplate extends BaseTemplate implements TemplateInterface
     {
         $type = ($type == 'success') ? 'green' : $type;
         $type = ($type == 'info') ? 'blue' : $type;
-        $type = ($type == 'warning') ? 'yellow' : $type;
+        $type = ($type == 'warning') ? 'amber' : $type;
         $type = ($type == 'error') ? 'red' : $type;
 
-        return sprintf($this->getWrapper(), $type, $type, $messages);
+        return sprintf($this->getWrapper(), $type, $messages);
     }
 }

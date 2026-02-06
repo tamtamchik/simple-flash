@@ -15,20 +15,21 @@ Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/fla
 * [Bootstrap](https://getbootstrap.com) (default)
 * [Foundation](https://get.foundation)
 * [Bulma](https://bulma.io)
-* [Materialize](https://materializecss.com)
 * [Tailwind](https://tailwindcss.com)
-* [Premier](https://primer.style)
+* [Primer](https://primer.style)
 * [UIKit](https://getuikit.com)
-* [Semantic UI](https://semantic-ui.com)
-* [Spectre.css](https://picturepan2.github.io/spectre)
-* [Halfmoon](https://www.gethalfmoon.com)
+* [Fomantic UI](https://fomantic-ui.com)
+* [Cirrus CSS](https://cirrus-ui.com)
+* [Vanilla Framework](https://vanillaframework.io)
+* [Beer CSS](https://www.beercss.com)
 
 ![simple-flash](https://cloud.githubusercontent.com/assets/265510/24695879/c87b32f2-1a11-11e7-972e-b4b2c75f35b5.png)
 
 > [!NOTE]
-> The documentation below is for version 3.x!  
-> If you are looking the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).  
-> If you are looking the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).  
+> The documentation below is for version 4.x!
+> If you are looking the documentation for version 3.x look [here](https://github.com/tamtamchik/simple-flash/blob/3.0.x/README.md).
+> If you are looking the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).
+> If you are looking the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).
 
 ## Install
 
@@ -133,13 +134,13 @@ Templates::BASE; // Same as Templates::BOOTSTRAP
 Templates::BOOTSTRAP;   // https://getbootstrap.com
 Templates::FOUNDATION;  // https://get.foundation
 Templates::BULMA;       // https://bulma.io
-Templates::MATERIALIZE; // https://materializecss.com
 Templates::TAILWIND;    // https://tailwindcss.com
 Templates::PRIMER;      // https://primer.style
 Templates::UIKIT;       // https://getuikit.com
-Templates::SEMANTIC;    // https://semantic-ui.com
-Templates::SPECTRE;     // https://picturepan2.github.io/spectre
-Templates::HALFMOON;    // https://www.gethalfmoon.com
+Templates::FOMANTIC;    // https://fomantic-ui.com
+Templates::CIRRUS;      // https://cirrus-ui.com
+Templates::VANILLA;     // https://vanillaframework.io
+Templates::BEERCSS;     // https://www.beercss.com
 ```
 
 ### Shortcuts
@@ -151,8 +152,8 @@ use function Tamtamchik\SimpleFlash\flash;
 
 flash()->success('Success message!');
 ...
-// rendering with Halfmoon template using Templates::HALFMOON as a shortcut
-echo flash()->display('success', Templates::HALFMOON);
+// rendering with Fomantic template using Templates::FOMANTIC as a shortcut
+echo flash()->display('success', Templates::FOMANTIC);
 ```
 
 Or you can use descriptive display functions:
@@ -165,13 +166,13 @@ flash()->success('Success message!');
 echo flash()->displayBootstrap();
 echo flash()->displayFoundation();
 echo flash()->displayBulma();
-echo flash()->displayMaterialize();
 echo flash()->displayTailwind();
 echo flash()->displayPrimer();
 echo flash()->displayUiKit();
-echo flash()->displaySemantic();
-echo flash()->displaySpectre();
-echo flash()->displayHalfmoon();
+echo flash()->displayFomantic();
+echo flash()->displayCirrus();
+echo flash()->displayVanilla();
+echo flash()->displayBeercss();
 ```
 
 ### Factory

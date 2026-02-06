@@ -237,18 +237,6 @@ class Engine extends MessageManager
     }
 
     /**
-     * Returns Materialize ready HTML for messages.
-     *
-     * @param string|null $type - message type: success, info, warning, error
-     *
-     * @throws FlashTemplateNotFoundException
-     */
-    public function displayMaterialize(?string $type = null): string
-    {
-        return $this->display($type, Templates::MATERIALIZE);
-    }
-
-    /**
      * Returns Tailwind ready HTML for messages.
      *
      * @param string|null $type - message type: success, info, warning, error
@@ -285,38 +273,50 @@ class Engine extends MessageManager
     }
 
     /**
-     * Returns Semantic ready HTML for messages.
+     * Returns Fomantic UI ready HTML for messages.
      *
      * @param string|null $type - message type: success, info, warning, error
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displaySemantic(?string $type = null): string
+    public function displayFomantic(?string $type = null): string
     {
-        return $this->display($type, Templates::SEMANTIC);
+        return $this->display($type, Templates::FOMANTIC);
     }
 
     /**
-     * Returns Spectre ready HTML for messages.
+     * Returns Cirrus CSS ready HTML for messages.
      *
      * @param string|null $type - message type: success, info, warning, error
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displaySpectre(?string $type = null): string
+    public function displayCirrus(?string $type = null): string
     {
-        return $this->display($type, Templates::SPECTRE);
+        return $this->display($type, Templates::CIRRUS);
     }
 
     /**
-     * Returns Spectre ready HTML for messages.
+     * Returns Vanilla Framework ready HTML for messages.
      *
      * @param string|null $type - message type: success, info, warning, error
      *
      * @throws FlashTemplateNotFoundException
      */
-    public function displayHalfmoon(?string $type = null): string
+    public function displayVanilla(?string $type = null): string
     {
-        return $this->display($type, Templates::HALFMOON);
+        return $this->display($type, Templates::VANILLA);
+    }
+
+    /**
+     * Returns Beer CSS ready HTML for messages.
+     *
+     * @param string|null $type - message type: success, info, warning, error
+     *
+     * @throws FlashTemplateNotFoundException
+     */
+    public function displayBeercss(?string $type = null): string
+    {
+        return $this->display($type, Templates::BEERCSS);
     }
 }

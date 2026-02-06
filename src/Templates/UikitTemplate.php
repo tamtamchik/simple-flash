@@ -11,9 +11,9 @@ use Tamtamchik\SimpleFlash\TemplateInterface;
  */
 class UikitTemplate extends BaseTemplate implements TemplateInterface
 {
-    protected $prefix = '<p>';
-    protected $postfix = '</p>';
-    protected $wrapper = '<div uk-alert class="uk-alert-%s">%s</div>';
+    protected $prefix = '';
+    protected $postfix = '<br />';
+    protected $wrapper = '<div uk-alert class="uk-alert-%s uk-padding-small">%s</div>';
 
     /**
      * Override base function to suite Bootstrap 3 alert naming.

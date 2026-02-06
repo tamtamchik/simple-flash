@@ -11,8 +11,8 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Foundation template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.5/css/foundation.min.css"
-          integrity="sha512-IyYpCJ+7aODR+LWiU+buuFnKg69IYu7SCmn+3IBNxvEcfsDC7z1xyWhAZTAFTGTlLMnDwcQBFWhhe7JiSw6TEg=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.9.0/css/foundation.min.css"
+          integrity="sha512-HU1oKdPcZ02o+Wxs7Mm07gVjKbPAn3i0pyud1gi3nAFTVYAVLqe+de607xHer+p9B2I9069l3nCsWFOdID/cUw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>

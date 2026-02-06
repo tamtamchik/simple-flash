@@ -17,13 +17,13 @@ class DisplayTest extends TestCase
     private $bootstrap = '<div class="alert alert-info" role="alert">Info message!<br /></div>';
     private $foundation = '<div class="callout primary"><p>Info message!</p></div>';
     private $bulma = '<div class="notification is-info">Info message!<br /></div>';
-    private $materialize = '<div class="card-panel blue lighten-4 blue-text text-darken-4"><div>Info message!</div></div>';
     private $tailwind = '<div class="bg-blue-300 border border-blue-400 text-blue-800 px-4 py-3 mb-3 rounded relative shadow" role="alert"">Info message!<br /></div>';
     private $primer = '<div class="flash flash-info"><p>Info message!</p></div>';
-    private $uikit = '<div uk-alert class="uk-alert-primary"><p>Info message!</p></div>';
-    private $semantic = '<div class="ui message info"><p>Info message!</p></div>';
-    private $spectre = '<div class="toast toast-primary">Info message!<br /></div>';
-    private $halfmoon = '<div class="alert alert-primary" role="alert">Info message!<br /></div>';
+    private $uikit = '<div uk-alert class="uk-alert-primary uk-padding-small">Info message!<br /></div>';
+    private $fomantic = '<div class="ui message info"><p>Info message!</p></div>';
+    private $cirrus = '<div class="toast toast--info">Info message!<br /></div>';
+    private $vanilla = '<div class="p-notification--information"><div class="p-notification__content"><p class="p-notification__message">Info message!<br /></p></div></div>';
+    private $beercss = '<div class="blue padding round"><span>Info message!</span></div>';
 
     /**
      * @throws FlashTemplateNotFoundException
@@ -121,30 +121,6 @@ class DisplayTest extends TestCase
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplayWithMaterialize()
-    {
-        flash()->info('Info message!');
-
-        $content = flash()->display(null, Templates::MATERIALIZE);
-        $this->assertEquals($this->materialize, $content);
-    }
-
-    /**
-     * @test
-     * @throws FlashTemplateNotFoundException
-     */
-    public function testDisplayMaterialize()
-    {
-        flash()->info('Info message!');
-
-        $content = flash()->displayMaterialize();
-        $this->assertEquals($this->materialize, $content);
-    }
-
-    /**
-     * @test
-     * @throws FlashTemplateNotFoundException
-     */
     public function testDisplayWithTailwind()
     {
         flash()->info('Info message!');
@@ -217,72 +193,96 @@ class DisplayTest extends TestCase
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplayWithSemantic()
+    public function testDisplayWithFomantic()
     {
         flash()->info('Info message!');
 
-        $content = flash()->display(null, Templates::SEMANTIC);
-        $this->assertEquals($this->semantic, $content);
+        $content = flash()->display(null, Templates::FOMANTIC);
+        $this->assertEquals($this->fomantic, $content);
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplaySemantic()
+    public function testDisplayFomantic()
     {
         flash()->info('Info message!');
 
-        $content = flash()->displaySemantic();
-        $this->assertEquals($this->semantic, $content);
+        $content = flash()->displayFomantic();
+        $this->assertEquals($this->fomantic, $content);
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplayWithSpectre()
+    public function testDisplayWithCirrus()
     {
         flash()->info('Info message!');
 
-        $content = flash()->display(null, Templates::SPECTRE);
-        $this->assertEquals($this->spectre, $content);
+        $content = flash()->display(null, Templates::CIRRUS);
+        $this->assertEquals($this->cirrus, $content);
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplaySpectre()
+    public function testDisplayCirrus()
     {
         flash()->info('Info message!');
 
-        $content = flash()->displaySpectre();
-        $this->assertEquals($this->spectre, $content);
+        $content = flash()->displayCirrus();
+        $this->assertEquals($this->cirrus, $content);
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplayWithHalfmoon()
+    public function testDisplayWithVanilla()
     {
         flash()->info('Info message!');
 
-        $content = flash()->display(null, Templates::HALFMOON);
-        $this->assertEquals($this->halfmoon, $content);
+        $content = flash()->display(null, Templates::VANILLA);
+        $this->assertEquals($this->vanilla, $content);
     }
 
     /**
      * @test
      * @throws FlashTemplateNotFoundException
      */
-    public function testDisplayHalfmoon()
+    public function testDisplayVanilla()
     {
         flash()->info('Info message!');
 
-        $content = flash()->displayHalfmoon();
-        $this->assertEquals($this->halfmoon, $content);
+        $content = flash()->displayVanilla();
+        $this->assertEquals($this->vanilla, $content);
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testDisplayWithBeercss()
+    {
+        flash()->info('Info message!');
+
+        $content = flash()->display(null, Templates::BEERCSS);
+        $this->assertEquals($this->beercss, $content);
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testDisplayBeercss()
+    {
+        flash()->info('Info message!');
+
+        $content = flash()->displayBeercss();
+        $this->assertEquals($this->beercss, $content);
     }
 
 }

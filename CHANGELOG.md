@@ -4,19 +4,37 @@ All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## Unreleased
+## 4.0.0 - Unreleased
+
+**Breaking Changes!**
+- Replaced stalled CSS frameworks with modern actively maintained alternatives.
 
 ### Added
+- [Fomantic UI](https://fomantic-ui.com) template (replaces Semantic UI).
+- [Cirrus CSS](https://cirrus-ui.com) template (replaces Spectre.css).
+- [Vanilla Framework](https://vanillaframework.io) template (replaces Halfmoon).
+- [Beer CSS](https://www.beercss.com) template (replaces Materialize).
+- New shortcut display methods:
+  - `flash()->displayFomantic(...)`
+  - `flash()->displayCirrus(...)`
+  - `flash()->displayVanilla(...)`
+  - `flash()->displayBeercss(...)`
+- Root-level devcontainer configuration (PHP 8.4).
 
 ### Changed
-
-### Deprecated
+- Updated CDN versions for all active frameworks:
+  - Bootstrap 5.3.0-alpha1 &rarr; 5.3.8
+  - Bulma 0.9.4 &rarr; 1.0.4
+  - Foundation 6.7.5 &rarr; 6.9.0
+  - Primer 20.8.0 &rarr; 21.1.1
+  - UIKit 3.15.22 &rarr; 3.23.13
 
 ### Removed
-
-### Fixed
-
-### Security
+- `Templates::SEMANTIC` constant and `SemanticTemplate` class.
+- `Templates::SPECTRE` constant and `SpectreTemplate` class.
+- `Templates::HALFMOON` constant and `HalfmoonTemplate` class.
+- `Templates::MATERIALIZE` constant and `MaterializeTemplate` class.
+- Shortcut methods: `displaySemantic()`, `displaySpectre()`, `displayHalfmoon()`, `displayMaterialize()`.
 
 ## 3.0.1 - 2024-12-10
 
