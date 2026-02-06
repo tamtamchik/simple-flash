@@ -1,0 +1,15 @@
+{
+    "name": "Simple Flash - PHP 8.4",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "xdebug.php-debug",
+                "bmewburn.vscode-intelephense-client",
+                "mikestead.dotenv"
+            ]
+        }
+    },
+    "forwardPorts": [8000],
+    "postCreateCommand": "composer install"
+}
