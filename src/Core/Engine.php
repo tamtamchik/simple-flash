@@ -93,7 +93,7 @@ class Engine extends MessageManager
     }
 
     /**
-     * @param array $session
+     * @param array<string, string[]> $session
      * @param string|null $type
      * @return bool
      */

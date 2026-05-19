@@ -16,11 +16,17 @@ class SessionManager
         }
     }
 
+    /**
+     * @return array<string, string[]>
+     */
     protected function getSession(): array
     {
         return $_SESSION[$this->key];
     }
 
+    /**
+     * @param array<string, string[]> $session
+     */
     protected function setSession(array $session): void
     {
         $_SESSION[$this->key] = $session;

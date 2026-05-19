@@ -21,7 +21,7 @@ class TemplateFactory
     {
         $class = __NAMESPACE__ . '\\Templates\\' . ucwords($name) . 'Template';
 
-        if (class_exists($class)) {
+        if (class_exists($class) && is_subclass_of($class, TemplateInterface::class)) {
             return new $class();
         }
 
