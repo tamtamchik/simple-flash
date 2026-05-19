@@ -6,6 +6,27 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: composer:v2
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Audit dependencies for known vulnerabilities
+        run: composer audit
+
+      - name: PHP syntax check
+        run: find src tests -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+
   phpunit:
     runs-on: ubuntu-latest
     strategy:
