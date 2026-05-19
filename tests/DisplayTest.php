@@ -285,4 +285,80 @@ class DisplayTest extends TestCase
         $this->assertEquals($this->beercss, $content);
     }
 
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testFomanticAllSeverities()
+    {
+        flash()->success('Success message!');
+        $this->assertEquals('<div class="ui message success"><p>Success message!</p></div>', flash()->displayFomantic());
+
+        flash()->info('Info message!');
+        $this->assertEquals('<div class="ui message info"><p>Info message!</p></div>', flash()->displayFomantic());
+
+        flash()->warning('Warning message!');
+        $this->assertEquals('<div class="ui message warning"><p>Warning message!</p></div>', flash()->displayFomantic());
+
+        flash()->error('Error message!');
+        $this->assertEquals('<div class="ui message error"><p>Error message!</p></div>', flash()->displayFomantic());
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testCirrusAllSeverities()
+    {
+        flash()->success('Success message!');
+        $this->assertEquals('<div class="toast toast--success">Success message!<br /></div>', flash()->displayCirrus());
+
+        flash()->info('Info message!');
+        $this->assertEquals('<div class="toast toast--info">Info message!<br /></div>', flash()->displayCirrus());
+
+        flash()->warning('Warning message!');
+        $this->assertEquals('<div class="toast toast--warning">Warning message!<br /></div>', flash()->displayCirrus());
+
+        flash()->error('Error message!');
+        $this->assertEquals('<div class="toast toast--danger">Error message!<br /></div>', flash()->displayCirrus());
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testVanillaAllSeverities()
+    {
+        flash()->success('Success message!');
+        $this->assertEquals('<div class="p-notification--positive"><div class="p-notification__content"><p class="p-notification__message">Success message!<br /></p></div></div>', flash()->displayVanilla());
+
+        flash()->info('Info message!');
+        $this->assertEquals('<div class="p-notification--information"><div class="p-notification__content"><p class="p-notification__message">Info message!<br /></p></div></div>', flash()->displayVanilla());
+
+        flash()->warning('Warning message!');
+        $this->assertEquals('<div class="p-notification--caution"><div class="p-notification__content"><p class="p-notification__message">Warning message!<br /></p></div></div>', flash()->displayVanilla());
+
+        flash()->error('Error message!');
+        $this->assertEquals('<div class="p-notification--negative"><div class="p-notification__content"><p class="p-notification__message">Error message!<br /></p></div></div>', flash()->displayVanilla());
+    }
+
+    /**
+     * @test
+     * @throws FlashTemplateNotFoundException
+     */
+    public function testBeercssAllSeverities()
+    {
+        flash()->success('Success message!');
+        $this->assertEquals('<div class="green padding round"><span>Success message!</span></div>', flash()->displayBeercss());
+
+        flash()->info('Info message!');
+        $this->assertEquals('<div class="blue padding round"><span>Info message!</span></div>', flash()->displayBeercss());
+
+        flash()->warning('Warning message!');
+        $this->assertEquals('<div class="amber padding round"><span>Warning message!</span></div>', flash()->displayBeercss());
+
+        flash()->error('Error message!');
+        $this->assertEquals('<div class="red padding round"><span>Error message!</span></div>', flash()->displayBeercss());
+    }
+
 }

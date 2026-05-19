@@ -4,7 +4,7 @@ All Notable changes to `tamtamchik/simple-flash` will be documented in this file
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 4.0.0 - Unreleased
+## 4.0.0 - 2026-05-19
 
 **Breaking Changes!**
 - Replaced stalled CSS frameworks with modern actively maintained alternatives.
@@ -28,6 +28,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
   - Foundation 6.7.5 &rarr; 6.9.0
   - Primer 20.8.0 &rarr; 21.1.1
   - UIKit 3.15.22 &rarr; 3.23.13
+  - Beer CSS 4.0.2 &rarr; 4.0.21
 
 ### Removed
 - `Templates::SEMANTIC` constant and `SemanticTemplate` class.

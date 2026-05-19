@@ -36,7 +36,7 @@
         [<a target="_blank" href="https://vanillaframework.io">https://vanillaframework.io</a>]
     </li>
     <li>
-        <a href="./beercss.php">Beer CSS (4.0.2)</a>
+        <a href="./beercss.php">Beer CSS (4.0.21)</a>
         [<a target="_blank" href="https://www.beercss.com">https://www.beercss.com</a>]
     </li>
     <li><a href="./custom.php">Custom Template</a></li>
