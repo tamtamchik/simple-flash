@@ -11,7 +11,7 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Tailwind default template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
 
