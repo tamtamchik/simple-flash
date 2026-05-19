@@ -37,9 +37,9 @@ class Flash
     /**
      * Base instance of Flash engine.
      *
-     * @var Engine
+     * @var Engine|null
      */
-    private static $engine;
+    private static $engine = null;
 
     /**
      * Creates flash container from session.
@@ -53,7 +53,7 @@ class Flash
             $template = TemplateFactory::create();
         }
 
-        if ( ! $assigned || ! isset(self::$engine)) {
+        if ( ! $assigned || self::$engine === null) {
             self::$engine = new Engine($template);
         }
     }
@@ -62,7 +62,7 @@ class Flash
      * Magic methods for static calls.
      *
      * @param string $method - method to invoke
-     * @param array $arguments - arguments for method
+     * @param array<int, mixed> $arguments - arguments for method
      *
      * @return mixed
      */
@@ -77,13 +77,13 @@ class Flash
      * Invoke Engine methods.
      *
      * @param string $method - method to invoke
-     * @param array $arguments - arguments for method
+     * @param array<int, mixed> $arguments - arguments for method
      *
      * @return mixed
      */
     protected static function invoke(string $method, array $arguments)
     {
-        return call_user_func_array([self::$engine, $method], $arguments);
+        return self::$engine->{$method}(...$arguments);
     }
 
     /**
@@ -98,7 +98,7 @@ class Flash
      * Magic methods for instances calls.
      *
      * @param string $method - method to invoke
-     * @param array $arguments - arguments for method
+     * @param array<int, mixed> $arguments - arguments for method
      *
      * @return mixed
      */
