@@ -53,7 +53,7 @@ class MessageManager extends SessionManager
     /**
      * Builds messages for a single type.
      *
-     * @param array $flashes - array of messages to show
+     * @param string[] $flashes - array of messages to show
      * @param string $type - message type: success, info, warning, error
      *
      * @return string - HTML with flash messages

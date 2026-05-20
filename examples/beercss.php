@@ -11,7 +11,7 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Beer CSS template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beercss@4.0.2/dist/cdn/beer.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beercss@4.0.21/dist/cdn/beer.min.css"/>
 </head>
 <body>
 
@@ -25,7 +25,7 @@ include_once '_init.php';
 
 </div>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/beercss@4.0.2/dist/cdn/beer.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/beercss@4.0.21/dist/cdn/beer.min.js"></script>
 
 </body>
 </html>

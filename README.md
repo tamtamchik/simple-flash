@@ -27,9 +27,27 @@ Easy, framework-agnostic flash notifications for PHP. Inspired by [laracasts/fla
 
 > [!NOTE]
 > The documentation below is for version 4.x!
-> If you are looking the documentation for version 3.x look [here](https://github.com/tamtamchik/simple-flash/blob/3.0.x/README.md).
-> If you are looking the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).
-> If you are looking the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).
+> If you are looking for the documentation for version 3.x look [here](https://github.com/tamtamchik/simple-flash/blob/3.0.x/README.md).
+> If you are looking for the documentation for version 2.x look [here](https://github.com/tamtamchik/simple-flash/blob/2.0.x/README.md).
+> If you are looking for the documentation for version 1.x look [here](https://github.com/tamtamchik/simple-flash/blob/1.2.x/README.md).
+
+## Upgrading from 3.x
+
+The set of bundled templates has been rotated — stalled frameworks were dropped and a new set of actively maintained ones added. The new templates are not drop-in replacements; pick whichever fits your project.
+
+**Removed in 4.0:**
+- `Templates::SEMANTIC` / `flash()->displaySemantic()`
+- `Templates::SPECTRE` / `flash()->displaySpectre()`
+- `Templates::HALFMOON` / `flash()->displayHalfmoon()`
+- `Templates::MATERIALIZE` / `flash()->displayMaterialize()`
+
+**Added in 4.0:**
+- `Templates::FOMANTIC` / `flash()->displayFomantic()` — [Fomantic UI](https://fomantic-ui.com), the community fork of Semantic UI.
+- `Templates::CIRRUS` / `flash()->displayCirrus()` — [Cirrus CSS](https://cirrus-ui.com).
+- `Templates::VANILLA` / `flash()->displayVanilla()` — [Vanilla Framework](https://vanillaframework.io).
+- `Templates::BEERCSS` / `flash()->displayBeercss()` — [Beer CSS](https://www.beercss.com).
+
+If a removed framework is critical to your project, pin to `^3.0` until you migrate, or write your own template (see [Creating templates](#creating-templates)).
 
 ## Install
 

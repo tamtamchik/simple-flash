@@ -20,7 +20,7 @@
         [<a target="_blank" href="https://primer.style">https://primer.style</a>]
     </li>
     <li>
-        <a href="uikit.php">UiKit (3.23.13)</a>
+        <a href="uikit.php">UiKit (3.25.16)</a>
         [<a target="_blank" href="https://getuikit.com">https://getuikit.com</a>]
     </li>
     <li>
@@ -32,11 +32,11 @@
         [<a target="_blank" href="https://cirrus-ui.com">https://cirrus-ui.com</a>]
     </li>
     <li>
-        <a href="./vanilla.php">Vanilla Framework (4.21.0)</a>
+        <a href="./vanilla.php">Vanilla Framework (4.34.0)</a>
         [<a target="_blank" href="https://vanillaframework.io">https://vanillaframework.io</a>]
     </li>
     <li>
-        <a href="./beercss.php">Beer CSS (4.0.2)</a>
+        <a href="./beercss.php">Beer CSS (4.0.21)</a>
         [<a target="_blank" href="https://www.beercss.com">https://www.beercss.com</a>]
     </li>
     <li><a href="./custom.php">Custom Template</a></li>

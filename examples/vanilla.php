@@ -11,7 +11,7 @@ include_once '_init.php';
     <meta charset="UTF-8">
     <title>Test Vanilla Framework template example.</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.21.0.min.css"/>
+    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.34.0.min.css"/>
 </head>
 <body>
 
