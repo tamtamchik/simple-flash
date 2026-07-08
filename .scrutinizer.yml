@@ -3,6 +3,10 @@ build:
     tests:
       environment:
         php: 7.3
+      dependencies:
+        override:
+          - curl -sS https://getcomposer.org/installer | php -- --2
+          - php composer.phar install --prefer-dist --no-progress --no-interaction
       tests:
         override:
           - command: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
@@ -12,6 +16,10 @@ build:
     analysis:
       environment:
         php: 7.3
+      dependencies:
+        override:
+          - curl -sS https://getcomposer.org/installer | php -- --2
+          - php composer.phar install --prefer-dist --no-progress --no-interaction
       tests:
         override:
           - php-scrutinizer-run
